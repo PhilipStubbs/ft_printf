@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/02 13:27:07 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/02 13:54:13 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/02 18:51:39 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,72 @@
 #include <stdio.h>
 // int		ft_printf()
 
+char	*stringfind(va_list args)
+{
+	char	*ret;
+
+	ret = va_arg(args, char*);
+	return (ret);
+}
+
+char	charfind(va_list args)
+{
+	char	ret;
+
+	ret = va_arg(args, int);
+	return (ret);
+}
+
+
+int	intfind(va_list args)
+{
+	int	ret;
+
+	ret = va_arg(args, int);
+	return (ret);
+}
+
+int		test(char *str, ...)
+{
+	va_list	args;
+	int		i;
+	int		count;
+	
+	i = 0;
+	count = 0;
+
+	while(str[i])
+	{
+		if (str[i] == '%')
+			count++;
+		i++;
+	}
+
+	i = 0;
+	va_start(args, str);
+	// while (i < count)
+	// {
+		// tmp = va_arg(args, char*);
+		ft_putendl(stringfind(args));
+		ft_putendl(stringfind(args));
+		ft_putendl(stringfind(args));
+		ft_putchar(charfind(args));
+		ft_putchar('\n');
+		ft_putnbr(intfind(args));
+		ft_putchar('\n');
+		i++;
+	// }
+
+	va_end(args);
+	return (1);
+}
+
+
 int		main()
 {
-	printf("%S", "he");
-
+	printf("%h", "he");
+	// test("% % % % %", "hello", "friends", "its me", 'a', 5);
+	return (1);
 }
 
 /*

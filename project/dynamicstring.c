@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_printf.c                                      :+:      :+:    :+:   */
+/*   dynamicstring.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/03 09:27:25 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/03 10:40:02 by pstubbs          ###   ########.fr       */
+/*   Created: 2018/08/03 09:52:29 by pstubbs           #+#    #+#             */
+/*   Updated: 2018/08/03 09:52:37 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			ft_printf(char *str, ...)
+char	*dynamicstring(char **ori, char *add)
 {
-	t_printf	*node;
-	va_list		args;
-	int			error;
+	char	*tmp;
+	char	*ret;
 
-	error = 0;
-	node = createstruc();
-	va_start(args, str);
-	node->size = ft_strlen(str);
-	error = strprocessing(node, str, args);
-	va_end(args);
-	destroy(&node, error);
-	return (node->size);
+	tmp = ft_strdup(*ori);
+	free(*ori);
+	ret = ft_strjoin(tmp, add);
+	free(tmp);
+	return (ret);
 }

@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_printf.c                                      :+:      :+:    :+:   */
+/*   createstruc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/03 09:27:25 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/03 10:40:02 by pstubbs          ###   ########.fr       */
+/*   Created: 2018/08/03 09:53:15 by pstubbs           #+#    #+#             */
+/*   Updated: 2018/08/03 10:40:32 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			ft_printf(char *str, ...)
+t_printf	*createstruc(void)
 {
-	t_printf	*node;
-	va_list		args;
-	int			error;
+	t_printf	*ret;
 
-	error = 0;
-	node = createstruc();
-	va_start(args, str);
-	node->size = ft_strlen(str);
-	error = strprocessing(node, str, args);
-	va_end(args);
-	destroy(&node, error);
-	return (node->size);
+	ret = (t_printf*)ft_memalloc(sizeof(t_printf));
+	ret->output = NULL;
+	ret->size = 0;
+	ret->s = 0;
+	ret->S = 0;
+	ret->p = 0;
+	ret->d = 0;
+	ret->i = 0;
+	ret->o = 0;
+	ret->u = 0;
+	ret->c = 0;
+	return (ret);
 }

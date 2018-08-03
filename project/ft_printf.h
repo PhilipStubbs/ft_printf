@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/02 13:19:41 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/03 10:40:01 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,23 @@
 # define CYN  "\x1B[36m"
 # define WHT  "\x1B[37m"
 
-typedef	struct		s_printf
+typedef	struct	s_printf
 {
-	int				data;
-	int				pos;
-}					t_printf;
+	char		*output;
+	int			size;
+	int			s;
+	int			S;
+	int			p;
+	int			d;
+	int			i;
+	int			o;
+	int			u;
+	int			x;
+	int			c;
+}				t_printf;
 
+char			*dynamicstring(char **ori, char *add);
+t_printf		*createstruc(void);
+void			destroy(t_printf **node, int error);
+int				strprocessing(t_printf *node, char *str, va_list args);
 #endif

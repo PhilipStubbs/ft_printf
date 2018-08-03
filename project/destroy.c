@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_printf.c                                      :+:      :+:    :+:   */
+/*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/03 09:27:25 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/03 10:40:02 by pstubbs          ###   ########.fr       */
+/*   Created: 2018/08/03 10:18:28 by pstubbs           #+#    #+#             */
+/*   Updated: 2018/08/03 10:32:20 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			ft_printf(char *str, ...)
+void	destroy(t_printf **node, int error)
 {
-	t_printf	*node;
-	va_list		args;
-	int			error;
-
-	error = 0;
-	node = createstruc();
-	va_start(args, str);
-	node->size = ft_strlen(str);
-	error = strprocessing(node, str, args);
-	va_end(args);
-	destroy(&node, error);
-	return (node->size);
+	free((*node)->output);
+	free(*node);
+	if (error == 1)
+		ERROR;
+	exit(1);
 }

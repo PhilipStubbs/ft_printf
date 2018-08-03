@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:48:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/03 17:22:02 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/03 18:40:54 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,13 @@ int	finddigit(t_printf *node, va_list args)
 
 	free(ret);
 	return (len);
+}
+
+int	findchar(t_printf *node, va_list args)
+{
+	char	tmp;
+
+	tmp = va_arg(args, int);
+	node->output = dynamicchar(&(node)->output, tmp);
+	return (1);
 }

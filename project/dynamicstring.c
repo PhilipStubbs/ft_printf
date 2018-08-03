@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 09:52:29 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/03 17:20:27 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/03 17:46:00 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,15 @@ char	*dynamicchar(char **ori, char add)
 	char	*ret;
 	char	*stradd;
 
-	stradd = (char*)ft_memalloc(sizeof(char) * 2);
+	stradd = (char*)ft_memalloc(sizeof(char) * 3);
 	stradd[0] = add;
 	stradd[1] = '\0';
+
 	tmp = ft_strdup(*ori);
 	free(*ori);
+	// ret = ft_strdup(stradd);
 	ret = ft_strjoin(tmp, stradd);
 	free(tmp);
-	// free(stradd);
+	free(stradd);
 	return (ret);
 }

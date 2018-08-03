@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:18:28 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/03 10:32:20 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/03 17:23:35 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@ void	destroy(t_printf **node, int error)
 	free(*node);
 	if (error == 1)
 		ERROR;
-	exit(1);
+
 }

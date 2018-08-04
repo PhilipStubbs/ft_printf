@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/04 12:48:20 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/04 14:00:15 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef	struct	s_printf
 	int			c;
 }				t_printf;
 
+int				ft_printf(char *str, ...);
 char			*dynamicstring(char **ori, char *add);
 char			*dynamicchar(char **ori, char add);
 t_printf		*createstruc(void);
@@ -56,7 +57,8 @@ int				findchar(t_printf *node, va_list args);
 int				findhex(t_printf *node, va_list args, char cap);
 int				findoct(t_printf *node, va_list args);
 int				findpointer(t_printf *node, va_list args);
-
+int				findundigit(t_printf *node, va_list args);
+char			*ft_uitoa(unsigned int n);
 
 char			*ft_itoa_base(long int value, int base, int cap);
 #endif

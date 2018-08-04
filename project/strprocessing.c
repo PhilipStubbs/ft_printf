@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:29:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/04 12:48:42 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/04 13:06:38 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,11 @@ int		flagchecker(t_printf *node, char *str,  va_list args, int i)
 		i = findpointer(node, args);
 		return (i);
 	}
+	else if (str[i + 1] == 'U' || str[i + 1] == 'u')
+	{
+		i = findundigit(node, args);
+		return (i);
+	}
 	return (-1);
 }
 
@@ -67,6 +72,8 @@ int		movei(char *str, int i)
 	else if (str[i + 1] == 'o' || str[i + 1] == 'O')
 		return (i + 2);
 	else if (str[i + 1] == 'p')
+		return (i + 2);
+	else if (str[i + 1] == 'u' || str[i + 1] == 'U')
 		return (i + 2);
 	return (i);
 }

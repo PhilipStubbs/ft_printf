@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:48:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/04 12:47:36 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/04 13:56:52 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	findstring(t_printf *node, va_list args)
 	int		len;
 
 	tmp = va_arg(args, char*);
+	if (tmp == NULL)
+		tmp = ft_strdup("(null)");
 	len = ft_strlen(tmp);
 	node->output = dynamicstring(&(node)->output, tmp);
 	// free(tmp);
@@ -90,4 +92,21 @@ int	findpointer(t_printf *node, va_list args)
 	free(tmpstr);
 	free(ret);
 	return (tmp);
+}
+
+int	findundigit(t_printf *node, va_list args)
+{
+	unsigned int	tmp;
+	int				len;
+	unsigned int	test;
+	char			*ret;
+
+	tmp = va_arg(args, unsigned int);
+	test = (unsigned int)tmp;
+	
+	ret = ft_uitoa(tmp);
+	node->output = dynamicstring(&(node)->output, ret);
+	len = ft_strlen(ret);
+	free(ret);
+	return (len);
 }

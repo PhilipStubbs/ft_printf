@@ -1,44 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dynamicstring.c                                    :+:      :+:    :+:   */
+/*   ft_uitoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/03 09:52:29 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/04 13:01:49 by pstubbs          ###   ########.fr       */
+/*   Created: 2018/05/22 08:09:06 by pstubbs           #+#    #+#             */
+/*   Updated: 2018/08/04 14:09:11 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*dynamicstring(char **ori, char *add)
+static	char	*ft_returnzero(void)
 {
-	char	*tmp;
-	char	*ret;
+	char	*p;
 
-	tmp = ft_strdup(*ori);
-	free(*ori);
-	ret = ft_strjoin(tmp, add);
-	free(tmp);
-	return (ret);
+	p = (char*)ft_memalloc(2);
+	if (!p)
+		return (NULL);
+	p[0] = '0';
+	p[1] = '\0';
+	return (p);
 }
 
-char	*dynamicchar(char **ori, char add)
+char			*ft_uitoa(unsigned int n)
 {
-	char	*tmp;
-	char	*ret;
-	char	*stradd;
+	char			*ret;
+	int				len;
+	unsigned int	tmp;
 
-	stradd = (char*)ft_memalloc(sizeof(char) * 3);
-	stradd[0] = add;
-	stradd[1] = '\0';
-
-	tmp = ft_strdup(*ori);
-	free(*ori);
-	// ret = ft_strdup(stradd);
-	ret = ft_strjoin(tmp, stradd);
-	free(tmp);
-	free(stradd);
+	if (n == 0)
+		return (ft_returnzero());
+	tmp = n;
+	len = 1;
+	while (tmp/=10)
+		len++;
+	if (!(ret = (char*)ft_memalloc(len + 1)))
+		return (NULL);
+	ret[len + 1] = '\0';
+	while (n != 0)
+	{
+		ret[--len] = n % 10 + 48;
+		n = n / 10;
+	}
 	return (ret);
 }

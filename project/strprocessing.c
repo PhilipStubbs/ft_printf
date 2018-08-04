@@ -6,50 +6,67 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:29:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/04 13:06:38 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/04 16:56:13 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+int		findoperator(char *str, int i)
+{
+	int	count;
+
+	count = 1;
+	i++;
+	while (str[i] == ' ')
+	{
+		i++;
+		count++;
+	}
+	return (count);
+}
+
 int		flagchecker(t_printf *node, char *str,  va_list args, int i)
 {
-	if (str[i + 1] == '%')
+	int l;
+
+	l = findoperator(str, i);
+	if (str[i + l] == '%')
 	{
 		dynamicstring(&(node)->output, "%");
 		return (1);
 	}
-	else if (str[i + 1] == 's')
+	else if (str[i + l] == 's')
 	{
 		i = findstring(node, args);
 		return (i);
 	}
-	else if (str[i + 1] == 'd' || str[i + 1] == 'D' || str[i + 1] == 'i')
+	else if (str[i + l] == 'd' || str[i + l] == 'D' || str[i + l] == 'i')
 	{
-		i = finddigit(node, args);
+		i = finddigit(node, args, l);
 		return (i);
 	}
-	else if (str[i + 1] == 'c' || str[i + 1] == 'C')
+	else if (str[i + l] == 'c' || str[i + l] == 'C')
 	{
 		findchar(node, args);
 		return (1);
 	}
-	else if (str[i + 1] == 'x' || str[i + 1] == 'X')
+	else if (str[i + l] == 'x' || str[i + l] == 'X')
 	{
-		i = findhex(node, args, str[i + 1]);
+		i = findhex(node, args, str[i + l]);
 		return (i);
 	}
-	else if (str[i + 1] == 'o' || str[i + 1] == 'O')
+	else if (str[i + l] == 'o' || str[i + l] == 'O')
 	{
 		i = findoct(node, args);
 		return (i);
 	}
-	else if (str[i + 1] == 'p')
+	else if (str[i + l] == 'p')
 	{
 		i = findpointer(node, args);
 		return (i);
 	}
-	else if (str[i + 1] == 'U' || str[i + 1] == 'u')
+	else if (str[i + l] == 'U' || str[i + l] == 'u')
 	{
 		i = findundigit(node, args);
 		return (i);
@@ -59,22 +76,25 @@ int		flagchecker(t_printf *node, char *str,  va_list args, int i)
 
 int		movei(char *str, int i)
 {
-	if (str[i + 1] == '%')
-		return (i + 2);
-	else if (str[i + 1] == 's')
-		return (i + 2);
-	else if (str[i + 1] == 'd' || str[i + 1] == 'D' || str[i + 1] == 'i')
-		return (i + 2);
-	else if (str[i + 1] == 'c' || str[i + 1] == 'C')
-		return (i + 2);
-	else if (str[i + 1] == 'x' || str[i + 1] == 'X')
-		return (i + 2);
-	else if (str[i + 1] == 'o' || str[i + 1] == 'O')
-		return (i + 2);
-	else if (str[i + 1] == 'p')
-		return (i + 2);
-	else if (str[i + 1] == 'u' || str[i + 1] == 'U')
-		return (i + 2);
+	int l;
+
+	l = findoperator(str, i);
+	if (str[i + l] == '%')
+		return (i + l + 1);
+	else if (str[i + l] == 's')
+		return (i + l + 1);
+	else if (str[i + l] == 'd' || str[i + l] == 'D' || str[i + l] == 'i')
+		return (i + l + 1);
+	else if (str[i + l] == 'c' || str[i + l] == 'C')
+		return (i + l + 1);
+	else if (str[i + l] == 'x' || str[i + l] == 'X')
+		return (i + l + 1);
+	else if (str[i + l] == 'o' || str[i + l] == 'O')
+		return (i + l + 1);
+	else if (str[i + l] == 'p')
+		return (i + l + 1);
+	else if (str[i + l] == 'u' || str[i + l] == 'U')
+		return (i + l + 1);
 	return (i);
 }
 
@@ -88,7 +108,6 @@ int		strprocessing(t_printf *node, char *str, va_list args)
 	{
 		if (str[i] != '%')
 		{
-			// node->output[node->l] = str[i];
 			node->output = dynamicchar(&(node)->output, str[i]);
 		}
 		if (str[i] == '%')

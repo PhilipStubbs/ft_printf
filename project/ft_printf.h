@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/04 14:00:15 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/04 16:52:36 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void			destroy(t_printf **node, int error);
 int				strprocessing(t_printf *node, char *str, va_list args);
 
 int				findstring(t_printf *node, va_list args);
-int				finddigit(t_printf *node, va_list args);
+int				finddigit(t_printf *node, va_list args, int l);
 int				findchar(t_printf *node, va_list args);
 int				findhex(t_printf *node, va_list args, char cap);
 int				findoct(t_printf *node, va_list args);

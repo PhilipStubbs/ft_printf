@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/02 13:27:07 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/03 09:55:40 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/04 12:14:23 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,21 +105,21 @@ int		main()
 }
 
 /*
-	%% = %
-	%s = string;
+	// %% = %
+	// %s = string;
 	%S = wchar_t*
 	%p = address in mem
-	%d = digit
-	%D = digit
-	%i = also digit
-	%o = unsigned int
-	%O = unsigned int
+	// %d = digit
+	// %D = digit
+	// %i = also digit
+	// %o = unsigned int
+	// %O = unsigned int
 	%u = unsigned int - is for unsigned decimal type
 	%U = unsigned int - is for unsigned decimal type
-	%x = hex
-	%X = hex
-	%c = char
-	%C = char
+	// %x = hex
+	// %X = hex
+	// %c = char
+	// %C = char
 
 	%e = double
 	%E = double

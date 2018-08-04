@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/03 18:41:07 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/04 12:48:20 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,10 @@ int				strprocessing(t_printf *node, char *str, va_list args);
 int				findstring(t_printf *node, va_list args);
 int				finddigit(t_printf *node, va_list args);
 int				findchar(t_printf *node, va_list args);
+int				findhex(t_printf *node, va_list args, char cap);
+int				findoct(t_printf *node, va_list args);
+int				findpointer(t_printf *node, va_list args);
+
+
+char			*ft_itoa_base(long int value, int base, int cap);
 #endif

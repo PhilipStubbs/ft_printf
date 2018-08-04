@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/02 13:27:07 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/04 12:57:00 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/04 14:10:47 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,8 @@ int		main()
 	// %i = also digit
 	// %o = unsigned int
 	// %O = unsigned int
-	%u = unsigned int - is for unsigned decimal type
-	%U = unsigned int - is for unsigned decimal type
+	// %u = unsigned int - is for unsigned decimal type
+	// %U = unsigned int - is for unsigned decimal type
 	// %x = hex
 	// %X = hex
 	// %c = char

@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:48:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/04 16:54:23 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/04 19:01:14 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,15 +106,22 @@ int	findundigit(t_printf *node, va_list args)
 {
 	unsigned int	tmp;
 	int				len;
-	unsigned int	test;
 	char			*ret;
 
-	tmp = va_arg(args, unsigned int);
-	test = (unsigned int)tmp;
-	
+	tmp = va_arg(args, unsigned int);	
 	ret = ft_uitoa(tmp);
 	node->output = dynamicstring(&(node)->output, ret);
 	len = ft_strlen(ret);
 	free(ret);
 	return (len);
 }
+// 	if (chr <= 0x7F)
+// 		chr_len = 1;
+// 	else if (chr <= 0x7FF)
+// 		chr_len = 2;
+// 	else if (chr <= 0xFFFF)
+// 		chr_len = 3;
+// 	else if (chr <= 0x10FFFF)
+// 		chr_len = 4;
+// 	else
+// 		chr_len = 0;

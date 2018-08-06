@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/06 12:29:03 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/06 17:38:25 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,19 @@
 # define WHT  "\x1B[37m"
 
 #include <stdio.h>
+
+typedef	struct	s_format
+{
+	int			start;
+	int			end;
+	int			spacpad;
+	int			zeropad;
+	int			padsize;
+	int			hash;
+	int			minus;
+	int			plus;
+	int			prec;
+}				t_format;
 
 typedef	struct	s_printf
 {
@@ -50,14 +63,15 @@ int				ft_printf(char *str, ...);
 char			*dynamicstring(char **ori, char *add);
 char			*dynamicchar(char **ori, char add);
 t_printf		*createstruc(void);
+t_format		*cleanformat(void);
 void			destroy(t_printf **node, int error);
 int				strprocessing(t_printf *node, char *str, va_list args);
 
 int				findstring(t_printf *node, va_list args);
-int				finddigit(t_printf *node, va_list args, int *f);
+int				finddigit(t_printf *node, va_list args, t_format *format);
 int				findchar(t_printf *node, va_list args);
-int				findhex(t_printf *node, va_list args, char cap, int modif);
-int				findoct(t_printf *node, va_list args, int modif);
+int				findhex(t_printf *node, va_list args, char cap, t_format *format);
+int				findoct(t_printf *node, va_list args, t_format *format);
 int				findpointer(t_printf *node, va_list args);
 int				findundigit(t_printf *node, va_list args);
 int				isnormalflag(char *str, int i);

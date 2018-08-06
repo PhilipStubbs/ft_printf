@@ -6,47 +6,40 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:48:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/06 13:39:52 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/06 18:15:39 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*createpadding(t_printf *node, char **str, int *f, char c)
+char	*createpadding(t_printf *node, char **str, t_format *format)
 {
-	int		amount;
-	int		x;
 	int		len;
 	char	*amstr;
 	char	*tmp;
+	char	c;
 
-	x = 1;
 	len = ft_strlen(*str);
-	while (ft_isdigit(node->raw[f[3] + x]) == 1)
-		x++;
-	amstr = ft_strsub(node->raw + f[0], 1, x-1);
-	printf("[%s]\n", amstr);
-	amount = ft_atoi(amstr) - len;
-	if (amount < len)
+	if (format->padsize < len)
 		return (*str);
-	free(amstr);
-	printf("[%d]\n",amount);
-	// if (node->raw[f[2] + f[0]] == ' ')
-	if (spacechecker(node->raw, f[2]) == 1)
+
+	c = ' ';
+	if (format->zeropad == 1)
+		c = '0';
+	if (format->spacpad == 1 && format->zeropad == 1)
 	{
 		tmp = ft_strdup(" ");
-
-		amstr = ft_strnew(amount);
-		write(1,"X\n",2); 
-		ft_memset(amstr, '0', amount);
-		
-		amstr = dynamicstring(&amstr, tmp);
+		amstr = ft_strnew(format->padsize - len - 1);
+		ft_memset(amstr, c, format->padsize - len - 1);
+		tmp = dynamicstring(&tmp ,amstr);
+		free(amstr);
+		amstr = ft_strdup(tmp);
 		free(tmp);
 	}
 	else
 	{
-		amstr = ft_strnew(amount);
-		ft_memset(amstr, c, amount);
+		amstr = ft_strnew(format->padsize - len);
+		ft_memset(amstr, c, format->padsize - len);
 	}
 	tmp = ft_strjoin(amstr, *str);
 	free(*str);
@@ -55,11 +48,6 @@ char	*createpadding(t_printf *node, char **str, int *f, char c)
 	free(tmp);
 	return (*str);
 }
-
-
-	// ret[1] = count;
-	// ret[2] = modif;
-	// ret[3] = padding;
 
 int	findstring(t_printf *node, va_list args)
 {
@@ -75,7 +63,7 @@ int	findstring(t_printf *node, va_list args)
 	return (len);
 }
 
-int	finddigit(t_printf *node, va_list args, int *f)
+int	finddigit(t_printf *node, va_list args, t_format *format)
 {
 	int		tmp;
 	int		len;
@@ -83,9 +71,13 @@ int	finddigit(t_printf *node, va_list args, int *f)
 
 	tmp = va_arg(args, int);
 	ret = ft_itoa(tmp);
-	printf("here[%d]\n", f[2]);
-	if (f[3] != -1 || spacechecker(node->raw, f[2]))
-		ret = createpadding(node, &ret, f, node->raw[f[2]]);
+	if (format->spacpad == 1 || format->zeropad == 1)
+	{
+		ret = createpadding(node, &ret, format);
+	}
+	// printf("here[%d]\n", f[2]);
+	// if (f[3] != -1 || spacechecker(node->raw, f[2]))
+	// 	ret = createpadding(node, &ret, f, node->raw[f[2]]);
 	
 	// if (node->raw[f[1]] == ' ')
 	// {
@@ -110,7 +102,7 @@ int	findchar(t_printf *node, va_list args)
 	return (1);
 }
 
-int	findhex(t_printf *node, va_list args, char cap, int modif)
+int	findhex(t_printf *node, va_list args, char cap , t_format *format)
 {
 	int		tmp;
 	char	*tmpstr;
@@ -121,7 +113,7 @@ int	findhex(t_printf *node, va_list args, char cap, int modif)
 		tmpstr = ft_itoa_base(tmp, 16, 0);
 	else
 		tmpstr = ft_itoa_base(tmp, 16, 1);
-	if (node->raw[modif] == '#')
+	if (format->hash == 1)
 	{
 		if (cap == 'X')
 			tmpstr2 = ft_strjoin("0X", tmpstr);
@@ -137,7 +129,7 @@ int	findhex(t_printf *node, va_list args, char cap, int modif)
 	return (tmp);
 }
 
-int	findoct(t_printf *node, va_list args, int modif)
+int	findoct(t_printf *node, va_list args, t_format *format)
 {
 	int		tmp;
 	char	*tmpstr;
@@ -145,7 +137,7 @@ int	findoct(t_printf *node, va_list args, int modif)
 
 	tmp = va_arg(args, int);
 	tmpstr = ft_itoa_base(tmp, 8, 0);
-	if (node->raw[modif] == '#')
+	if (format->hash == 1)
 	{
 		tmpstr2 = ft_strjoin("0", tmpstr);
 		free(tmpstr);

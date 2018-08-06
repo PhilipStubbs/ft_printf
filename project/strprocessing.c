@@ -15,43 +15,49 @@
 
 #include "ft_printf.h"
 
-int		*findspecifier(char *str, int i)
+int		findspecifier(char *str, int i, t_format *format)
 {
 	int	count;
-	int	modif;
-	int *ret;
 
-	ret = (int*)ft_memalloc(sizeof(int) * 4);
 	count = 1;
 	i++;
-	modif = -1;
-	ret[0] = i;
-	ret[3] = -1;
+	if (format != NULL)
+		format->start = i;
 	while (isnormalflag(str, i) == 0)
 	{
-		if ((str[i] == '-' || str[i] == '+' || str[i] == '#'
-		|| str[i] == ' ') && modif == -1)
+		if (str[i] == '-' && format != NULL)
+			format->minus = 1;
+		if (str[i] == '+' && format != NULL)
+			format->plus = 1;
+		if (str[i] == '#' && format != NULL)
+			format->hash = 1;
+		if (format != NULL &&(str[i] == ' ' && format->spacpad == 0))
 		{
-			modif = i;
-			printf("i [%d]\n", i);
+			if (ft_isdigit(str[i + 1]) == 1 && str[i + 1] != 0)
+				format->padsize = ft_atoi(str + i);
+			format->spacpad = 1;
 		}
-		if (str[i] == '0' || str[i] == ' ')
-			ret[3] = i;
+		if (format != NULL && (str[i] == '0' &&  format->zeropad == 0))
+		{
+			format->zeropad = 1;
+			format->padsize = ft_atoi(str + i);
+			// printf("[%d]\n", format->padsize);
+		}
 		i++;
 		count++;
 	}
-	ret[1] = count;
-	ret[2] = modif;
-	return (ret);
+	if (format != NULL)
+		format->end = i;
+	return (count);
 }
 
 int		flagchecker(t_printf *node, char *str,  va_list args, int i)
 {
+	t_format *format;
 	int	l;
-	int	*f;
 
-	f = findspecifier(str, i);
-	l = f[1];
+	format = cleanformat();
+	l = findspecifier(str, i, format);
 	// printf("[%d]\n", str[l]);
 	if (str[i + l] == '%')
 	{
@@ -65,7 +71,7 @@ int		flagchecker(t_printf *node, char *str,  va_list args, int i)
 	}
 	else if (str[i + l] == 'd' || str[i + l] == 'D' || str[i + l] == 'i')
 	{
-		i = finddigit(node, args, f);
+		i = finddigit(node, args, format);
 		return (i);
 	}
 	else if (str[i + l] == 'c' || str[i + l] == 'C')
@@ -75,12 +81,12 @@ int		flagchecker(t_printf *node, char *str,  va_list args, int i)
 	}
 	else if (str[i + l] == 'x' || str[i + l] == 'X')
 	{
-		i = findhex(node, args, str[i + l], f[1]);
+		i = findhex(node, args, str[i + l], format);
 		return (i);
 	}
 	else if (str[i + l] == 'o' || str[i + l] == 'O')
 	{
-		i = findoct(node, args, f[1]);
+		i = findoct(node, args, format);
 		return (i);
 	}
 	else if (str[i + l] == 'p')
@@ -93,20 +99,18 @@ int		flagchecker(t_printf *node, char *str,  va_list args, int i)
 		i = findundigit(node, args);
 		return (i);
 	}
-	free(f);
+	free(format);
 	return (-1);
 }
 
 int		movei(char *str, int i)
 {
 	int l;
-	int	*f;
-
-	f = findspecifier(str, i);
-	l = f[1];
+	
+	l = findspecifier(str, i, NULL);
 	if (str[i + l] == '%')
 		return (i + l + 1);
-	free(f);
+
 	// else if (str[i + l] == 's')
 	// 	return (i + l + 1);
 	// else if (str[i + l] == 'd' || str[i + l] == 'D' || str[i + l] == 'i')

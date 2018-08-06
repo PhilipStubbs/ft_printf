@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/04 16:52:36 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/06 12:29:03 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@
 typedef	struct	s_printf
 {
 	char		*output;
+	char		*raw;
 	int			size;
+	int			padding;
 	int			l;
 	int			s;
 	int			S;
@@ -52,13 +54,15 @@ void			destroy(t_printf **node, int error);
 int				strprocessing(t_printf *node, char *str, va_list args);
 
 int				findstring(t_printf *node, va_list args);
-int				finddigit(t_printf *node, va_list args, int l);
+int				finddigit(t_printf *node, va_list args, int *f);
 int				findchar(t_printf *node, va_list args);
-int				findhex(t_printf *node, va_list args, char cap);
-int				findoct(t_printf *node, va_list args);
+int				findhex(t_printf *node, va_list args, char cap, int modif);
+int				findoct(t_printf *node, va_list args, int modif);
 int				findpointer(t_printf *node, va_list args);
 int				findundigit(t_printf *node, va_list args);
-char			*ft_uitoa(unsigned int n);
+int				isnormalflag(char *str, int i);
+int				spacechecker(char *str, int l);
 
 char			*ft_itoa_base(long int value, int base, int cap);
+char			*ft_uitoa(unsigned int n);
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_printf.c                                      :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 09:27:25 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/04 13:03:39 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/06 09:11:27 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int			ft_printf(char *str, ...)
 	error = 0;
 	ret = 0;
 	node = createstruc();
+	node->raw = ft_strdup(str);
 	va_start(args, str);
 	node->size = ft_strlen(str);
 	error = strprocessing(node, str, args);

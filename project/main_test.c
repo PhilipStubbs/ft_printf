@@ -25,8 +25,8 @@ int main()
 
 	// printf(" %-10d \n", 10);
 
-   	printf("their[%-020d] \n",  -100);
-	ft_printf("minee[%-020d] \n",  -100);
+   	printf("their[%#-020m] \n",  100);
+	ft_printf("minee[%#-020o] \n",  100);
 	// printf("their[% 20d] \n",  -100);
 	// ft_printf("minee[% 20d] \n",  -100);
 	// printf("their[% 020d] \n",  -100);

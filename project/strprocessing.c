@@ -54,7 +54,6 @@ int		findspecifier(char *str, int i, t_format *format)
 		format->end = i;
 	if (format != NULL)
 		format->c = str[i];
-
 	return (count);
 }
 
@@ -113,6 +112,8 @@ int		flagchecker(t_printf *node, char *str,  va_list args, int i)
 		free(format);
 		return (i);
 	}
+	
+	free(format);
 	return (-1);
 }
 

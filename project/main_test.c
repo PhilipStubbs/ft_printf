@@ -24,8 +24,9 @@ int main()
 	// ft_printf("hello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng hello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsdfg jnsdfkljgnkljn sdfkljng kljdsdnfghello iodfigndfgoinp niopsd\n");
 
 	// printf(" %-10d \n", 10);
-    printf("hello% 23d %c \n", 56813, 'c');
-	ft_printf("hello% 23d %c \n", 56813, 'c');
+
+    printf("their[%#03x] \n",  100);
+	ft_printf("hello[%#03x] \n",  100);
     // printf(" %-#10x \n", 10);  
     // printf(" %#x \n", 10);
 	// ft_printf(" %#x \n", 10);
@@ -35,9 +36,7 @@ int main()
 	// ft_printf(" %#o \n", 10);
 	// ft_printf("[%s]\n", NULL);
 
- 
 
-	
 	return (1);
 }
 
@@ -53,3 +52,15 @@ int main()
 //     }
 //     return (0);
 // }
+
+
+// 	if (chr <= 0x7F)
+// 		chr_len = 1;
+// 	else if (chr <= 0x7FF)
+// 		chr_len = 2;
+// 	else if (chr <= 0xFFFF)
+// 		chr_len = 3;
+// 	else if (chr <= 0x10FFFF)
+// 		chr_len = 4;
+// 	else
+// 		chr_len = 0;

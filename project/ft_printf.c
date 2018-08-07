@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 09:27:25 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/06 09:11:27 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/07 09:08:02 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int			ft_printf(char *str, ...)
 	va_end(args);
 	if (error == 0)
 	{
+		// printf("%s\n", node->output);
 		ft_putstr(node->output);
 		ret = ft_strlen(node->output);
 	}

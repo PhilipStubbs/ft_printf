@@ -37,9 +37,14 @@ int		findspecifier(char *str, int i, t_format *format)
 				format->padsize = ft_atoi(str + i);
 			format->spacpad = 1;
 		}
-		if (format != NULL && (str[i] == '0' && format->zeropad == 0))
+		if (format != NULL && (str[i] == '0' && format->zeropad == 0 && ft_isdigit(str[i - 1]) == 0))
 		{
 			format->zeropad = 1;
+			format->padsize = ft_atoi(str + i);
+		}
+		if (format != NULL && (ft_isdigit(str[i]) == 1 && format->zeropad == 0 && format->spacpad == 0))
+		{
+			format->spacpad = 1;
 			format->padsize = ft_atoi(str + i);
 		}
 		i++;
@@ -49,6 +54,7 @@ int		findspecifier(char *str, int i, t_format *format)
 		format->end = i;
 	if (format != NULL)
 		format->c = str[i];
+
 	return (count);
 }
 

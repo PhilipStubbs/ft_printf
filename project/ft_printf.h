@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/07 10:27:10 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/07 13:32:54 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int				findhex(t_printf *node, va_list args, char cap, t_format *format);
 int				findoct(t_printf *node, va_list args, t_format *format);
 int				findpointer(t_printf *node, va_list args, t_format *format);
 int				findundigit(t_printf *node, va_list args, t_format *format);
+char			*createpadding(t_printf *node, char **str, t_format *format);
 int				isnormalflag(char *str, int i);
 int				spacechecker(char *str, int l);
 

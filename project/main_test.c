@@ -25,8 +25,8 @@ int main()
 
 	// printf(" %-10d \n", 10);
 
-    printf("their[%#03x] \n",  100);
-	ft_printf("hello[%#03x] \n",  100);
+    printf("their[%#010X] \n",  100);
+	ft_printf("hello[%#010X] \n",  100);
     // printf(" %-#10x \n", 10);  
     // printf(" %#x \n", 10);
 	// ft_printf(" %#x \n", 10);

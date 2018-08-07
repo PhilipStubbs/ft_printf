@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:48:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/07 11:53:31 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/07 12:18:03 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,28 +102,39 @@ int		findchar(t_printf *node, va_list args, t_format *format)
 char	*hexhash(char **tmpstr, char cap, t_format *format)
 {
 	char	*tmpstr2;
+	char	*check;
 	int		len;
 
 	len = ft_strlen(*tmpstr);
+	check = ft_strdup(*tmpstr);
 	if (cap == 'X')
 	{
-		if (format->zeropad == 1 && len + 2 > format->padsize)
+		if (format->zeropad == 1 && check[0] == '0' && check[1] == '0')
 		{
 			tmpstr2 = ft_strdup(*tmpstr);
 			tmpstr2[0] = '0';
 			tmpstr2[1] = 'X';
+		}
+		else if (format->zeropad == 1 && check[0] == '0' && check[1] != '0')
+		{
+			check[0] = 'X';
+			tmpstr2 = ft_strjoin("0", check);
 		}
 		else
 			tmpstr2 = ft_strjoin("0X", *tmpstr);
 	}
 	else
 	{
-		if(format->zeropad == 1 && len + 2 > format->padsize)
+		if(format->zeropad == 1 && check[0] == '0' && check[1] == '0')
 		{
-			// write(1,"X\n",2); 
 			tmpstr2 = ft_strdup(*tmpstr);
 			tmpstr2[0] = '0';
 			tmpstr2[1] = 'x';
+		}
+		else if (format->zeropad == 1 && check[0] == '0' && check[1] != '0')
+		{
+			check[0] = 'x';
+			tmpstr2 = ft_strjoin("0", check);
 		}
 		else
 			tmpstr2 = ft_strjoin("0x", *tmpstr);
@@ -131,6 +142,7 @@ char	*hexhash(char **tmpstr, char cap, t_format *format)
 	free(*tmpstr);
 	*tmpstr = ft_strdup(tmpstr2);
 	free(tmpstr2);
+	free(check);
 	return(*tmpstr);
 }
 

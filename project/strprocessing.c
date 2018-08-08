@@ -1,6 +1,3 @@
-
-
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -9,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:29:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/06 11:15:09 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/08 09:17:42 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +47,22 @@ int		findspecifier(char *str, int i, t_format *format)
 		i++;
 		count++;
 	}
+	count--;
+	i--;
+	if (str[i] == ' ')
+	{
+		count--;
+		i--;
+	}
 	if (format != NULL)
 	{
-		format->end = i - 1;
-		format->c = str[i - 1];
-		printf("start[%d] end[%d] spacpad[%d] zeropad[%d] padsize[%d] hash[%d] minus[%d] plus[%d] prec[%d]\n",format->start,format->end, format->spacpad, format->zeropad,format->padsize ,format->hash,format->minus ,format->plus,format->prec);
+		format->end = i;
+		format->c = str[i];
+		// printf("start[%d] end[%d] spacpad[%d] zeropad[%d] padsize[%d] hash[%d] minus[%d] plus[%d] prec[%d]\n",format->start,format->end, format->spacpad, format->zeropad,format->padsize ,format->hash,format->minus ,format->plus,format->prec);
 	}
-	if (isvaildflag(str, i - 1) == 1)
-		count--;
+	if (isvaildflag(str, i) == 0 && format != NULL)
+		format->badflag = 1;
+
 	return (count);
 }
 

@@ -59,8 +59,8 @@ int main()
     // printf(" %-#10x \n", 10);  
     // printf(" %#x \n", 10);
 	// ft_printf(" %#x \n", 10);
-	// printf(" %#X \n", 10);
-	// ft_printf(" %#X \n", 10);
+	printf(" %#X \n", 10);
+	ft_printf(" %#X \n", 10);
     // printf(" %#o \n", 10);
 	// ft_printf(" %#o \n", 10);
 	// ft_printf("[%s]\n", NULL);

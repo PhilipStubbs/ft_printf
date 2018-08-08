@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/08 08:17:28 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/08 08:57:00 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ typedef	struct	s_format
 	int			minus;
 	int			plus;
 	int			prec;
+	int			prespad;
+	int			badflag;
 }				t_format;
 
 typedef	struct	s_printf

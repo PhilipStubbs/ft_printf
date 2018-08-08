@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/08 13:29:07 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/08 17:00:42 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ char			*createpadding(t_printf *node, char **str, t_format *format);
 int				isnormalflag(char *str, int i);
 int				spacechecker(char *str, int l);
 int				isvaildflag(char *str, int i);
+char			*precision(t_format *format, char **str);
 
 char			*ft_itoa_base(long int value, int base, int cap);
 char			*ft_uitoa(unsigned int n);

@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:29:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/08 13:38:57 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/08 18:09:05 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,6 +164,7 @@ int		strprocessing(t_printf *node, char *str, va_list args)
 			node->l++;
 			i++;
 		}
+		// write(1,"X\n",2); 
 		// printf("i:%d%c | l:%d%c insied[%s]\n",i,str[i], node->l,node->output[node->l] ,node->output );
 	}
 	return (0);

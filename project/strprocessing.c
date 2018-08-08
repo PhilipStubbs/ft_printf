@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:29:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/08 09:17:42 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/08 13:30:19 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		findspecifier(char *str, int i, t_format *format)
 			format->plus = 1;
 		if (str[i] == '#' && format != NULL)
 			format->hash = 1;
-		if (format != NULL &&(str[i] == ' ' && format->spacpad == 0))
+		if (format != NULL &&(str[i] == ' ' && format->spacpad == 0)) //&& ft_isdigit(str[i + 1]) == 1)
 		{
 			if (ft_isdigit(str[i + 1]) == 1 && str[i + 1] != 0)
 				format->padsize = ft_atoi(str + i);
@@ -39,17 +39,22 @@ int		findspecifier(char *str, int i, t_format *format)
 			format->zeropad = 1;
 			format->padsize = ft_atoi(str + i);
 		}
-		if (format != NULL && (ft_isdigit(str[i]) == 1 && format->zeropad == 0 && format->spacpad == 0))
+		if (format != NULL && (ft_isdigit(str[i]) == 1 && format->zeropad == 0 && format->spacpad == 0 && str[i - 1] != '.')) 
 		{
 			format->spacpad = 1;
 			format->padsize = ft_atoi(str + i);
+		}
+		if (format != NULL && (str[i] == '.')) 
+		{
+			format->prec = 1;
+			format->precsize = ft_atoi(str + i + 1);
 		}
 		i++;
 		count++;
 	}
 	count--;
 	i--;
-	if (str[i] == ' ')
+	while (str[i] == ' ')
 	{
 		count--;
 		i--;
@@ -58,7 +63,7 @@ int		findspecifier(char *str, int i, t_format *format)
 	{
 		format->end = i;
 		format->c = str[i];
-		// printf("start[%d] end[%d] spacpad[%d] zeropad[%d] padsize[%d] hash[%d] minus[%d] plus[%d] prec[%d]\n",format->start,format->end, format->spacpad, format->zeropad,format->padsize ,format->hash,format->minus ,format->plus,format->prec);
+		printf("start[%d] end[%d] spacpad[%d] zeropad[%d] padsize[%d] hash[%d] minus[%d] plus[%d] prec[%d] precpad[%d]\n",format->start,format->end, format->spacpad, format->zeropad,format->padsize ,format->hash,format->minus ,format->plus,format->prec, format->precsize);
 	}
 	if (isvaildflag(str, i) == 0 && format != NULL)
 		format->badflag = 1;

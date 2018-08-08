@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 12:28:14 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/08 09:15:01 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/08 13:25:23 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		isnormalflag(char *str, int i)
 		return (1);
 	if (ft_isdigit(c) == 1)
 		return (1);
-	if ( c == 'h' || c == 'l' || c == 'j' || c == 'e' ||c == 't' || c == 'z' || c == '%' || c == '-' || c == ' ' || c == '#')
+	if ( c == 'h' || c == 'l' || c == 'j' || c == 'e' ||c == 't' || c == 'z' || c == '-' || c == ' ' || c == '#' || c == '.')
 		return (1);
 	return (0);
 }

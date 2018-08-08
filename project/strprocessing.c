@@ -23,7 +23,7 @@ int		findspecifier(char *str, int i, t_format *format)
 	i++;
 	if (format != NULL)
 		format->start = i;
-	while (isnormalflag(str, i) == 0)
+	while (isnormalflag(str, i) == 1)
 	{
 		if (str[i] == '-' && format != NULL)
 			format->minus = 1;
@@ -51,9 +51,13 @@ int		findspecifier(char *str, int i, t_format *format)
 		count++;
 	}
 	if (format != NULL)
-		format->end = i;
-	if (format != NULL)
-		format->c = str[i];
+	{
+		format->end = i - 1;
+		format->c = str[i - 1];
+		printf("start[%d] end[%d] spacpad[%d] zeropad[%d] padsize[%d] hash[%d] minus[%d] plus[%d] prec[%d]\n",format->start,format->end, format->spacpad, format->zeropad,format->padsize ,format->hash,format->minus ,format->plus,format->prec);
+	}
+	if (isvaildflag(str, i - 1) == 1)
+		count--;
 	return (count);
 }
 

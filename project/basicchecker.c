@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 12:28:14 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/07 18:11:35 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/08 08:26:52 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,22 @@ int		isnormalflag(char *str, int i)
 	char	c;
 
 	c = str[i];
-	if (c == 's' || c == 'd' || c == 'S' || c == 'p' ||
-	c == 'D' ||	c == 'i' || c == 'o' || c == 'O' || c == 'u' || c == 'U' ||
-	c == 'x' ||	c == 'X' || c == 'c' || c == 'C')
-
-	// 	if (!(c == 's' || c == 'd' || c == 'S' || c == 'p' || c == 'h' || c == 'l' ||
-	// c == 'D' ||	c == 'i' || c == 'o' || c == 'O' || c == 'u' || c == 'U' ||
-	// c == 'x' ||	c == 'X' || c == 'c' || c == 'C' || c == 'j' || c == 'e' ||
-	// c == 't' || c == 'z' || c == '%' || c == '-' || ft_isdigit(c) == 1))
-	{
+	if (c == 's' || c == 'd' || c == 'S' || c == 'p' ||	c == 'D' ||	c == 'i' || c == 'o' || c == 'O' || c == 'u' || c == 'U'|| c == 'x' ||	c == 'X' || c == 'c' || c == 'C')
 		return (1);
-	}
+	if (ft_isdigit(c) == 1)
+		return (1);
+	if ( c == 'h' || c == 'l' || c == 'j' || c == 'e' ||c == 't' || c == 'z' || c == '%' || c == '-' || c == ' ')
+		return (1);
+	return (0);
+}
+
+int		isvaildflag(char *str, int i)
+{
+	char	c;
+
+	c = str[i];
+	if (c == 's' || c == 'd' || c == 'S' || c == 'p' ||	c == 'D' ||	c == 'i' || c == 'o' || c == 'O' || c == 'u' || c == 'U'|| c == 'x' ||	c == 'X' || c == 'c' || c == 'C')
+		return (1);
 	return (0);
 }
 

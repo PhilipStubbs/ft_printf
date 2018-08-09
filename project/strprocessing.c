@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:29:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/09 09:08:26 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/09 13:39:34 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ int		findspecifier(char *str, int i, t_format *format)
 	}
 	if (format != NULL)
 	{
-		format->end = i;
-		format->c = str[i];
+		format->end = i + 1;
+		format->c = str[i + 1];
 		// printf("start[%d] end[%d] spacpad[%d] zeropad[%d] padsize[%d] hash[%d] minus[%d] plus[%d] prec[%d] precpad[%d]\n",format->start,format->end, format->spacpad, format->zeropad,format->padsize ,format->hash,format->minus ,format->plus,format->prec, format->precsize);
 	}
 	if (isvaildflag(str, i) == 0 && format != NULL)
@@ -77,14 +77,15 @@ int		flagchecker(t_printf *node, char *str,  va_list args, int i)
 	int			l;
 
 	format = cleanformat();
+	// printf("going in[%d]\n",i);
 	l = findspecifier(str, i, format);
-	if (str[i + l] == '%')
-	{
-		dynamicstring(&(node)->output, "%");
-		free(format);
-		return (1);
-	}
-	else if (str[i + l] == 's')
+	// if (str[i + l] == '%' && str[i] == '%')
+	// {
+	// 	dynamicstring(&(node)->output, "%");
+	// 	free(format);
+	// 	return (1);
+	// }
+	if (str[i + l] == 's')
 	{
 		i = findstring(node, args, format);
 		free(format);
@@ -126,9 +127,10 @@ int		flagchecker(t_printf *node, char *str,  va_list args, int i)
 		free(format);
 		return (i);
 	}
-	
+	i = handlenonvalid(node, format);
 	free(format);
-	return (-1);
+	// printf("going out[%d]\n",i);
+	return (i + 1);
 }
 
 int		movei(char *str, int i)
@@ -136,6 +138,8 @@ int		movei(char *str, int i)
 	int l;
 
 	l = findspecifier(str, i, NULL);
+	if (isvaildflag(str,i + l ) == 0)
+		return (i + l + 2);
 	if (str[i + l] == '%')
 		return (i + l + 1);
 	return (i + l + 1);

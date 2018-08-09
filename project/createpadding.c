@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 13:31:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/09 11:13:52 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/09 11:54:34 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,39 @@
 
 char	*specialpaddingfordigit(t_format *format, int len, char c ,char **str)
 {
-		char	*amstr;
-		char	*tmp;
-		int		isneg;
+	char	*amstr;
+	char	*tmp;
+	int		isneg;
 
-		if (*str[0] == '-' && format->minus == 0 && format->prec == 0)
-		{
-			tmp = ft_strdup("-");
-			*str[0] = '0';
-		}
-		else if ((*str[0] != '-' && format->spacpad == 1 && format->zeropad == 1) || format->prec == 1)
-			tmp = ft_strdup(" ");
-		else
-			tmp = ft_strdup("0");
-		amstr = ft_strnew(format->padsize - len - 1);
-		ft_memset(amstr, c, format->padsize - len - 1);
-		tmp = dynamicstring(&tmp ,amstr);
-		free(amstr);
-		amstr = ft_strdup(tmp);
-		free(tmp);
-		return (amstr);
+	if (*str[0] == '-' && format->minus == 0 && format->prec == 0)
+	{
+		tmp = ft_strdup("-");
+		*str[0] = '0';
+	}
+	else if ((*str[0] != '-' && format->spacpad == 1 && format->zeropad == 1) || format->prec == 1)
+		tmp = ft_strdup(" ");
+	else
+		tmp = ft_strdup("0");
+	amstr = ft_strnew(format->padsize - len - 1);
+	ft_memset(amstr, c, format->padsize - len - 1);
+	tmp = dynamicstring(&tmp ,amstr);
+	free(amstr);
+	amstr = ft_strdup(tmp);
+	free(tmp);
+	return (amstr);
 }
 
+char	**stradjust(char **str)
+{
+	int		len;
+	char	*tmp;
+	char	**ret;
+
+	len = ft_strlen(*str);
+	tmp = ft_strdup(" ");
+	*ret = ft_strjoin(tmp, *str);
+	return (ret);
+}
 
 char	*createpadding(t_printf *node, char **str, t_format *format)
 {
@@ -54,6 +65,12 @@ char	*createpadding(t_printf *node, char **str, t_format *format)
 		c = ' ';
 	if ((((format->spacpad == 1 && format->zeropad == 1) || (format->zeropad == 1 && format->spacpad == 0)) && (format->c == 'd' || format->c == 'D' || format->c == 'i')) && format->minus == 0)
 		amstr = specialpaddingfordigit(format, len, c, str);
+	else if ((format->c == 'd' || format->c == 'D' || format->c == 'i') && format->minus == 1 && format->spacpad == 1 && format->zeropad == 1 && *str[0] != '-')
+	{
+		str = stradjust(str);
+		len = ft_strlen(*str);
+		amstr = specialpaddingfordigit(format, len, c, str);
+	}
 	else
 	{
 		if (format->minus == 1 && format->hash == 1 && (format->c == 'x' || format->c == 'X'))

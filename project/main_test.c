@@ -7,18 +7,18 @@ int main()
 	char	*p;
 
 	p = 'a';
-	printf("[%010.5s] [%.8s] [%.2s] \n","hellooooo", "hello", "HIfriends ");
-	ft_printf("[%010.5s] [%.8s] [%.2s]\n","hellooooo", "hello", "HIfriends ");
+	printf("their[%010.5s] [%.8s] [%.2s] \n","hellooooo", "hello", "HIfriends ");
+	ft_printf("minee[%010.5s] [%.8s] [%.2s]\n","hellooooo", "hello", "HIfriends ");
 
-	printf("[%023.5d] [%.8d] [%.2d] \n", -100, 3241,  10);
-	ft_printf("[%023.5d] [%.8d] [%.2d] \n", -100, 3241,  10);
+	printf("their[%023.5d] [%.8d] [%.2d] \n", -100, 3241,  10);
+	ft_printf("minee[%023.5d] [%.8d] [%.2d] \n", -100, 3241,  10);
 
-	// printf("[%023.5c] \n", 'a');
-	// ft_printf("[%023.5c] \n", 'a');
+	printf("their[%023.5c] \n", 'a');
+	ft_printf("minee[%023.5c] \n", 'a');
 
 
-	printf("[%#023.5X] \n", 100);
-	ft_printf("[%#023.5X] \n", 100);
+	printf("their[%#023.5X] \n", 100);
+	ft_printf("minee[%#023.5X] \n", 100);
 
 	printf("their[%#023.5o] \n", 100);
 	ft_printf("minee[%#023.5o] \n", 100);
@@ -31,8 +31,8 @@ int main()
 	printf("their[%.5o] \n", 100);
 	ft_printf("minee[%.5o] \n", 100);
 
-	printf("their[%-020.5p] \n", p);
-	ft_printf("minee[%-020.5p] \n", p);
+	printf("their[%020.5p] \n", p);
+	ft_printf("minee[%020.5p] \n", p);
 		// ft_printf("[%.8d][%.2d] \n", 3241, 10);
 
 	//    printf("their[Hello %d%d%d%d%d%d%d%d%d  %d  ] \n", 123, 4872, 34, 7647787, 4535, 75667, 45377, 75438, 9354, 10);

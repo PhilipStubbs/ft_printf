@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 13:30:43 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/09 10:44:41 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/09 16:46:51 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,47 @@ char	*hexhash(char **tmpstr, char cap, t_format *format)
 	return(*tmpstr);
 }
 
+char	*lengthmodhex(t_format *format, long long num, int cap)
+{
+	char	*ret;
+
+	if (format->hh == 1)
+		ret = ft_itoa_base((unsigned char)num, 16, cap);
+	else if (format->h == 1)
+		ret = ft_itoa_base((unsigned short int)num, 16, cap);
+	else if (format->l == 1)
+		ret = ft_itoa_base((unsigned long int)num, 16, cap);
+	else if (format->ll == 1)
+		ret = ft_itoa_base((unsigned long long int)num, 16, cap);
+	else if (format->j == 1)
+		ret = ft_itoa_base((uintmax_t)num, 16, cap);
+	else if (format->z == 1)
+		ret = ft_itoa_base((size_t)num, 16, cap);
+	else
+		ret = ft_itoa_base(num, 16, cap);
+	return (ret);
+}
+
 int		findhex(t_printf *node, va_list args, char cap, t_format *format)
 {
 	int		tmp;
 	char	*tmpstr;
 
-	tmp = va_arg(args, int);
+	tmp = va_arg(args, long long);
 	if (cap == 'x')
-		tmpstr = ft_itoa_base(tmp, 16, 0);
+	{
+		if (format->lenmod == 1)
+			tmpstr = lengthmodhex(format, (long long)tmp, 0);
+		else
+			tmpstr = ft_itoa_base(tmp, 16, 0);
+	}
 	else
-		tmpstr = ft_itoa_base(tmp, 16, 1);
+	{
+		if (format->lenmod == 1)
+			tmpstr = lengthmodhex(format, (long long)tmp, 1);
+		else
+			tmpstr = ft_itoa_base(tmp, 16, 1);
+	}
 	tmp = ft_strlen(tmpstr);
 	if (format->prec == 1)
 		tmpstr = precision(format, &tmpstr);

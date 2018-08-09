@@ -6,16 +6,67 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:29:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/09 14:14:21 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/09 16:18:37 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-// void	lenthspec(char *str, int i, t_format *format)
-// {
-// 	if (format != NULL && (str[i] == '0' && format->zeropad == 0 && ft_isdigit(str[i - 1]) == 0))
-// }
+void	lengthspec(char *str, int i, t_format *format)
+{
+	if (str[i] == '-' && format != NULL)
+		format->minus = 1;
+	if (str[i] == '+' && format != NULL)
+		format->plus = 1;
+	if (format != NULL && (str[i] == 'h' && str[i + 1] == 'h'))
+		format->hh = 1;
+	if (format != NULL && (str[i] == 'h' && format->hh == 0))
+		format->h = 1;
+	if (format != NULL && (str[i] == 'l' && str[i + 1] == 'l'))
+		format->ll = 1;
+	if (format != NULL && (str[i] == 'l' && format->ll == 0))
+		format->l = 1;
+	if (format != NULL && (str[i] == 'j'))
+		format->j = 1;
+	if (format != NULL && (str[i] == 'e' && str[i + 1] == 't'))
+		format->et = 1;
+	if (format != NULL && (str[i] == 'z'))
+		format->z = 1;
+	if (format != NULL && (format->hh == 1 || format->h == 1 || format->ll == 1
+	|| format->l == 1 || format->j == 1 || format->et == 1 || format->z == 1))
+	{
+		format->lenmod = 1;
+	}
+}
+
+void	normalspec(char *str, int i, t_format *format)
+{
+	if (str[i] == '#' && format != NULL)
+		format->hash = 1;
+	if (format != NULL && (str[i] == ' ' && format->spacpad == 0))
+	{
+		if (ft_isdigit(str[i + 1]) == 1 && str[i + 1] != 0)
+			format->padsize = ft_atoi(str + i);
+		format->spacpad = 1;
+	}
+	if (format != NULL && (str[i] == '0' && format->zeropad == 0 &&
+	ft_isdigit(str[i - 1]) == 0))
+	{
+		format->zeropad = 1;
+		format->padsize = ft_atoi(str + i);
+	}
+	if (format != NULL && (ft_isdigit(str[i]) == 1 && format->zeropad == 0 &&
+	format->spacpad == 0 && str[i - 1] != '.'))
+	{
+		format->spacpad = 1;
+		format->padsize = ft_atoi(str + i);
+	}
+	if (format != NULL && (str[i] == '.'))
+	{
+		format->prec = 1;
+		format->precsize = ft_atoi(str + i + 1);
+	}
+}
 
 int		findspecifier(char *str, int i, t_format *format)
 {
@@ -27,34 +78,8 @@ int		findspecifier(char *str, int i, t_format *format)
 		format->start = i;
 	while (isnormalflag(str, i) == 1)
 	{
-		if (str[i] == '-' && format != NULL)
-			format->minus = 1;
-		if (str[i] == '+' && format != NULL)
-			format->plus = 1;
-		if (str[i] == '#' && format != NULL)
-			format->hash = 1;
-		if (format != NULL &&(str[i] == ' ' && format->spacpad == 0)) //&& ft_isdigit(str[i + 1]) == 1)
-		{
-			if (ft_isdigit(str[i + 1]) == 1 && str[i + 1] != 0)
-				format->padsize = ft_atoi(str + i);
-			format->spacpad = 1;
-		}
-		if (format != NULL && (str[i] == '0' && format->zeropad == 0 && ft_isdigit(str[i - 1]) == 0))
-		{
-			format->zeropad = 1;
-			format->padsize = ft_atoi(str + i);
-		}
-		if (format != NULL && (ft_isdigit(str[i]) == 1 && format->zeropad == 0 && format->spacpad == 0 && str[i - 1] != '.')) 
-		{
-			format->spacpad = 1;
-			format->padsize = ft_atoi(str + i);
-		}
-		if (format != NULL && (str[i] == '.')) 
-		{
-			format->prec = 1;
-			format->precsize = ft_atoi(str + i + 1);
-		}
-		// lenthspec(str, i, format);
+		normalspec(str, i, format);
+		lengthspec(str, i, format);
 		i++;
 		count++;
 	}

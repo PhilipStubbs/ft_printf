@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/09 13:55:25 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/09 16:18:09 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef	struct	s_format
 	int			prec;
 	int			precsize;
 	int			badflag;
+	int			lenmod;
 	int			hh;
 	int			h;
 	int			l;
@@ -90,6 +91,8 @@ int				isnormalflag(char *str, int i);
 int				spacechecker(char *str, int l);
 int				isvaildflag(char *str, int i);
 char			*precision(t_format *format, char **str);
+char			*lengthmoddig(t_format *format, long long num);
+
 
 
 char			*ft_itoa_base(long int value, int base, int cap);

@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 12:24:38 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/07 17:34:53 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/09 16:45:33 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,11 @@ char	*ft_itoa_base(long int value, int base, int cap)
 
 	isneg = 0;
 	len = 1;
+	if (value == 0)
+	{
+		ret = ft_strdup("0");
+		return(ret);
+	}
 	if (base < 2 || base > 16)
 		return (0);
 	if (value < 0 && base == 10)

@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 13:31:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/09 14:11:03 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/09 16:58:20 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,6 @@ char	*createpadding(t_printf *node, char **str, t_format *format)
 	*str = ft_strdup(tmp);
 	free(amstr);
 	free(tmp);
+
 	return (*str);
 }

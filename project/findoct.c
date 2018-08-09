@@ -6,20 +6,44 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 10:51:38 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/09 10:57:55 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/09 16:49:29 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+char	*lengthmodoct(t_format *format, long long num, int cap)
+{
+	char	*ret;
+
+	if (format->hh == 1)
+		ret = ft_itoa_base((unsigned char)num, 8, cap);
+	else if (format->h == 1)
+		ret = ft_itoa_base((unsigned short int)num, 8, cap);
+	else if (format->l == 1)
+		ret = ft_itoa_base((unsigned long int)num, 8, cap);
+	else if (format->ll == 1)
+		ret = ft_itoa_base((unsigned long long int)num, 8, cap);
+	else if (format->j == 1)
+		ret = ft_itoa_base((uintmax_t)num, 8, cap);
+	else if (format->z == 1)
+		ret = ft_itoa_base((size_t)num, 8, cap);
+	else
+		ret = ft_itoa_base(num, 8, cap);
+	return (ret);
+}
+
 int		findoct(t_printf *node, va_list args, t_format *format)
 {
-	int		tmp;
+	long long	tmp;
 	char	*tmpstr;
 	char	*tmpstr2;
 
-	tmp = va_arg(args, int);
-	tmpstr = ft_itoa_base(tmp, 8, 0);
+	tmp = va_arg(args, long long);
+	if (format->lenmod == 1)
+		lengthmodoct(format, tmp, 0);
+	else
+		tmpstr = ft_itoa_base(tmp, 8, 0);
 	if (format->prec == 1)
 		tmpstr = precision(format, &tmpstr);
 	tmp = ft_strlen(tmpstr);

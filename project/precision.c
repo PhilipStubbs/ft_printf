@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 16:59:51 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/08 17:55:00 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/09 09:18:20 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,10 @@ char	*specialprecision(t_format *format, char **str)
 		bigprec = (char*)ft_memalloc(sizeof(char) * (len + isneg) + 1);
 		ft_memset(bigprec, '0', (len + isneg));
 		tmp = ft_strjoin(bigprec, *str);
+		free(bigprec);
 	}
 	else
 		tmp = ft_strdup(*str);
-	free(bigprec);
-	// free(*str);
 	if (isneg == 1)
 		tmp[0] = '-';
 	return(tmp);
@@ -46,7 +45,8 @@ char	*precision(t_format *format, char **str)
 {
 	char	*tmp;
 
-	if (format->c == 'd' || format->c == 'D' || format->c == 'i')
+	// if (format->c == 'd' || format->c == 'D' || format->c == 'i')
+	if (format->c != 'c' && format->c != 'C' && format->c != 's')
 		tmp = specialprecision(format, str);
 	else
 		tmp = ft_strsub(*str, 0, format->precsize);

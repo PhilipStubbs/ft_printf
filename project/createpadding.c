@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 13:31:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/08 17:57:30 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/09 10:49:07 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*specialpaddingfordigit(t_format *format, int len, char c ,char **str)
 			tmp = ft_strdup("-");
 			*str[0] = '0';
 		}
-		else if (*str[0] != '-' && (format->spacpad == 1 && format->zeropad == 1) || format->prec == 1)
+		else if ((*str[0] != '-' && format->spacpad == 1 && format->zeropad == 1) || format->prec == 1)
 			tmp = ft_strdup(" ");
 		else
 			tmp = ft_strdup("0");
@@ -48,8 +48,10 @@ char	*createpadding(t_printf *node, char **str, t_format *format)
 	if (format->padsize <= len)
 		return (*str);
 	c = ' ';
-	if (format->zeropad == 1 && format->minus == 0 && format->prec == 0)
+	if (format->zeropad == 1 && format->minus == 0)
 		c = '0';
+	if (format->prec == 1 && format->c != 's')
+		c = ' ';
 	if ((((format->spacpad == 1 && format->zeropad == 1) || (format->zeropad == 1 && format->spacpad == 0)) && (format->c == 'd' || format->c == 'D' || format->c == 'i')) && format->minus == 0)
 		amstr = specialpaddingfordigit(format, len, c, str);
 	else

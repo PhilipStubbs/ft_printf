@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:48:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/08 17:07:01 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/09 11:08:13 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,30 +67,6 @@ int		findchar(t_printf *node, va_list args, t_format *format)
 	return (1);
 }
 
-
-int		findoct(t_printf *node, va_list args, t_format *format)
-{
-	int		tmp;
-	char	*tmpstr;
-	char	*tmpstr2;
-
-	tmp = va_arg(args, int);
-	tmpstr = ft_itoa_base(tmp, 8, 0);
-	if (format->spacpad == 1 || format->zeropad == 1)
-		tmpstr = createpadding(node, &tmpstr, format);
-	if (format->hash == 1)
-	{
-		tmpstr2 = ft_strjoin("0", tmpstr);
-		free(tmpstr);
-		tmpstr = ft_strdup(tmpstr2);
-		free(tmpstr2);
-	}
-	node->output = dynamicstring(&(node)->output, tmpstr);
-	tmp = ft_strlen(tmpstr);
-	free(tmpstr);
-	return (tmp);
-}
-
 int		findpointer(t_printf *node, va_list args, t_format *format)
 {
 	unsigned long	tmp;
@@ -99,6 +75,8 @@ int		findpointer(t_printf *node, va_list args, t_format *format)
 
 	tmp = va_arg(args, unsigned long);
 	tmpstr = ft_itoa_base(tmp, 16, 0);
+	if (format->prec == 1)
+		tmpstr = precision(format, &tmpstr);
 	ret = ft_strjoin("0x", tmpstr);
 	if (format->spacpad == 1 || format->zeropad == 1)
 		ret = createpadding(node, &ret, format);
@@ -117,6 +95,8 @@ int		findundigit(t_printf *node, va_list args, t_format *format)
 
 	tmp = va_arg(args, unsigned int);
 	ret = ft_uitoa(tmp);
+	if (format->prec == 1)
+		ret = precision(format, &ret);
 	if (format->spacpad == 1 || format->zeropad == 1)
 		ret = createpadding(node, &ret, format);
 	node->output = dynamicstring(&(node)->output, ret);

@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 13:30:43 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/07 13:34:17 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/09 10:44:41 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ char	*hexhash(char **tmpstr, char cap, t_format *format)
 	check = ft_strdup(*tmpstr);
 	if (cap == 'X')
 	{
-		if (format->zeropad == 1 && check[0] == '0' && check[1] == '0')
+		if (format->zeropad == 1 && check[0] == '0' && check[1] == '0' && format->prec == 0)
 		{
 			tmpstr2 = ft_strdup(*tmpstr);
 			tmpstr2[0] = '0';
 			tmpstr2[1] = 'X';
 		}
-		else if (format->zeropad == 1 && check[0] == '0' && check[1] != '0')
+		else if (format->zeropad == 1 && check[0] == '0' && check[1] != '0' && format->prec == 0)
 		{
 			check[0] = 'X';
 			tmpstr2 = ft_strjoin("0", check);
@@ -38,13 +38,13 @@ char	*hexhash(char **tmpstr, char cap, t_format *format)
 	}
 	else
 	{
-		if(format->zeropad == 1 && check[0] == '0' && check[1] == '0')
+		if(format->zeropad == 1 && check[0] == '0' && check[1] == '0' && format->prec == 0)
 		{
 			tmpstr2 = ft_strdup(*tmpstr);
 			tmpstr2[0] = '0';
 			tmpstr2[1] = 'x';
 		}
-		else if (format->zeropad == 1 && check[0] == '0' && check[1] != '0')
+		else if (format->zeropad == 1 && check[0] == '0' && check[1] != '0' && format->prec == 0)
 		{
 			check[0] = 'x';
 			tmpstr2 = ft_strjoin("0", check);
@@ -70,13 +70,15 @@ int		findhex(t_printf *node, va_list args, char cap, t_format *format)
 	else
 		tmpstr = ft_itoa_base(tmp, 16, 1);
 	tmp = ft_strlen(tmpstr);
-	if (format->hash == 1 && format->zeropad == 0 && format->spacpad == 1)
+	if (format->prec == 1)
+		tmpstr = precision(format, &tmpstr);
+	if ((format->hash == 1 && format->zeropad == 0 && format->spacpad == 1) || format->prec == 1)
 	{
 		tmpstr = hexhash(&tmpstr, cap, format);
 	}
 	if ((format->spacpad == 1 || format->zeropad == 1))
 		tmpstr = createpadding(node, &tmpstr, format);
-	if (format->hash == 1 && format->zeropad == 1)
+	if (format->hash == 1 && format->zeropad == 1 && format->prec == 0)
 	{
 		tmpstr = hexhash(&tmpstr, cap, format);
 	}

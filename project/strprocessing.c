@@ -6,11 +6,16 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:29:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/09 13:44:17 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/09 14:14:21 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+// void	lenthspec(char *str, int i, t_format *format)
+// {
+// 	if (format != NULL && (str[i] == '0' && format->zeropad == 0 && ft_isdigit(str[i - 1]) == 0))
+// }
 
 int		findspecifier(char *str, int i, t_format *format)
 {
@@ -49,6 +54,7 @@ int		findspecifier(char *str, int i, t_format *format)
 			format->prec = 1;
 			format->precsize = ft_atoi(str + i + 1);
 		}
+		// lenthspec(str, i, format);
 		i++;
 		count++;
 	}

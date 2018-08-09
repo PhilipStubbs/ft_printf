@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 13:31:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/09 11:54:34 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/09 14:11:03 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,16 @@ char	*specialpaddingfordigit(t_format *format, int len, char c ,char **str)
 	return (amstr);
 }
 
-char	**stradjust(char **str)
+char	*stradjust(char **str)
 {
 	int		len;
 	char	*tmp;
-	char	**ret;
+	char	*ret;
 
 	len = ft_strlen(*str);
 	tmp = ft_strdup(" ");
-	*ret = ft_strjoin(tmp, *str);
+	ret = ft_strjoin(tmp, *str);
+	free(tmp);
 	return (ret);
 }
 
@@ -67,9 +68,12 @@ char	*createpadding(t_printf *node, char **str, t_format *format)
 		amstr = specialpaddingfordigit(format, len, c, str);
 	else if ((format->c == 'd' || format->c == 'D' || format->c == 'i') && format->minus == 1 && format->spacpad == 1 && format->zeropad == 1 && *str[0] != '-')
 	{
-		str = stradjust(str);
-		len = ft_strlen(*str);
+		tmp = stradjust(str);
+		len = ft_strlen(tmp);
+		free(*str);
+		*str = ft_strdup(tmp);
 		amstr = specialpaddingfordigit(format, len, c, str);
+		free(tmp);
 	}
 	else
 	{

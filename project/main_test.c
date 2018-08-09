@@ -39,7 +39,6 @@ int main()
 	printf("---------------------\n");
 	printf("their[%020.5p] \n", p);
 	ft_printf("minee[%020.5p] \n", p);
-	// ft_printf("[%.8d][%.2d] \n", 3241, 10);
 
 	printf("---------------------\n");
 	printf("their[Hello %d%d%d%d%d%d%d%d%d  %d  ] \n", 123, 4872, 34, 7647787, 4535, 75667, 45377, 75438, 9354, 10);
@@ -106,7 +105,7 @@ int main()
 	printf("their %#X \n", 10);
 	ft_printf("minee %#X \n", 10);
 	printf("---------------------\n");
-    printf("their %#o \n", 10);
+    // printf("their %#o \n", 10);
 	ft_printf("minee %#o \n", 10);
 	printf("---------------------\n");
 	printf("their [%s]\n", NULL);
@@ -118,7 +117,7 @@ int main()
 	printf("their[% 020d] \n",  100);
 	ft_printf("minee[% 020d] \n",  100);
 	printf("---------------------\n");	
-		printf("their[% 020-d] \n",  100);
+	printf("minee[% 020-d] \n",  100);
 	ft_printf("minee[% 020-d] \n",  100);
 
 

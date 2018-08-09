@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:29:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/09 13:39:34 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/09 13:44:17 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,19 @@ int		findspecifier(char *str, int i, t_format *format)
 	}
 	if (format != NULL)
 	{
+		if (isvaildflag(str, i) == 0)
+		{
 		format->end = i + 1;
 		format->c = str[i + 1];
+		format->badflag = 1;
+		}
+		else 
+		{
+		format->end = i;
+		format->c = str[i];
+		}
 		// printf("start[%d] end[%d] spacpad[%d] zeropad[%d] padsize[%d] hash[%d] minus[%d] plus[%d] prec[%d] precpad[%d]\n",format->start,format->end, format->spacpad, format->zeropad,format->padsize ,format->hash,format->minus ,format->plus,format->prec, format->precsize);
 	}
-	if (isvaildflag(str, i) == 0 && format != NULL)
-		format->badflag = 1;
-
 	return (count);
 }
 

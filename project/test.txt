@@ -1,3 +1,9 @@
+rm -f *.o
+rm -f libftprintf.a
+gcc -c -Wall -Werror -Wextra libft/ft_atoi.c libft/ft_bzero.c libft/ft_isalnum.c libft/ft_isalpha.c libft/ft_isascii.c libft/ft_isdigit.c libft/ft_isprint.c libft/ft_memccpy.c libft/ft_memchr.c libft/ft_memcmp.c libft/ft_memcpy.c libft/ft_memmove.c libft/ft_memset.c libft/ft_strcat.c libft/ft_strchr.c libft/ft_strcmp.c libft/ft_strcpy.c libft/ft_strdup.c libft/ft_strlcat.c libft/ft_strlen.c libft/ft_strncat.c libft/ft_strncpy.c libft/ft_strrchr.c libft/ft_strstr.c libft/ft_tolower.c libft/ft_toupper.c libft/ft_strnstr.c libft/ft_strncmp.c libft/ft_memalloc.c libft/ft_memdel.c libft/ft_strnew.c libft/ft_strdel.c libft/ft_strclr.c libft/ft_putchar.c libft/ft_strpull_ptr.c libft/ft_strpull_idx.c libft/ft_putstr.c libft/ft_putchar_fd.c libft/ft_striter.c libft/ft_striteri.c libft/ft_strmap.c libft/ft_strmapi.c libft/ft_strequ.c libft/ft_strnequ.c libft/ft_strsub.c libft/ft_strjoin.c libft/ft_strtrim.c libft/ft_strsplit.c libft/ft_lstdel.c libft/ft_strchr_idx.c libft/ft_itoa.c libft/ft_putendl.c libft/ft_putnbr.c libft/ft_putstr_fd.c libft/ft_putendl_fd.c libft/ft_strcount.c libft/ft_lstdelone.c libft/ft_putnbr_fd.c libft/ft_strrev.c libft/ft_wordlen.c libft/ft_intlen.c libft/ft_lstadd.c libft/ft_lstnew.c libft/ft_lstiter.c libft/ft_lstmap.c libft/get_next_line.c libft/ft_isspace.c  libft/ft_split.c libft/ft_intcpy.c libft/ft_atol.c libft/ft_deldouble.c libft/ft_doublesize.c libft/ft_printchardouble.c libft/ft_printintarray.c libft/ft_strmerge.c src/basicchecker.c src/createpadding.c src/createstruc.c src/destroy.c src/dynamicstring.c src/findhex.c src/findoct.c src/findops.c src/findunsdigit.c src/ft_itoa_base.c src/ft_printf.c  src/ft_uitoa.c src/handlenonvalid.c src/lengthmod.c src/precision.c src/strprocessing.c  -I.libft/ -I.src/ -c
+ar -rc libftprintf.a *.o
+ranlib libftprintf.a
+rm -f *.o
 FAILED TESTS:\n
 # TEST NUMBER (TYPE OF ARG)
   INSTRUCTION();
@@ -5,65 +11,35 @@ FAILED TESTS:\n
   2. unix function printf
      (returned value) -->written on stdout<--
 
-# 0011 (char *)
-  ft_printf("%   %", "test");
-  1. (    7) -->   test<--
-  2. (    1) -->%<--
-
 # 0016 (int)
   ft_printf("%x", -42);
-  1. (    0) --><--
+  1. (    2) -->d6<--
   2. (    8) -->ffffffd6<--
 
 # 0017 (int)
   ft_printf("%X", -42);
-  1. (    0) --><--
+  1. (    2) -->D6<--
   2. (    8) -->FFFFFFD6<--
 
-# 0023 (int)
-  ft_printf("%lx", 4294967296);
-  1. (    1) -->0<--
-  2. (    9) -->100000000<--
+# 0018 (int)
+  ft_printf("%x", 4294967296);
+  1. (    9) -->100000000<--
+  2. (    1) -->0<--
 
-# 0024 (int)
-  ft_printf("%llX", 4294967296);
-  1. (    1) -->0<--
-  2. (    9) -->100000000<--
-
-# 0027 (int)
-  ft_printf("%jx", 4294967295);
-  1. (    0) --><--
-  2. (    8) -->ffffffff<--
-
-# 0028 (int)
-  ft_printf("%jx", 4294967296);
-  1. (    1) -->0<--
-  2. (    9) -->100000000<--
+# 0019 (int)
+  ft_printf("%X", 4294967296);
+  1. (    9) -->100000000<--
+  2. (    1) -->0<--
 
 # 0029 (int)
   ft_printf("%jx", -4294967296);
-  1. (    1) -->0<--
+  1. (    9) -->f00000000<--
   2. (   16) -->ffffffff00000000<--
 
 # 0030 (int)
   ft_printf("%jx", -4294967297);
-  1. (    0) --><--
+  1. (    9) -->effffffff<--
   2. (   16) -->fffffffeffffffff<--
-
-# 0031 (int)
-  ft_printf("%llx", 9223372036854775807);
-  1. (    0) --><--
-  2. (   16) -->7fffffffffffffff<--
-
-# 0032 (int)
-  ft_printf("%llx", 9223372036854775808);
-  1. (    0) --><--
-  2. (   16) -->7fffffffffffffff<--
-
-# 0039 (int)
-  ft_printf("%#llx", 9223372036854775807);
-  1. (    2) -->0x<--
-  2. (   18) -->0x7fffffffffffffff<--
 
 # 0046 (int)
   ft_printf("@moulitest: %#.x %#.0x", 0, 0);
@@ -80,77 +56,7 @@ FAILED TESTS:\n
   1. (   19) -->@moulitest:     0 0<--
   2. (   23) -->@moulitest:            <--
 
-# 0054 (char *)
-  ft_printf("%s is a string", "this");
-  1. (   13) -->this a string<--
-  2. (   16) -->this is a string<--
-
-# 0056 (char *)
-  ft_printf("%10s is a string", "this");
-  1. (   19) -->      this a string<--
-  2. (   22) -->      this is a string<--
-
-# 0057 (char *)
-  ft_printf("%.2s is a string", "this");
-  1. (   11) -->th a string<--
-  2. (   14) -->th is a string<--
-
-# 0058 (char *)
-  ft_printf("%5.2s is a string", "this");
-  1. (   14) -->   th a string<--
-  2. (   17) -->   th is a string<--
-
-# 0059 (char *)
-  ft_printf("%10s is a string", "");
-  1. (   19) -->           a string<--
-  2. (   22) -->           is a string<--
-
-# 0060 (char *)
-  ft_printf("%.2s is a string", "");
-  1. (    9) --> a string<--
-  2. (   12) --> is a string<--
-
-# 0061 (char *)
-  ft_printf("%5.2s is a string", "");
-  1. (   14) -->      a string<--
-  2. (   17) -->      is a string<--
-
-# 0062 (char *)
-  ft_printf("%-10s is a string", "this");
-  1. (   19) -->this       a string<--
-  2. (   22) -->this       is a string<--
-
-# 0063 (char *)
-  ft_printf("%-.2s is a string", "this");
-  1. (   11) -->th a string<--
-  2. (   14) -->th is a string<--
-
-# 0064 (char *)
-  ft_printf("%-5.2s is a string", "this");
-  1. (   14) -->th    a string<--
-  2. (   17) -->th    is a string<--
-
-# 0065 (char *)
-  ft_printf("%-10s is a string", "");
-  1. (   19) -->           a string<--
-  2. (   22) -->           is a string<--
-
-# 0066 (char *)
-  ft_printf("%-.2s is a string", "");
-  1. (    9) --> a string<--
-  2. (   12) --> is a string<--
-
-# 0067 (char *)
-  ft_printf("%-5.2s is a string", "");
-  1. (   14) -->      a string<--
-  2. (   17) -->      is a string<--
-
-# 0071 (char *)
-  ft_printf("%s %s %s %s string. gg!", "this", "is", "a", "multi", "string");
-  1. (   19) -->this is a ring. gg!<--
-  2. (   27) -->this is a multi string. gg!<--
-
-# 0074 (char *)
+# 0074 (int)
   ft_printf("%.2c", NULL);
   1. (    0) --><--
   2. (    1) -->^@<--
@@ -194,11 +100,6 @@ FAILED TESTS:\n
   ft_printf("@moulitest: %#.o %#.0o", 0, 0);
   1. (   17) -->@moulitest: 00 00<--
   2. (   15) -->@moulitest: 0 0<--
-
-# 0099 (int)
-  ft_printf("%d is one", 1);
-  1. (    3) -->1ne<--
-  2. (    8) -->1 is one<--
 
 # 0107 (int)
   ft_printf("% d", 42);
@@ -361,35 +262,35 @@ SUCCESS TESTS:\n
    8.      ft_printf("%-5%");                            -> "%    "
    9.      ft_printf("%.0%");                            -> "%"
   10.      ft_printf("%%", "test");                      -> "%"
-  11. FAIL ft_printf("%   %", "test");                   -> "%"
+  11.      ft_printf("%   %", "test");                   -> "%"
   12.      ft_printf("%x", 42);                          -> "2a"
   13.      ft_printf("%X", 42);                          -> "2A"
   14.      ft_printf("%x", 0);                           -> "0"
   15.      ft_printf("%X", 0);                           -> "0"
   16. FAIL ft_printf("%x", -42);                         -> "ffffffd6"
   17. FAIL ft_printf("%X", -42);                         -> "FFFFFFD6"
-  18.      ft_printf("%x", 4294967296);                  -> "0"
-  19.      ft_printf("%X", 4294967296);                  -> "0"
+  18. FAIL ft_printf("%x", 4294967296);                  -> "0"
+  19. FAIL ft_printf("%X", 4294967296);                  -> "0"
   20.      ft_printf("%x", test);                        -> "0"
   21.      ft_printf("%10x", 42);                        -> "        2a"
   22.      ft_printf("%-10x", 42);                       -> "2a        "
-  23. FAIL ft_printf("%lx", 4294967296);                 -> "100000000"
-  24. FAIL ft_printf("%llX", 4294967296);                -> "100000000"
+  23.      ft_printf("%lx", 4294967296);                 -> "100000000"
+  24.      ft_printf("%llX", 4294967296);                -> "100000000"
   25.      ft_printf("%hx", 4294967296);                 -> "0"
   26.      ft_printf("%hhX", 4294967296);                -> "0"
-  27. FAIL ft_printf("%jx", 4294967295);                 -> "ffffffff"
-  28. FAIL ft_printf("%jx", 4294967296);                 -> "100000000"
+  27.      ft_printf("%jx", 4294967295);                 -> "ffffffff"
+  28.      ft_printf("%jx", 4294967296);                 -> "100000000"
   29. FAIL ft_printf("%jx", -4294967296);                -> "ffffffff00000000"
   30. FAIL ft_printf("%jx", -4294967297);                -> "fffffffeffffffff"
-  31. FAIL ft_printf("%llx", 9223372036854775807);       -> "7fffffffffffffff"
-  32. FAIL ft_printf("%llx", 9223372036854775808);       -> "7fffffffffffffff"
+  31.      ft_printf("%llx", 9223372036854775807);       -> "7fffffffffffffff"
+  32.      ft_printf("%llx", 9223372036854775808);       -> "7fffffffffffffff"
   33.      ft_printf("%010x", 542);                      -> "000000021e"
   34.      ft_printf("%-15x", 542);                      -> "21e            "
   35.      ft_printf("%2x", 542);                        -> "21e"
   36.      ft_printf("%.2x", 5427);                      -> "1533"
   37.      ft_printf("%5.2x", 5427);                     -> " 1533"
   38.      ft_printf("%#x", 42);                         -> "0x2a"
-  39. FAIL ft_printf("%#llx", 9223372036854775807);      -> "0x7fffffffffffffff"
+  39.      ft_printf("%#llx", 9223372036854775807);      -> "0x7fffffffffffffff"
   40.      ft_printf("%#x", 0);                          -> "0"
   41.      ft_printf("%#x", 42);                         -> "0x2a"
   42.      ft_printf("%#X", 42);                         -> "0X2A"
@@ -404,24 +305,24 @@ SUCCESS TESTS:\n
   51.      ft_printf("%s ", "this is a string");         -> "this is a string "
   52.      ft_printf("%s  ", "this is a string");        -> "this is a string  "
   53.      ft_printf("this is a %s", "string");          -> "this is a string"
-  54. FAIL ft_printf("%s is a string", "this");          -> "this is a string"
+  54.      ft_printf("%s is a string", "this");          -> "this is a string"
   55.      ft_printf("Line Feed %s", "\\n");             -> "Line Feed \\n"
-  56. FAIL ft_printf("%10s is a string", "this");        -> "      this is a string"
-  57. FAIL ft_printf("%.2s is a string", "this");        -> "th is a string"
-  58. FAIL ft_printf("%5.2s is a string", "this");       -> "   th is a string"
-  59. FAIL ft_printf("%10s is a string", "");            -> "           is a string"
-  60. FAIL ft_printf("%.2s is a string", "");            -> " is a string"
-  61. FAIL ft_printf("%5.2s is a string", "");           -> "      is a string"
-  62. FAIL ft_printf("%-10s is a string", "this");       -> "this       is a string"
-  63. FAIL ft_printf("%-.2s is a string", "this");       -> "th is a string"
-  64. FAIL ft_printf("%-5.2s is a string", "this");      -> "th    is a string"
-  65. FAIL ft_printf("%-10s is a string", "");           -> "           is a string"
-  66. FAIL ft_printf("%-.2s is a string", "");           -> " is a string"
-  67. FAIL ft_printf("%-5.2s is a string", "");          -> "      is a string"
+  56.      ft_printf("%10s is a string", "this");        -> "      this is a string"
+  57.      ft_printf("%.2s is a string", "this");        -> "th is a string"
+  58.      ft_printf("%5.2s is a string", "this");       -> "   th is a string"
+  59.      ft_printf("%10s is a string", "");            -> "           is a string"
+  60.      ft_printf("%.2s is a string", "");            -> " is a string"
+  61.      ft_printf("%5.2s is a string", "");           -> "      is a string"
+  62.      ft_printf("%-10s is a string", "this");       -> "this       is a string"
+  63.      ft_printf("%-.2s is a string", "this");       -> "th is a string"
+  64.      ft_printf("%-5.2s is a string", "this");      -> "th    is a string"
+  65.      ft_printf("%-10s is a string", "");           -> "           is a string"
+  66.      ft_printf("%-.2s is a string", "");           -> " is a string"
+  67.      ft_printf("%-5.2s is a string", "");          -> "      is a string"
   68.      ft_printf("%s %s", "this", "is");             -> "this is"
   69.      ft_printf("%s %s %s", "this", "is", "a");     -> "this is a"
   70.      ft_printf("%s %s %s %s", "this", "is", "a", "multi"); -> "this is a multi"
-  71. FAIL ft_printf("%s %s %s %s string. gg!", "this", "is", "a", "multi", "string"); -> "this is a multi string. gg!"
+  71.      ft_printf("%s %s %s %s string. gg!", "this", "is", "a", "multi", "string"); -> "this is a multi string. gg!"
   72.      ft_printf("%s%s%s%s%s", "this", "is", "a", "multi", "string"); -> "thisisamultistring"
   73.      ft_printf("@moulitest: %s", NULL);            -> "@moulitest: (null)"
   74. FAIL ft_printf("%.2c", NULL);                      -> "^@"
@@ -449,7 +350,7 @@ SUCCESS TESTS:\n
   96.      ft_printf("@moulitest: %.10o", 42);           -> "@moulitest: 0000000052"
   97.      ft_printf("%d", 1);                           -> "1"
   98.      ft_printf("the %d", 1);                       -> "the 1"
-  99. FAIL ft_printf("%d is one", 1);                    -> "1 is one"
+  99.      ft_printf("%d is one", 1);                    -> "1 is one"
  100.      ft_printf("%d", -1);                          -> "-1"
  101.      ft_printf("%d", 4242);                        -> "4242"
  102.      ft_printf("%d", -4242);                       -> "-4242"

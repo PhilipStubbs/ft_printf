@@ -8,17 +8,21 @@
 int main()
 {
 
+	 ft_printf("%-5%\n");
+	 printf("%-5%\n");
+	//  printf("%%\n");
 	// ft_printf("%#x\n", 0);
 	// printf("%#x\n", 0);
 
 	//  ft_printf("%x\n", -42);
 	//  printf("%x\n", -42);
-
-	 ft_printf("%s is a string\n", "this");
+	// ft_printf("%\n", "this");
+	// printf("%\n", "this");
+	//  ft_printf("%s is a string\n", "this");
 	//  printf("%s is a string\n", "this");
 	// ft_printf("minee%   % \n");
 	// printf("their%   % \n", "test");
-	ft_printf("%.2x\n", 5427);
+	// ft_printf("%.2x\n", 5427);
 	// printf("%.2x\n", 5427);
 	// ft_printf("hashpre%#.2x\n", 5427);
 	// printf("hashpre%#.2x\n", 5427);

@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:29:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/10 10:39:25 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/10 11:35:27 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int		findspecifier(char *str, int i, t_format *format)
 		lengthspec(str, i, format);
 		i++;
 		count++;
-		if (isvaildflag(str, i) == 1)
+		if (isvaildflag(str, i) == 1 || str[i] == '%')
 		{
 			break ;
 		}
@@ -122,12 +122,21 @@ int		flagchecker(t_printf *node, char *str,  va_list args, int i)
 	// printf("going in[%d]\n",i);
 	l = findspecifier(str, i, format);
 	// printf("out [%c]\n", format->c);
-	if (str[i + l] == '%' && str[i] == '%')
+	if (str[i + l] == '%')
 	{
-		dynamicstring(&(node)->output, "%");
+		// write(1,"X\n",2); 
+		i = justpercent(node, format);
+		// write(1,"X\n",2); 
 		free(format);
-		return (1);
+		return (i + l + 1);
 	}
+	// if (format->c == '%')
+	// {
+		// if (node->swit == 1)
+			// node->output = dynamicstring(&(node)->output, "%");
+	// 	free(format);
+	// 	return (i + l + 1);
+	// }
 	if (str[i + l] == 's')
 	{
 		i = findstring(node, args, format);
@@ -181,10 +190,11 @@ int		movei(char *str, int i)
 	int l;
 
 	l = findspecifier(str, i, NULL);
-	if (isvaildflag(str,i + l ) == 0)
-		return (i + l + 2);
 	if (str[i + l] == '%')
 		return (i + l + 1);
+	if (isvaildflag(str,i + l ) == 0)
+		return (i + l + 2);
+
 	return (i + l + 1);
 }
 
@@ -202,7 +212,9 @@ int		strprocessing(t_printf *node, char *str, va_list args)
 		}
 		if (str[i] == '%')
 		{
+			node->swit = 1;
 			node->l += flagchecker(node, str, args, i);
+			node->swit = 0;
 			i = movei(str, i);
 		}
 		else

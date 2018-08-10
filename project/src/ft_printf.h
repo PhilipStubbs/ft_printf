@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/10 09:47:18 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/10 11:26:13 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef	struct	s_printf
 	char		*raw;
 	int			size;
 	int			padding;
+	int			swit;
 	int			l;
 	int			s;
 	int			S;
@@ -92,6 +93,7 @@ int				isvaildflag(char *str, int i);
 char			*precision(t_format *format, char **str);
 char			*lengthmoddig(t_format *format, long long num);
 int				findundigit(t_printf *node, va_list args, t_format *format);
+int				justpercent(t_printf *node, t_format *format);
 
 
 char			*ft_itoa_base(long int value, int base, int cap);

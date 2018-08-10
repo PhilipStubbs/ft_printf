@@ -6,11 +6,31 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:48:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/10 08:23:59 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/10 11:35:13 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int		justpercent(t_printf *node, t_format *format)
+{
+	char	*tmp;
+	char	*tmpstr;
+	int		len;
+
+	tmpstr = ft_strdup("%");
+	if (format->zeropad == 1 || format->spacpad == 1)
+	{
+		tmp = createpadding(&tmpstr, format);
+	}
+	else
+		tmp = ft_strdup("%");
+	node->output = dynamicstring(&(node)->output, tmp);
+	len = ft_strlen(tmp);
+	// free(tmpstr);
+	free(tmp);
+	return (len);
+}
 
 int		findstring(t_printf *node, va_list args, t_format *format)
 {

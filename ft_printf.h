@@ -6,14 +6,14 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/10 09:47:18 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/10 09:43:33 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "../libft/libft.h"
+# include "libft/libft.h"
 # include <stdarg.h>
 
 # define ERROR ft_putendl_fd("Error", 2);
@@ -26,7 +26,7 @@
 # define CYN  "\x1B[36m"
 # define WHT  "\x1B[37m"
 
-#include <stdio.h>
+// #include <stdio.h>
 
 typedef	struct	s_format
 {

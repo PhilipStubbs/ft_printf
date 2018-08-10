@@ -1,3 +1,4 @@
+FAILED TESTS:\n
 # TEST NUMBER (TYPE OF ARG)
   INSTRUCTION();
   1. your function ft_printf
@@ -11,12 +12,12 @@
 
 # 0016 (int)
   ft_printf("%x", -42);
-  1. (    0) -->Error$\n<--
+  1. (    0) --><--
   2. (    8) -->ffffffd6<--
 
 # 0017 (int)
   ft_printf("%X", -42);
-  1. (    0) -->Error$\n<--
+  1. (    0) --><--
   2. (    8) -->FFFFFFD6<--
 
 # 0023 (int)
@@ -31,7 +32,7 @@
 
 # 0027 (int)
   ft_printf("%jx", 4294967295);
-  1. (    0) -->Error$\n<--
+  1. (    0) --><--
   2. (    8) -->ffffffff<--
 
 # 0028 (int)
@@ -46,62 +47,37 @@
 
 # 0030 (int)
   ft_printf("%jx", -4294967297);
-  1. (    0) -->Error$\n<--
+  1. (    0) --><--
   2. (   16) -->fffffffeffffffff<--
 
 # 0031 (int)
   ft_printf("%llx", 9223372036854775807);
-  1. (    0) -->Error$\n<--
+  1. (    0) --><--
   2. (   16) -->7fffffffffffffff<--
 
 # 0032 (int)
   ft_printf("%llx", 9223372036854775808);
-  1. (    0) -->Error$\n<--
+  1. (    0) --><--
   2. (   16) -->7fffffffffffffff<--
-
-# 0036 (int)
-  ft_printf("%.2x", 5427);
-  1. (    6) -->0x1533<--
-  2. (    4) -->1533<--
-
-# 0037 (int)
-  ft_printf("%5.2x", 5427);
-  1. (    6) -->0x1533<--
-  2. (    5) --> 1533<--
-
-# 0038 (int)
-  ft_printf("%#x", 42);
-  1. (    2) -->2a<--
-  2. (    4) -->0x2a<--
 
 # 0039 (int)
   ft_printf("%#llx", 9223372036854775807);
-  1. (    0) -->Error$\n<--
+  1. (    2) -->0x<--
   2. (   18) -->0x7fffffffffffffff<--
-
-# 0041 (int)
-  ft_printf("%#x", 42);
-  1. (    2) -->2a<--
-  2. (    4) -->0x2a<--
-
-# 0042 (int)
-  ft_printf("%#X", 42);
-  1. (    2) -->2A<--
-  2. (    4) -->0X2A<--
 
 # 0046 (int)
   ft_printf("@moulitest: %#.x %#.0x", 0, 0);
-  1. (   19) -->@moulitest: 0x0 0x0<--
+  1. (   15) -->@moulitest: 0 0<--
   2. (   13) -->@moulitest:  <--
 
 # 0047 (int)
   ft_printf("@moulitest: %.x %.0x", 0, 0);
-  1. (   19) -->@moulitest: 0x0 0x0<--
+  1. (   15) -->@moulitest: 0 0<--
   2. (   13) -->@moulitest:  <--
 
 # 0048 (int)
   ft_printf("@moulitest: %5.x %5.0x", 0, 0);
-  1. (   21) -->@moulitest:   0x0 0x0<--
+  1. (   19) -->@moulitest:     0 0<--
   2. (   23) -->@moulitest:            <--
 
 # 0054 (char *)
@@ -131,7 +107,7 @@
 
 # 0060 (char *)
   ft_printf("%.2s is a string", "");
-  1. (    0) -->Error$\n<--
+  1. (    9) --> a string<--
   2. (   12) --> is a string<--
 
 # 0061 (char *)
@@ -161,7 +137,7 @@
 
 # 0066 (char *)
   ft_printf("%-.2s is a string", "");
-  1. (    0) -->Error$\n<--
+  1. (    9) --> a string<--
   2. (   12) --> is a string<--
 
 # 0067 (char *)
@@ -410,13 +386,13 @@ SUCCESS TESTS:\n
   33.      ft_printf("%010x", 542);                      -> "000000021e"
   34.      ft_printf("%-15x", 542);                      -> "21e            "
   35.      ft_printf("%2x", 542);                        -> "21e"
-  36. FAIL ft_printf("%.2x", 5427);                      -> "1533"
-  37. FAIL ft_printf("%5.2x", 5427);                     -> " 1533"
-  38. FAIL ft_printf("%#x", 42);                         -> "0x2a"
+  36.      ft_printf("%.2x", 5427);                      -> "1533"
+  37.      ft_printf("%5.2x", 5427);                     -> " 1533"
+  38.      ft_printf("%#x", 42);                         -> "0x2a"
   39. FAIL ft_printf("%#llx", 9223372036854775807);      -> "0x7fffffffffffffff"
   40.      ft_printf("%#x", 0);                          -> "0"
-  41. FAIL ft_printf("%#x", 42);                         -> "0x2a"
-  42. FAIL ft_printf("%#X", 42);                         -> "0X2A"
+  41.      ft_printf("%#x", 42);                         -> "0x2a"
+  42.      ft_printf("%#X", 42);                         -> "0X2A"
   43.      ft_printf("%#8x", 42);                        -> "    0x2a"
   44.      ft_printf("%#08x", 42);                       -> "0x00002a"
   45.      ft_printf("%#-08x", 42);                      -> "0x2a    "

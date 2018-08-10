@@ -24,6 +24,7 @@ $(NAME):
 	gcc -c -Wall -Werror -Wextra $(SRC) -I.libft/ -I.src/ -c
 	ar -rc $(NAME) $(OBJ)
 	ranlib $(NAME)
+	rm -f $(OBJ)
 
 clean:
 	rm -f $(OBJ)

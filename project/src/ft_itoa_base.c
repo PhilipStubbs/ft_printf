@@ -6,13 +6,13 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 12:24:38 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/09 16:45:33 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/10 09:57:38 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*createinfoupper(int value, int base, int len, int isneg)
+char	*createinfoupper(unsigned long long value, int base, int len, int isneg)
 {
 	char	*ret;
 	char	*tab;
@@ -32,7 +32,7 @@ char	*createinfoupper(int value, int base, int len, int isneg)
 	return (ret);
 }
 
-char	*createinfolower(long int value, int base, int len, int isneg)
+char	*createinfolower(unsigned long long value, int base, int len, int isneg)
 {
 	char	*ret;
 	char	*tab;
@@ -77,7 +77,9 @@ char	*ft_itoa_base(long int value, int base, int cap)
 	while (i /= base)
 		len++;
 	if (cap == 1)
+	{
 		ret = createinfoupper(value, base, len, isneg);
+	}
 	else
 		ret = createinfolower(value, base, len, isneg);
 	return (ret);

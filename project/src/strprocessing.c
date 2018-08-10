@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:29:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/10 08:12:02 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/10 10:15:53 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,8 +194,7 @@ int		strprocessing(t_printf *node, char *str, va_list args)
 		}
 		if (str[i] == '%')
 		{
-			if ((node->l += flagchecker(node, str, args, i)) <= 0)
-				return (1);
+			node->l += flagchecker(node, str, args, i);
 			i = movei(str, i);
 		}
 		else

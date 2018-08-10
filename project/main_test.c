@@ -14,12 +14,12 @@ int main()
 	//  ft_printf("%x\n", -42);
 	//  printf("%x\n", -42);
 
-	//  ft_printf("%s is a string\n", "this");
+	 ft_printf("%s is a string\n", "this");
 	//  printf("%s is a string\n", "this");
 	// ft_printf("minee%   % \n");
 	// printf("their%   % \n", "test");
-	ft_printf("prec%.2x\n", 5427);
-	printf("prec%.2x\n", 5427);
+	ft_printf("%.2x\n", 5427);
+	// printf("%.2x\n", 5427);
 	// ft_printf("hashpre%#.2x\n", 5427);
 	// printf("hashpre%#.2x\n", 5427);
 	// ft_printf("hash%#x\n", 5427);

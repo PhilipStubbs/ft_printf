@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:29:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/10 10:15:53 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/10 10:39:25 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,16 @@ int		findspecifier(char *str, int i, t_format *format)
 		lengthspec(str, i, format);
 		i++;
 		count++;
+		if (isvaildflag(str, i) == 1)
+		{
+			break ;
+		}
 	}
+	if (isvaildflag(str, i == 0))
+	{
 	count--;
 	i--;
+	}
 	while (str[i] == ' ')
 	{
 		count--;
@@ -114,12 +121,13 @@ int		flagchecker(t_printf *node, char *str,  va_list args, int i)
 	format = cleanformat();
 	// printf("going in[%d]\n",i);
 	l = findspecifier(str, i, format);
-	// if (str[i + l] == '%' && str[i] == '%')
-	// {
-	// 	dynamicstring(&(node)->output, "%");
-	// 	free(format);
-	// 	return (1);
-	// }
+	// printf("out [%c]\n", format->c);
+	if (str[i + l] == '%' && str[i] == '%')
+	{
+		dynamicstring(&(node)->output, "%");
+		free(format);
+		return (1);
+	}
 	if (str[i + l] == 's')
 	{
 		i = findstring(node, args, format);

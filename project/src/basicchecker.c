@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 12:28:14 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/10 10:14:55 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/10 10:38:53 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@ int		isnormalflag(char *str, int i)
 	char	c;
 
 	c = str[i];
-	if (c == 's' || c == 'd' || c == 'S' || c == 'p' ||	c == 'D' ||	c == 'i' || c == 'o' || c == 'O' || c == 'u' || c == 'U'|| c == 'x' ||	c == 'X' || c == 'c' || c == 'C')
-		return (1);
+	// if (isvaildflag(str, i) == 1 )
+	// 	return (1);
 	if (ft_isdigit(c) == 1)
 		return (1);
-	if ( c == 'h' || c == 'l' || c == 'j' || c == 'e' ||c == 't' || c == 'z' || c == '-' || c == ' ' || c == '#' || c == '.' || c == '+')
+	else if ( c == 'h' || c == 'l' || c == 'j' || c == 'e' ||c == 't' || c == 'z' || c == '-' || c == ' ' || c == '#' || c == '.' || c == '+')
 		return (1);
+	else if (isvaildflag(str, i) == 1 && isvaildflag(str, i - 1) == 1)
+		return (0);
 	return (0);
 }
 

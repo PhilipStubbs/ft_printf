@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 13:30:43 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/09 16:46:51 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/10 08:23:32 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int		findhex(t_printf *node, va_list args, char cap, t_format *format)
 		tmpstr = hexhash(&tmpstr, cap, format);
 	}
 	if ((format->spacpad == 1 || format->zeropad == 1))
-		tmpstr = createpadding(node, &tmpstr, format);
+		tmpstr = createpadding(&tmpstr, format);
 	if (format->hash == 1 && format->zeropad == 1 && format->prec == 0)
 	{
 		tmpstr = hexhash(&tmpstr, cap, format);

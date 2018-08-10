@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 13:31:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/09 16:58:20 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/10 08:23:02 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ char	*specialpaddingfordigit(t_format *format, int len, char c ,char **str)
 {
 	char	*amstr;
 	char	*tmp;
-	int		isneg;
 
 	if (*str[0] == '-' && format->minus == 0 && format->prec == 0)
 	{
@@ -49,7 +48,7 @@ char	*stradjust(char **str)
 	return (ret);
 }
 
-char	*createpadding(t_printf *node, char **str, t_format *format)
+char	*createpadding(char **str, t_format *format)
 {
 	int		len;
 	char	*amstr;

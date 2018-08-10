@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 10:51:38 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/09 16:49:29 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/10 08:23:39 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		findoct(t_printf *node, va_list args, t_format *format)
 		free(tmpstr2);
 	}
 	if (format->spacpad == 1 || format->zeropad == 1)
-		tmpstr = createpadding(node, &tmpstr, format);
+		tmpstr = createpadding(&tmpstr, format);
 	node->output = dynamicstring(&(node)->output, tmpstr);
 	tmp = ft_strlen(tmpstr);
 	free(tmpstr);

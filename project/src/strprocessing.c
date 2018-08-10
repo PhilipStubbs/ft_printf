@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:29:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/09 16:18:37 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/10 08:12:02 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,10 @@ void	lengthspec(char *str, int i, t_format *format)
 		format->l = 1;
 	if (format != NULL && (str[i] == 'j'))
 		format->j = 1;
-	if (format != NULL && (str[i] == 'e' && str[i + 1] == 't'))
-		format->et = 1;
 	if (format != NULL && (str[i] == 'z'))
 		format->z = 1;
 	if (format != NULL && (format->hh == 1 || format->h == 1 || format->ll == 1
-	|| format->l == 1 || format->j == 1 || format->et == 1 || format->z == 1))
+	|| format->l == 1 || format->j == 1 || format->z == 1))
 	{
 		format->lenmod = 1;
 	}

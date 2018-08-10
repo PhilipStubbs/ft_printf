@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:48:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/09 17:08:24 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/10 08:23:59 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		findstring(t_printf *node, va_list args, t_format *format)
 	if (format->prec == 1)
 		tmp2 = precision(format, &tmp2);
 	if (format->zeropad == 1 || format->spacpad == 1)
-		tmp2 = createpadding(node, &tmp2, format);
+		tmp2 = createpadding(&tmp2, format);
 	len = ft_strlen(tmp2);
 	node->output = dynamicstring(&(node)->output, tmp2);
 	free(tmp2);
@@ -66,7 +66,7 @@ int		finddigit(t_printf *node, va_list args, t_format *format)
 	if (format->plus == 1 && format->prec == 1)
 		ret = addplus(&ret);
 	if (format->spacpad == 1 || format->zeropad == 1)
-		ret = createpadding(node, &ret, format);
+		ret = createpadding(&ret, format);
 	node->output = dynamicstring(&(node)->output, ret);
 	len = ft_strlen(ret);
 	free(ret);
@@ -83,7 +83,7 @@ int		findchar(t_printf *node, va_list args, t_format *format)
 	tmpstr = ft_strnew(1);
 	tmpstr[0] = tmp;
 	if (format->spacpad == 1 || format->zeropad == 1)
-		tmpstr = createpadding(node, &tmpstr, format);
+		tmpstr = createpadding(&tmpstr, format);
 	node->output = dynamicstring(&(node)->output, tmpstr);
 	free(tmpstr);
 	return (1);
@@ -101,28 +101,10 @@ int		findpointer(t_printf *node, va_list args, t_format *format)
 		tmpstr = precision(format, &tmpstr);
 	ret = ft_strjoin("0x", tmpstr);
 	if (format->spacpad == 1 || format->zeropad == 1)
-		ret = createpadding(node, &ret, format);
+		ret = createpadding(&ret, format);
 	node->output = dynamicstring(&(node)->output, ret);
 	tmp = ft_strlen(ret);
 	free(tmpstr);
 	free(ret);
 	return (tmp);
-}
-
-int		findundigit(t_printf *node, va_list args, t_format *format)
-{
-	unsigned int	tmp;
-	int				len;
-	char			*ret;
-
-	tmp = va_arg(args, unsigned int);
-	ret = ft_uitoa(tmp);
-	if (format->prec == 1)
-		ret = precision(format, &ret);
-	if (format->spacpad == 1 || format->zeropad == 1)
-		ret = createpadding(node, &ret, format);
-	node->output = dynamicstring(&(node)->output, ret);
-	len = ft_strlen(ret);
-	free(ret);
-	return (len);
 }

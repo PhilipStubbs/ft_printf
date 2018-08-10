@@ -6,14 +6,14 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/09 16:18:09 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/10 08:23:10 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "libft/libft.h"
+# include "../libft/libft.h"
 # include <stdarg.h>
 
 # define ERROR ft_putendl_fd("Error", 2);
@@ -26,7 +26,7 @@
 # define CYN  "\x1B[36m"
 # define WHT  "\x1B[37m"
 
-#include <stdio.h>
+// #include <stdio.h>
 
 typedef	struct	s_format
 {
@@ -48,7 +48,6 @@ typedef	struct	s_format
 	int			l;
 	int			ll;
 	int			j;
-	int			et;
 	int			z;
 }				t_format;
 
@@ -81,18 +80,18 @@ int				strprocessing(t_printf *node, char *str, va_list args);
 int				findstring(t_printf *node, va_list args, t_format *format);
 int				finddigit(t_printf *node, va_list args, t_format *format);
 int				findchar(t_printf *node, va_list args, t_format *format);
-int				findhex(t_printf *node, va_list args, char cap, t_format *format);
+int				findhex(t_printf *node, va_list args, char cap, t_format *fo);
 int				findoct(t_printf *node, va_list args, t_format *format);
 int				findpointer(t_printf *node, va_list args, t_format *format);
 int				findundigit(t_printf *node, va_list args, t_format *format);
 int				handlenonvalid(t_printf *node, t_format *format);
-char			*createpadding(t_printf *node, char **str, t_format *format);
+char			*createpadding(char **str, t_format *format);
 int				isnormalflag(char *str, int i);
 int				spacechecker(char *str, int l);
 int				isvaildflag(char *str, int i);
 char			*precision(t_format *format, char **str);
 char			*lengthmoddig(t_format *format, long long num);
-
+int				findundigit(t_printf *node, va_list args, t_format *format);
 
 
 char			*ft_itoa_base(long int value, int base, int cap);

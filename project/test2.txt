@@ -1,0 +1,199 @@
+rm -f *.o
+rm -f libftprintf.a
+gcc -c -Wall -Werror -Wextra libft/ft_atoi.c libft/ft_bzero.c libft/ft_isalnum.c libft/ft_isalpha.c libft/ft_isascii.c libft/ft_isdigit.c libft/ft_isprint.c libft/ft_memccpy.c libft/ft_memchr.c libft/ft_memcmp.c libft/ft_memcpy.c libft/ft_memmove.c libft/ft_memset.c libft/ft_strcat.c libft/ft_strchr.c libft/ft_strcmp.c libft/ft_strcpy.c libft/ft_strdup.c libft/ft_strlcat.c libft/ft_strlen.c libft/ft_strncat.c libft/ft_strncpy.c libft/ft_strrchr.c libft/ft_strstr.c libft/ft_tolower.c libft/ft_toupper.c libft/ft_strnstr.c libft/ft_strncmp.c libft/ft_memalloc.c libft/ft_memdel.c libft/ft_strnew.c libft/ft_strdel.c libft/ft_strclr.c libft/ft_putchar.c libft/ft_strpull_ptr.c libft/ft_strpull_idx.c libft/ft_putstr.c libft/ft_putchar_fd.c libft/ft_striter.c libft/ft_striteri.c libft/ft_strmap.c libft/ft_strmapi.c libft/ft_strequ.c libft/ft_strnequ.c libft/ft_strsub.c libft/ft_strjoin.c libft/ft_strtrim.c libft/ft_strsplit.c libft/ft_lstdel.c libft/ft_strchr_idx.c libft/ft_itoa.c libft/ft_putendl.c libft/ft_putnbr.c libft/ft_putstr_fd.c libft/ft_putendl_fd.c libft/ft_strcount.c libft/ft_lstdelone.c libft/ft_putnbr_fd.c libft/ft_strrev.c libft/ft_wordlen.c libft/ft_intlen.c libft/ft_lstadd.c libft/ft_lstnew.c libft/ft_lstiter.c libft/ft_lstmap.c libft/get_next_line.c libft/ft_isspace.c  libft/ft_split.c libft/ft_intcpy.c libft/ft_atol.c libft/ft_deldouble.c libft/ft_doublesize.c libft/ft_printchardouble.c libft/ft_printintarray.c libft/ft_strmerge.c src/basicchecker.c src/createpadding.c src/createstruc.c src/destroy.c src/dynamicstring.c src/findhex.c src/findoct.c src/findops.c src/findunsdigit.c src/ft_itoa_base.c src/ft_printf.c  src/ft_uitoa.c src/handlenonvalid.c src/lengthmod.c src/precision.c src/strprocessing.c  -I.libft/ -I.src/ -c
+ar -rc libftprintf.a *.o
+ranlib libftprintf.a
+rm -f *.o
+FAILED TESTS:\n
+# TEST NUMBER (TYPE OF ARG)
+  INSTRUCTION();
+  1. your function ft_printf
+  2. unix function printf
+     (returned value) -->written on stdout<--
+
+# 0001 
+  ft_printf("%");
+  1. (   22) -->TERM_PROGRAM=iTerm.app<--
+  2. (    0) --><--
+
+# 0002 
+  ft_printf("% ");
+  1. (    1) --> <--
+  2. (    0) --><--
+
+# 0003 
+  ft_printf("% h");
+  1. (   22) -->TERM_PROGRAM=iTerm.app<--
+  2. (    0) --><--
+
+# 0008 
+  ft_printf("% hZ%");
+  1. (   23) -->ZTERM_PROGRAM=iTerm.app<--
+  2. (    1) -->Z<--
+
+# 0009 (char *)
+  ft_printf("% Z", "test");
+  1. (    2) --> Z<--
+  2. (    1) -->Z<--
+
+# 0010 (char *)
+  ft_printf("% Z ", "test");
+  1. (    3) --> Z <--
+  2. (    2) -->Z <--
+
+# 0011 (char *)
+  ft_printf("% Z%s", "test");
+  1. (    6) --> Ztest<--
+  2. (    5) -->Ztest<--
+
+# 0012 (char *)
+  ft_printf("%000   %", "test");
+  1. (    7) -->   test<--
+  2. (    1) -->%<--
+
+# 0013 (char *)
+  ft_printf("%%%", "test");
+  1. (    5) -->%test<--
+  2. (    1) -->%<--
+
+# 0014 (char *)
+  ft_printf("%%   %", "test");
+  1. (    8) -->%   test<--
+  2. (    4) -->%   <--
+
+# 0015 (int)
+  ft_printf("%ll#x", 9223372036854775807);
+  1. (    0) -->Error$\n<--
+  2. (   18) -->0x7fffffffffffffff<--
+
+# 0016 (char *)
+  ft_printf("%010s is a string", "this");
+  1. (   19) -->000000this a string<--
+  2. (   22) -->000000this is a string<--
+
+# 0017 (char *)
+  ft_printf("%-010s is a string", "this");
+  1. (   19) -->this       a string<--
+  2. (   22) -->this       is a string<--
+
+# 0019 (int)
+  ft_printf("% Z", 42);
+  1. (    2) --> Z<--
+  2. (    1) -->Z<--
+
+# 0020 (int)
+  ft_printf("%0 d", 42);
+  1. (    2) -->42<--
+  2. (    3) --> 42<--
+
+# 0022 (int)
+  ft_printf("% 0d", 42);
+  1. (    2) -->42<--
+  2. (    3) --> 42<--
+
+# 0025 (int)
+  ft_printf("%5+d", -42);
+  1. (    5) --> +-42<--
+  2. (    5) -->  -42<--
+
+# 0027 (int)
+  ft_printf("%-0+5d", 42);
+  1. (    3) -->+42<--
+  2. (    5) -->+42  <--
+
+# 0028 (int)
+  ft_printf("%-5+d", -42);
+  1. (    5) -->+-42 <--
+  2. (    5) -->-42  <--
+
+# 0029 (int)
+  ft_printf("%-0+5d", -42);
+  1. (    4) -->+-42<--
+  2. (    5) -->-42  <--
+
+# 0030 (size_t)
+  ft_printf("%zhd", 4294967296);
+  1. (    1) -->0<--
+  2. (   10) -->4294967296<--
+
+# 0031 (unsigned long long)
+  ft_printf("%jzd", 9223372036854775807);
+  1. (    2) -->-1<--
+  2. (   19) -->9223372036854775807<--
+
+# 0032 (unsigned long long)
+  ft_printf("%jhd", 9223372036854775807);
+  1. (    2) -->-1<--
+  2. (   19) -->9223372036854775807<--
+
+# 0033 (unsigned long long)
+  ft_printf("%lhl", 9223372036854775807);
+  1. (   19) -->9223372036854775807<--
+  2. (    0) --><--
+
+# 0034 (unsigned long long)
+  ft_printf("%lhlz", 9223372036854775807);
+  1. (   19) -->9223372036854775807<--
+  2. (    0) --><--
+
+# 0035 (unsigned long long)
+  ft_printf("%zj", 9223372036854775807);
+  1. (   19) -->9223372036854775807<--
+  2. (    0) --><--
+
+# 0036 (unsigned long)
+  ft_printf("%lhh", 2147483647);
+  1. (   10) -->2147483647<--
+  2. (    0) --><--
+
+# 0037 (unsigned long)
+  ft_printf("%hhld", 128);
+  1. (    4) -->-128<--
+  2. (    3) -->128<--
+
+# 0040 (int)
+  ft_printf("@main_ftprintf: %###-#0000 33...12..#0+0d", 256);
+  1. (   49) -->@main_ftprintf:  +256                            <--
+  2. (   49) -->@main_ftprintf: +256                             <--
+\n--------------\n
+SUCCESS TESTS:\n
+   1. FAIL ft_printf("%");                               -> ""
+   2. FAIL ft_printf("% ");                              -> ""
+   3. FAIL ft_printf("% h");                             -> ""
+   4.      ft_printf("%Z");                              -> "Z"
+   5.      ft_printf("% hZ");                            -> "Z"
+   6.      ft_printf("%05%");                            -> "0000%"
+   7.      ft_printf("%-05%");                           -> "%    "
+   8. FAIL ft_printf("% hZ%");                           -> "Z"
+   9. FAIL ft_printf("% Z", "test");                     -> "Z"
+  10. FAIL ft_printf("% Z ", "test");                    -> "Z "
+  11. FAIL ft_printf("% Z%s", "test");                   -> "Ztest"
+  12. FAIL ft_printf("%000   %", "test");                -> "%"
+  13. FAIL ft_printf("%%%", "test");                     -> "%"
+  14. FAIL ft_printf("%%   %", "test");                  -> "%   "
+  15. FAIL ft_printf("%ll#x", 9223372036854775807);      -> "0x7fffffffffffffff"
+  16. FAIL ft_printf("%010s is a string", "this");       -> "000000this is a string"
+  17. FAIL ft_printf("%-010s is a string", "this");      -> "this       is a string"
+  18.      ft_printf("%05c", 42);                        -> "0000*"
+  19. FAIL ft_printf("% Z", 42);                         -> "Z"
+  20. FAIL ft_printf("%0 d", 42);                        -> " 42"
+  21.      ft_printf("%0 d", -42);                       -> "-42"
+  22. FAIL ft_printf("% 0d", 42);                        -> " 42"
+  23.      ft_printf("% 0d", -42);                       -> "-42"
+  24.      ft_printf("%5+d", 42);                        -> "  +42"
+  25. FAIL ft_printf("%5+d", -42);                       -> "  -42"
+  26.      ft_printf("%-5+d", 42);                       -> "+42  "
+  27. FAIL ft_printf("%-0+5d", 42);                      -> "+42  "
+  28. FAIL ft_printf("%-5+d", -42);                      -> "-42  "
+  29. FAIL ft_printf("%-0+5d", -42);                     -> "-42  "
+  30. FAIL ft_printf("%zhd", 4294967296);                -> "4294967296"
+  31. FAIL ft_printf("%jzd", 9223372036854775807);       -> "9223372036854775807"
+  32. FAIL ft_printf("%jhd", 9223372036854775807);       -> "9223372036854775807"
+  33. FAIL ft_printf("%lhl", 9223372036854775807);       -> ""
+  34. FAIL ft_printf("%lhlz", 9223372036854775807);      -> ""
+  35. FAIL ft_printf("%zj", 9223372036854775807);        -> ""
+  36. FAIL ft_printf("%lhh", 2147483647);                -> ""
+  37. FAIL ft_printf("%hhld", 128);                      -> "128"
+  38.      ft_printf("@main_ftprintf: %####0000 33..1..#00d\\n", 256); -> "@main_ftprintf:                               256\\n"
+  39.      ft_printf("@main_ftprintf: %####0000 33..1d", 256); -> "@main_ftprintf:                               256"
+  40. FAIL ft_printf("@main_ftprintf: %###-#0000 33...12..#0+0d", 256); -> "@main_ftprintf: +256                             "

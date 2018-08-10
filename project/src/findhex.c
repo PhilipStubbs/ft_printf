@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 13:30:43 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/10 09:57:25 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/10 12:29:33 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,14 +91,14 @@ int		findhex(t_printf *node, va_list args, char cap, t_format *format)
 		if (format->lenmod == 1)
 			tmpstr = lengthmodhex(format, (unsigned long long)tmp, 0);
 		else
-			tmpstr = ft_itoa_base(tmp, 16, 0);
+			tmpstr = ft_itoa_base((int)tmp, 16, 0);
 	}
 	else
 	{
 		if (format->lenmod == 1)
 			tmpstr = lengthmodhex(format, (unsigned long long)tmp, 1);
 		else
-			tmpstr = ft_itoa_base(tmp, 16, 1);
+			tmpstr = ft_itoa_base((int)tmp, 16, 1);
 	}
 	tmp = ft_strlen(tmpstr);
 	if (tmp == 1 && ft_strcmp("0", tmpstr) == 0)

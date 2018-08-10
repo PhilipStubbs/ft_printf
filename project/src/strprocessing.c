@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:29:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/10 11:35:27 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/10 13:52:23 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,19 @@ void	normalspec(char *str, int i, t_format *format)
 	ft_isdigit(str[i - 1]) == 0))
 	{
 		format->zeropad = 1;
-		format->padsize = ft_atoi(str + i);
+		if (str[i + 1] == '-' || str[i + 1] == '+')
+			format->padsize = ft_atoi(str + i + 2);
+		else
+			format->padsize = ft_atoi(str + i);
 	}
 	if (format != NULL && (ft_isdigit(str[i]) == 1 && format->zeropad == 0 &&
 	format->spacpad == 0 && str[i - 1] != '.'))
 	{
 		format->spacpad = 1;
-		format->padsize = ft_atoi(str + i);
+		if (str[i + 1] == '-' || str[i + 1] == '+')
+			format->padsize = ft_atoi(str + i + 2);
+		else
+			format->padsize = ft_atoi(str + i);
 	}
 	if (format != NULL && (str[i] == '.'))
 	{

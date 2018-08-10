@@ -6,11 +6,35 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 09:27:25 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/07 09:08:02 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/10 13:48:58 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void		customputchar(t_printf *node)
+{
+	int		i;
+	int		l;
+
+	i = 0;
+	while (node->output[i])
+	{
+		l = 0;
+		while (l < 100 && node->nulls[l] != -1)
+		{
+			if (node->nulls[l] == i)
+			{
+				
+				write(1, "\0", 1);
+			}
+			l++;
+		}
+		ft_putchar(node->output[i]);
+		i++;
+	}
+
+}
 
 int			ft_printf(char *str, ...)
 {
@@ -31,6 +55,7 @@ int			ft_printf(char *str, ...)
 	{
 		// printf("%s\n", node->output);
 		ft_putstr(node->output);
+		// customputchar(node);
 		ret = ft_strlen(node->output);
 	}
 	destroy(&node, error);

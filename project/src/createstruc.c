@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 09:53:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/10 08:12:07 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/10 13:34:09 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,8 @@ t_printf	*createstruc(void)
 	ret->size = 0;
 	ret->padding = 0;
 	ret->l = 0;
-	ret->s = 0;
-	ret->S = 0;
-	ret->p = 0;
-	ret->d = 0;
-	ret->i = 0;
-	ret->o = 0;
-	ret->u = 0;
-	ret->c = 0;
+	ret->nulls = (int*)ft_memalloc(sizeof(int) * 100);
+	ft_memset(ret->nulls, -1, 100);
 	return (ret);
 }
 

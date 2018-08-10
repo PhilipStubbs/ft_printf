@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:48:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/10 11:46:47 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/10 14:00:01 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,13 +98,22 @@ int		findchar(t_printf *node, va_list args, t_format *format)
 {
 	char	tmp;
 	char	*tmpstr;
+	int		i;
 
+	i = 0;
 	tmp = va_arg(args, int);
 	tmpstr = ft_strnew(1);
 	tmpstr[0] = tmp;
 	if (format->spacpad == 1 || format->zeropad == 1)
 		tmpstr = createpadding(&tmpstr, format);
 	node->output = dynamicstring(&(node)->output, tmpstr);
+	
+	// if (tmp == 0)
+	// {
+	// 	while (node->nulls[i] != -1)
+	// 		i++;
+	// 	node->nulls[i] = format->start -1;
+	// }
 	free(tmpstr);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/10 11:26:13 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/10 13:31:17 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,8 @@ typedef	struct	s_printf
 	int			size;
 	int			padding;
 	int			swit;
+	int			*nulls;
 	int			l;
-	int			s;
-	int			S;
-	int			p;
-	int			d;
-	int			i;
-	int			o;
-	int			u;
-	int			x;
-	int			c;
 }				t_printf;
 
 int				ft_printf(char *str, ...);

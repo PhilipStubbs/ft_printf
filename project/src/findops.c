@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:48:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/10 11:35:13 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/10 11:46:47 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,11 @@ int		finddigit(t_printf *node, va_list args, t_format *format)
 		ret = lengthmoddig(format, tmp);
 	else
 		ret = ft_itoa(tmp);
-	if (format->plus == 1 && format->prec == 0)
+	if (format->plus == 1 && format->prec == 0 && ret[0] != '-')
 		ret = addplus(&ret);
 	if (format->prec == 1)
 		ret = precision(format, &ret);
-	if (format->plus == 1 && format->prec == 1)
+	if (format->plus == 1 && format->prec == 1 && ret[0] != '-')
 		ret = addplus(&ret);
 	if (format->spacpad == 1 || format->zeropad == 1)
 		ret = createpadding(&ret, format);

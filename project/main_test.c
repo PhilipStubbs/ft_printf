@@ -8,8 +8,8 @@
 int main()
 {
 
-	 ft_printf("%-5%\n");
-	 printf("%-5%\n");
+	  ft_printf("%-010s is a string", "this");
+	//  printf("%-5%\n");
 	//  printf("%%\n");
 	// ft_printf("%#x\n", 0);
 	// printf("%#x\n", 0);

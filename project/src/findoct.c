@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 10:51:38 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/11 17:28:17 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/11 17:47:11 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,26 @@ int		findoct(t_printf *node, va_list args, t_format *format)
 	char	*tmpstr2;
 
 	tmp = va_arg(args, long long);
-	if (format->lenmod == 1)
-		lengthmodoct(format, tmp, 0);
+	if (tmp == 0 && format->prec == 1 && format->precsize == 0 && format->padsize == 0 && format->hash == 0)
+		return (0);
+	else if (tmp == 0 && format->prec == 1 && format->precsize == 0 && format->padsize != 0)
+		tmpstr = ft_strdup(" ");
 	else
-		tmpstr = ft_itoa_base(tmp, 8, 0);
-	if (format->prec == 1)
-		tmpstr = precision(format, &tmpstr);
-	tmp = ft_strlen(tmpstr);
-	if (format->hash == 1 && ((format->spacpad == 0 && format->zeropad == 0) || tmp > format->precsize ))
 	{
-		tmpstr2 = ft_strjoin("0", tmpstr);
-		free(tmpstr);
-		tmpstr = ft_strdup(tmpstr2);
-		free(tmpstr2);
+		if (format->lenmod == 1)
+			lengthmodoct(format, tmp, 0);
+		else
+			tmpstr = ft_itoa_base(tmp, 8, 0);
+		if (format->prec == 1)
+			tmpstr = precision(format, &tmpstr);
 	}
+	if ( (tmp > 0 && format->hash == 1) && ((format->spacpad == 0 && format->zeropad == 0) || (tmp > format->precsize)))
+		{
+			tmpstr2 = ft_strjoin("0", tmpstr);
+			free(tmpstr);
+			tmpstr = ft_strdup(tmpstr2);
+			free(tmpstr2);
+		}
 	if (format->spacpad == 1 || format->zeropad == 1)
 		tmpstr = createpadding(&tmpstr, format);
 	node->output = dynamicstring(&(node)->output, tmpstr);

@@ -7,10 +7,9 @@
 
 int main()
 {
-	ft_printf("%-#6o\n", 2500);
-	printf("%-#6o\n", 2500);
+//   ft_printf("@moulitest: %5.o %5.0o\n", 0, 0);
 
-
+	ft_printf("@moulitest: %#.o %#.0o\n", 0, 0);
 	return (1);
 }
 

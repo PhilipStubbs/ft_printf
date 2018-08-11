@@ -21,26 +21,6 @@ FAILED TESTS:\n
   1. (    9) -->effffffff<--
   2. (   16) -->fffffffeffffffff<--
 
-# 0088 (int)
-  ft_printf("%-#6o", 2500);
-  1. (    5) -->04704<--
-  2. (    6) -->04704 <--
-
-# 0093 (int)
-  ft_printf("@moulitest: %.o %.0o", 0, 0);
-  1. (   15) -->@moulitest: 0 0<--
-  2. (   13) -->@moulitest:  <--
-
-# 0094 (int)
-  ft_printf("@moulitest: %5.o %5.0o", 0, 0);
-  1. (   23) -->@moulitest:     0     0<--
-  2. (   23) -->@moulitest:            <--
-
-# 0095 (int)
-  ft_printf("@moulitest: %#.o %#.0o", 0, 0);
-  1. (   17) -->@moulitest: 00 00<--
-  2. (   15) -->@moulitest: 0 0<--
-
 # 0107 (int)
   ft_printf("% d", 42);
   1. (    2) -->42<--
@@ -229,14 +209,14 @@ SUCCESS TESTS:\n
   85.      ft_printf("%05o", 42);                        -> "00052"
   86.      ft_printf("%-5o", 2500);                      -> "4704 "
   87.      ft_printf("%#6o", 2500);                      -> " 04704"
-  88. FAIL ft_printf("%-#6o", 2500);                     -> "04704 "
+  88.      ft_printf("%-#6o", 2500);                     -> "04704 "
   89.      ft_printf("%-05o", 2500);                     -> "4704 "
   90.      ft_printf("%-5.10o", 2500);                   -> "0000004704"
   91.      ft_printf("%-10.5o", 2500);                   -> "04704     "
   92.      ft_printf("@moulitest: %o", 0);               -> "@moulitest: 0"
-  93. FAIL ft_printf("@moulitest: %.o %.0o", 0, 0);      -> "@moulitest:  "
-  94. FAIL ft_printf("@moulitest: %5.o %5.0o", 0, 0);    -> "@moulitest:            "
-  95. FAIL ft_printf("@moulitest: %#.o %#.0o", 0, 0);    -> "@moulitest: 0 0"
+  93.      ft_printf("@moulitest: %.o %.0o", 0, 0);      -> "@moulitest:  "
+  94.      ft_printf("@moulitest: %5.o %5.0o", 0, 0);    -> "@moulitest:            "
+  95.      ft_printf("@moulitest: %#.o %#.0o", 0, 0);    -> "@moulitest: 0 0"
   96.      ft_printf("@moulitest: %.10o", 42);           -> "@moulitest: 0000000052"
   97.      ft_printf("%d", 1);                           -> "1"
   98.      ft_printf("the %d", 1);                       -> "the 1"

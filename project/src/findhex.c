@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 13:30:43 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/11 12:33:41 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/11 17:25:11 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,18 +86,10 @@ int		findhex(t_printf *node, va_list args, char cap, t_format *format)
 	char	*tmpstr;
 
 	tmp = va_arg(args, unsigned long long);
-	// ft_printf("@moulitest: %5.x %5.0x", 0, 0);
-	// printf("start[%d] end[%d] spacpad[%d] zeropad[%d] padsize[%d] hash[%d] minus[%d] plus[%d] prec[%d] precpad[%d]\n",format->start,format->end, format->spacpad, format->zeropad,format->padsize ,format->hash,format->minus ,format->plus,format->prec, format->precsize);
-
 	if (tmp == 0 && format->prec == 1 && format->precsize == 0 && format->padsize == 0)
-	{
 		return (0);
-	}
 	if (tmp == 0 && format->prec == 1 && format->precsize == 0 && format->padsize != 0)
-	{
 		tmpstr = ft_strdup(" ");
-		// write(1,"X\n",2); 
-	}
 	else if (cap == 'x')
 	{
 		if (format->lenmod == 1)

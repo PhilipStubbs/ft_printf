@@ -21,31 +21,6 @@ FAILED TESTS:\n
   1. (    9) -->effffffff<--
   2. (   16) -->fffffffeffffffff<--
 
-# 0074 (int)
-  ft_printf("%.2c", NULL);
-  1. (    0) --><--
-  2. (    1) -->^@<--
-
-# 0079 (char)
-  ft_printf("@moulitest: %c", 0);
-  1. (   12) -->@moulitest: <--
-  2. (   13) -->@moulitest: ^@<--
-
-# 0080 (char)
-  ft_printf("%2c", 0);
-  1. (    2) -->  <--
-  2. (    2) --> ^@<--
-
-# 0081 (char)
-  ft_printf("null %c and text", 0);
-  1. (   14) -->null  and text<--
-  2. (   15) -->null ^@ and text<--
-
-# 0082 (char)
-  ft_printf("% c", 0);
-  1. (    0) --><--
-  2. (    1) -->^@<--
-
 # 0088 (int)
   ft_printf("%-#6o", 2500);
   1. (    5) -->04704<--
@@ -240,15 +215,15 @@ SUCCESS TESTS:\n
   71.      ft_printf("%s %s %s %s string. gg!", "this", "is", "a", "multi", "string"); -> "this is a multi string. gg!"
   72.      ft_printf("%s%s%s%s%s", "this", "is", "a", "multi", "string"); -> "thisisamultistring"
   73.      ft_printf("@moulitest: %s", NULL);            -> "@moulitest: (null)"
-  74. FAIL ft_printf("%.2c", NULL);                      -> "^@"
+  74.      ft_printf("%.2c", NULL);                      -> "^@"
   75.      ft_printf("%s %s", NULL, string);             -> "(null) string"
   76.      ft_printf("%c", 42);                          -> "*"
   77.      ft_printf("%5c", 42);                         -> "    *"
   78.      ft_printf("%-5c", 42);                        -> "*    "
-  79. FAIL ft_printf("@moulitest: %c", 0);               -> "@moulitest: ^@"
-  80. FAIL ft_printf("%2c", 0);                          -> " ^@"
-  81. FAIL ft_printf("null %c and text", 0);             -> "null ^@ and text"
-  82. FAIL ft_printf("% c", 0);                          -> "^@"
+  79.      ft_printf("@moulitest: %c", 0);               -> "@moulitest: ^@"
+  80.      ft_printf("%2c", 0);                          -> " ^@"
+  81.      ft_printf("null %c and text", 0);             -> "null ^@ and text"
+  82.      ft_printf("% c", 0);                          -> "^@"
   83.      ft_printf("%o", 40);                          -> "50"
   84.      ft_printf("%5o", 41);                         -> "   51"
   85.      ft_printf("%05o", 42);                        -> "00052"

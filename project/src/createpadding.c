@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 13:31:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/10 08:23:02 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/11 17:32:19 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ char	*createpadding(char **str, t_format *format)
 	{
 		if (format->minus == 1 && format->hash == 1 && (format->c == 'x' || format->c == 'X'))
 			len += 2;
-		if (format->minus == 1 && format->hash == 1 && (format->c == 'o' || format->c == 'O'))
-			len += 1;
+		// if (format->minus == 1 && format->hash == 1 && (format->c == 'o' || format->c == 'O'))
+		// 	len += 1;
 		amstr = ft_strnew(format->padsize - len);
 		ft_memset(amstr, c, format->padsize - len);
 	}

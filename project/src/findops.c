@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:48:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/11 18:00:14 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/11 18:18:36 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,27 @@ int		findstring(t_printf *node, va_list args, t_format *format)
 	return (len);
 }
 
-char	*addplus(char **str)
+char	*addplus(t_format *format ,char **str)
 {
 	char	*tmp;
 	char	*tmp2;
 	char	*tmp3;
 
-	tmp = ft_strdup("+");
-	tmp2 = ft_strdup(*str);
-	free(*str);
-	tmp3 = ft_strjoin(tmp, tmp2);
-	free(tmp);
-	free(tmp2);
+	if (format->zeropad == 1 && *str[0] == '0')
+	{
+		tmp3 = ft_strdup(*str);
+		tmp3[0] = '+';
+		free(*str);
+	}
+	else
+	{
+		tmp = ft_strdup("+");
+		tmp2 = ft_strdup(*str);
+		free(*str);
+		tmp3 = ft_strjoin(tmp, tmp2);
+		free(tmp);
+		free(tmp2);
+	}
 	return (tmp3);
 }
 
@@ -81,17 +90,21 @@ int		finddigit(t_printf *node, va_list args, t_format *format)
 			ret = lengthmoddig(format, tmp);
 		else
 			ret = ft_itoa(tmp);
-		if (format->plus == 1 && format->prec == 0 && ret[0] != '-')
-			ret = addplus(&ret);
+		if (format->plus == 1 && format->prec == 0 && ret[0] != '-' && format->zeropad == 0)
+			ret = addplus(format, &ret);
 		if (format->prec == 1)
 			ret = precision(format, &ret);
-		if (format->plus == 1 && format->prec == 1 && ret[0] != '-')
-			ret = addplus(&ret);
+		if (format->plus == 1 && format->prec == 1 && ret[0] != '-' && format->zeropad == 0)
+			ret = addplus(format, &ret);
 		if (format->spacpad == 1 && format->zeropad == 0 && format->padsize == 0 && tmp > 0 && format->plus == 0 && format->prec == 0)
 			format->padsize = ft_strlen(ret) + 1;
 	}
 	if (format->spacpad == 1 || format->zeropad == 1)
 		ret = createpadding(&ret, format);
+	if (format->plus == 1 && format->zeropad == 1 && tmp > 0 && ret[0] != '+')
+	{
+		ret = addplus(format, &ret);
+	}
 	node->output = dynamicstring(&(node)->output, ret);
 	len = ft_strlen(ret);
 	free(ret);

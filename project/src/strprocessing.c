@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:29:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/11 12:34:25 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/11 12:45:58 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,8 +142,7 @@ int		flagchecker(t_printf *node, char *str,  va_list args, int i)
 	}
 	// if (format->c == '%')
 	// {
-		// if (node->swit == 1)
-			// node->output = dynamicstring(&(node)->output, "%");
+		//node->output = dynamicstring(&(node)->output, "%");
 	// 	free(format);
 	// 	return (i + l + 1);
 	// }
@@ -222,9 +221,7 @@ int		strprocessing(t_printf *node, char *str, va_list args)
 		}
 		if (str[i] == '%')
 		{
-			node->swit = 1;
 			node->l += flagchecker(node, str, args, i);
-			node->swit = 0;
 			i = movei(str, i);
 		}
 		else

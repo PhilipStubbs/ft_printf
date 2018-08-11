@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 09:27:25 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/11 11:59:36 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/11 12:47:23 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,22 @@
 void		customputchar(t_printf *node)
 {
 	int		i;
-	int		l;
+	// int		l;
 
 	i = 0;
 	while (node->output[i])
 	{
-		l = 0;
-		while (l < 100 && node->nulls[l] != -1)
+		if (node->output[i] == '\\' && node->output[i + 1] == '0')
 		{
-			if (node->nulls[l] == i)
-			{
-				write(1, "\0", 1);
-			}
-			l++;
+			write(1, "\0", 1);
+			i += 2;
 		}
-		ft_putchar(node->output[i]);
-		i++;
+		else
+		{
+			ft_putchar(node->output[i]);
+			i++;
+		}
 	}
-
 }
 
 int			ft_printf(char *str, ...)
@@ -53,10 +51,11 @@ int			ft_printf(char *str, ...)
 	if (error == 0)
 	{
 		// printf("%s\n", node->output);
-		ft_putstr(node->output);
-		// customputchar(node);
+		// ft_putstr(node->output);
+		customputchar(node);
 		ret = ft_strlen(node->output);
 	}
+	ret -= node->lenmod;
 	destroy(&node, error);
 	return (ret);
 }

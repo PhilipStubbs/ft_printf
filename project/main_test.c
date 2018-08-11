@@ -23,8 +23,9 @@ int main()
 
 	//  ft_printf("%x\n", -42);
 	// ft_printf("%U", 4294967296);
-	 ft_printf("@moulitest: %5.x %5.0x\n", 0, 0);
-	printf("@moulitest: %5.x %5.0x", 0, 0);
+	ft_printf("@moulitest: %c", 0);
+	//  ft_printf("@moulitest: %5.x %5.0x\n", 0, 0);
+	// printf("@moulitest: %5.x %5.0x", 0, 0);
 	//  printf("%x\n", -42);
 	// ft_printf("%\n", "this");
 	// printf("%\n", "this");

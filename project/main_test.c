@@ -9,7 +9,7 @@ int main()
 {
 //   ft_printf("@moulitest: %5.o %5.0o\n", 0, 0);
 
-	ft_printf("@moulitest: %#.o %#.0o\n", 0, 0);
+	ft_printf("% d", 42);
 	return (1);
 }
 

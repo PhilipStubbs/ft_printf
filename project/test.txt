@@ -21,21 +21,6 @@ FAILED TESTS:\n
   1. (    9) -->effffffff<--
   2. (   16) -->fffffffeffffffff<--
 
-# 0046 (int)
-  ft_printf("@moulitest: %#.x %#.0x", 0, 0);
-  1. (   15) -->@moulitest: 0 0<--
-  2. (   13) -->@moulitest:  <--
-
-# 0047 (int)
-  ft_printf("@moulitest: %.x %.0x", 0, 0);
-  1. (   15) -->@moulitest: 0 0<--
-  2. (   13) -->@moulitest:  <--
-
-# 0048 (int)
-  ft_printf("@moulitest: %5.x %5.0x", 0, 0);
-  1. (   19) -->@moulitest:     0 0<--
-  2. (   23) -->@moulitest:            <--
-
 # 0074 (int)
   ft_printf("%.2c", NULL);
   1. (    0) --><--
@@ -73,7 +58,7 @@ FAILED TESTS:\n
 
 # 0094 (int)
   ft_printf("@moulitest: %5.o %5.0o", 0, 0);
-  1. (   19) -->@moulitest:     0 0<--
+  1. (   23) -->@moulitest:     0     0<--
   2. (   23) -->@moulitest:            <--
 
 # 0095 (int)
@@ -141,14 +126,9 @@ FAILED TESTS:\n
   1. (    3) --> -1<--
   2. (    3) -->-01<--
 
-# 0175 (int)
-  ft_printf("@moulitest: %.d %.0d", 0, 0);
-  1. (   15) -->@moulitest: 0 0<--
-  2. (   13) -->@moulitest:  <--
-
 # 0176 (int)
   ft_printf("@moulitest: %5.d %5.0d", 0, 0);
-  1. (   19) -->@moulitest:     0 0<--
+  1. (   23) -->@moulitest:     0     0<--
   2. (   23) -->@moulitest:            <--
 
 # 0189 (unsigned long)
@@ -232,9 +212,9 @@ SUCCESS TESTS:\n
   43.      ft_printf("%#8x", 42);                        -> "    0x2a"
   44.      ft_printf("%#08x", 42);                       -> "0x00002a"
   45.      ft_printf("%#-08x", 42);                      -> "0x2a    "
-  46. FAIL ft_printf("@moulitest: %#.x %#.0x", 0, 0);    -> "@moulitest:  "
-  47. FAIL ft_printf("@moulitest: %.x %.0x", 0, 0);      -> "@moulitest:  "
-  48. FAIL ft_printf("@moulitest: %5.x %5.0x", 0, 0);    -> "@moulitest:            "
+  46.      ft_printf("@moulitest: %#.x %#.0x", 0, 0);    -> "@moulitest:  "
+  47.      ft_printf("@moulitest: %.x %.0x", 0, 0);      -> "@moulitest:  "
+  48.      ft_printf("@moulitest: %5.x %5.0x", 0, 0);    -> "@moulitest:            "
   49.      ft_printf("%s", "abc");                       -> "abc"
   50.      ft_printf("%s", "this is a string");          -> "this is a string"
   51.      ft_printf("%s ", "this is a string");         -> "this is a string "
@@ -361,7 +341,7 @@ SUCCESS TESTS:\n
  172. FAIL ft_printf("%03.2d", -1);                      -> "-01"
  173.      ft_printf("@moulitest: %.10d", -42);          -> "@moulitest: -0000000042"
  174.      ft_printf("@moulitest: %.d %.0d", 42, 43);    -> "@moulitest: 42 43"
- 175. FAIL ft_printf("@moulitest: %.d %.0d", 0, 0);      -> "@moulitest:  "
+ 175.      ft_printf("@moulitest: %.d %.0d", 0, 0);      -> "@moulitest:  "
  176. FAIL ft_printf("@moulitest: %5.d %5.0d", 0, 0);    -> "@moulitest:            "
  177.      ft_printf("%u", 0);                           -> "0"
  178.      ft_printf("%u", 1);                           -> "1"

@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/10 08:03:21 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/10 08:24:11 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/11 12:06:35 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,16 @@ char	*lengthmodunsigned(t_format *format, long long num)
 
 int		findundigit(t_printf *node, va_list args, t_format *format)
 {
-	unsigned int	tmp;
+	unsigned long long 	tmp;
 	int				len;
 	char			*ret;
 
-	tmp = va_arg(args, unsigned int);
+	tmp = va_arg(args, unsigned long long);
 
 	if (format->lenmod == 1)
-		ret = lengthmodunsigned(format, (long long)tmp);
+		ret = lengthmodunsigned(format, (unsigned long long)tmp);
 	else
-		ret = ft_uitoa(tmp);
+		ret = ft_uitoa((unsigned long long)tmp);
 	if (format->prec == 1)
 		ret = precision(format, &ret);
 	if (format->spacpad == 1 || format->zeropad == 1)

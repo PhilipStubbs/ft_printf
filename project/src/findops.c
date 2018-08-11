@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:48:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/11 11:53:06 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/11 12:00:54 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,11 +122,11 @@ int		findchar(t_printf *node, va_list args, t_format *format)
 
 int		findpointer(t_printf *node, va_list args, t_format *format)
 {
-	unsigned long	tmp;
+	unsigned long long	tmp;
 	char			*tmpstr;
 	char			*ret;
 
-	tmp = va_arg(args, unsigned long);
+	tmp = va_arg(args, unsigned long long);
 	tmpstr = ft_itoa_base(tmp, 16, 0);
 	if (format->prec == 1)
 		tmpstr = precision(format, &tmpstr);

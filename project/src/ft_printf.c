@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 09:27:25 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/10 13:48:58 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/11 11:59:36 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void		customputchar(t_printf *node)
 		{
 			if (node->nulls[l] == i)
 			{
-				
 				write(1, "\0", 1);
 			}
 			l++;

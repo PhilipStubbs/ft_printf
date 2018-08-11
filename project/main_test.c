@@ -11,7 +11,8 @@ int main()
 	// printf("%c hello", 0);
 
 	// ft_printf("%jx", -4294967296); 
-	ft_printf("%#.2x", 0);
+	// ft_printf("@moulitest:%5.0x", 0);
+	// printf("@moulitest:%5.0x", 0);
 	// ft_printf(""); 
 	//  ft_printf("%x", -42);
 	// ft_printf("%X", 4294967296);
@@ -21,6 +22,9 @@ int main()
 	// printf("%#x\n", 0);
 
 	//  ft_printf("%x\n", -42);
+	// ft_printf("%U", 4294967296);
+	 ft_printf("@moulitest: %5.x %5.0x\n", 0, 0);
+	printf("@moulitest: %5.x %5.0x", 0, 0);
 	//  printf("%x\n", -42);
 	// ft_printf("%\n", "this");
 	// printf("%\n", "this");

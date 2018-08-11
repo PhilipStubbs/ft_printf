@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 13:31:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/11 17:32:19 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/11 19:10:42 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,17 @@ char	*specialpaddingfordigit(t_format *format, int len, char c ,char **str)
 	char	*amstr;
 	char	*tmp;
 
-	if (*str[0] == '-' && format->minus == 0 && format->prec == 0)
+	if ((*str[0] == '-' && format->minus == 0 && format->prec == 0) ||
+	(*str[0] == '-' && format->spacpad == 0 && format->zeropad == 1 && format->prec == 1))
 	{
 		tmp = ft_strdup("-");
 		*str[0] = '0';
 	}
+	// else if (*str[0] == '-' && format->spacpad == 0 && format->zeropad == 1 && format->prec == 1)
+	// {
+	// 	tmp = ft_strdup("-");
+	// 	*str[0] = '0';
+	// }
 	else if ((*str[0] != '-' && format->spacpad == 1 && format->zeropad == 1) || format->prec == 1)
 		tmp = ft_strdup(" ");
 	else

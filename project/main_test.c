@@ -7,12 +7,7 @@
 
 int main()
 {
-//   ft_printf("@moulitest: %5.o %5.0o\n", 0, 0);
-
-	// ft_printf("%0+5d\n", 42); 
-	ft_printf("%-+10d\n", 4242);
-	// printf("%-+10.5d\n", 4242);
-	// ft_printf("%+d", 42);
+	ft_printf("%03.2d", -1);
 	return (1);
 }
 

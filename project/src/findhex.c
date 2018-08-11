@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 13:30:43 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/11 10:26:25 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/11 11:52:39 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ int		findhex(t_printf *node, va_list args, char cap, t_format *format)
 	char	*tmpstr;
 
 	tmp = va_arg(args, unsigned long long);
+	if (tmp == 0 && format->prec == 1 && format->precsize == 0 && format->padsize == 0)
+		return (0);
 	if (cap == 'x')
 	{
 		if (format->lenmod == 1)

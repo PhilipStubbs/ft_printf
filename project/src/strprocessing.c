@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:29:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/11 12:45:58 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/11 18:48:51 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ void	lengthspec(char *str, int i, t_format *format)
 
 void	normalspec(char *str, int i, t_format *format)
 {
+	int		x;
+
+	x = 0;
 	if (str[i] == '#' && format != NULL)
 		format->hash = 1;
 	if (format != NULL && (str[i] == ' ' && format->spacpad == 0))
@@ -63,10 +66,19 @@ void	normalspec(char *str, int i, t_format *format)
 	format->spacpad == 0 && str[i - 1] != '.'))
 	{
 		format->spacpad = 1;
-		if (str[i + 1] == '-' || str[i + 1] == '+')
-			format->padsize = ft_atoi(str + i + 2);
+		// printf("[%c]\n", str[i]);
+		if (ft_isdigit(str[i + x]) == 0)
+		{
+			while (ft_isdigit(str[i + x]) == 0)
+				x++;
+			format->padsize = ft_atoi(str + i + x);
+		}
 		else
+		{
+			// printf("[%s]\n", str + i);
 			format->padsize = ft_atoi(str + i);
+		}
+		// printf("dig[%d]\n",format->padsize);
 	}
 	if (format != NULL && (str[i] == '.'))
 	{

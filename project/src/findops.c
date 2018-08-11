@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:48:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/11 18:18:36 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/11 18:46:37 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ int		finddigit(t_printf *node, va_list args, t_format *format)
 	char	*ret;
 
 	tmp = va_arg(args, long long );
+		// printf("start[%d] end[%d] spacpad[%d] zeropad[%d] padsize[%d] hash[%d] minus[%d] plus[%d] prec[%d] precpad[%d]\n",format->start,format->end, format->spacpad, format->zeropad,format->padsize ,format->hash,format->minus ,format->plus,format->prec, format->precsize);
+
 	if (tmp == 0 && format->prec == 1 && format->precsize == 0 && format->padsize == 0)
 		return (0);
 	if (tmp == 0 && format->prec == 1 && format->precsize == 0 && format->padsize != 0)

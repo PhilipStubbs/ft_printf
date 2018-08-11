@@ -11,16 +11,6 @@ FAILED TESTS:\n
   2. unix function printf
      (returned value) -->written on stdout<--
 
-# 0016 (int)
-  ft_printf("%x", -42);
-  1. (    2) -->d6<--
-  2. (    8) -->ffffffd6<--
-
-# 0017 (int)
-  ft_printf("%X", -42);
-  1. (    2) -->D6<--
-  2. (    8) -->FFFFFFD6<--
-
 # 0029 (int)
   ft_printf("%jx", -4294967296);
   1. (    9) -->f00000000<--
@@ -98,13 +88,8 @@ FAILED TESTS:\n
 
 # 0129 (int)
   ft_printf("%0+5d", 42);
-  1. (    3) -->+42<--
+  1. (    5) -->00+42<--
   2. (    5) -->+0042<--
-
-# 0132 (int)
-  ft_printf("%0+5d", -42);
-  1. (    3) -->-42<--
-  2. (    5) -->-0042<--
 
 # 0147 (long)
   ft_printf("%ld", 2147483648);
@@ -217,8 +202,8 @@ SUCCESS TESTS:\n
   13.      ft_printf("%X", 42);                          -> "2A"
   14.      ft_printf("%x", 0);                           -> "0"
   15.      ft_printf("%X", 0);                           -> "0"
-  16. FAIL ft_printf("%x", -42);                         -> "ffffffd6"
-  17. FAIL ft_printf("%X", -42);                         -> "FFFFFFD6"
+  16.      ft_printf("%x", -42);                         -> "ffffffd6"
+  17.      ft_printf("%X", -42);                         -> "FFFFFFD6"
   18.      ft_printf("%x", 4294967296);                  -> "0"
   19.      ft_printf("%X", 4294967296);                  -> "0"
   20.      ft_printf("%x", test);                        -> "0"
@@ -333,7 +318,7 @@ SUCCESS TESTS:\n
  129. FAIL ft_printf("%0+5d", 42);                       -> "+0042"
  130.      ft_printf("%5d", -42);                        -> "  -42"
  131.      ft_printf("%05d", -42);                       -> "-0042"
- 132. FAIL ft_printf("%0+5d", -42);                      -> "-0042"
+ 132.      ft_printf("%0+5d", -42);                      -> "-0042"
  133.      ft_printf("%-5d", 42);                        -> "42   "
  134.      ft_printf("%-05d", 42);                       -> "42   "
  135.      ft_printf("%-5d", -42);                       -> "-42  "

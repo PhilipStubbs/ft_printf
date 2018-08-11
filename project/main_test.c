@@ -10,7 +10,8 @@ int main()
  	// ft_printf("%c hello\n", 0);
 	// printf("%c hello", 0);
 
-	 ft_printf("%0+5d", 42);
+	 ft_printf("%0+5d\n", 42);
+	 ft_printf("%x", -42); 
 	//  ft_printf("%x", -42);
 	// ft_printf("%X", 4294967296);
 	//  printf("%-5%\n");

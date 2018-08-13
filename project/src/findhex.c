@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 13:30:43 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/13 10:49:28 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/13 13:15:23 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	*hexhash(char **tmpstr, char cap, t_format *format)
 	return(*tmpstr);
 }
 
-char	*lengthmodhex(t_format *format, long long num, int cap)
+char	*lengthmodhex(t_format *format, uintmax_t num, int cap)
 {
 	char	*ret;
 
@@ -73,7 +73,8 @@ char	*lengthmodhex(t_format *format, long long num, int cap)
 		ret = ft_itoa_base((unsigned long long int)num, 16, cap);
 	else if (format->j == 1)
 	{
-		ret = ft_itoa_base((unsigned long long int)num, 16, cap);
+
+		ret = ft_itoa_base((uintmax_t)num, 16, cap);
 	}
 	else if (format->z == 1)
 		ret = ft_itoa_base((size_t)num, 16, cap);
@@ -84,10 +85,11 @@ char	*lengthmodhex(t_format *format, long long num, int cap)
 
 int		findhex(t_printf *node, va_list args, char cap, t_format *format)
 {
-	unsigned long long	tmp;
+	uintmax_t	tmp;
 	char	*tmpstr;
 
-	tmp = va_arg(args, unsigned long long);
+	tmp = va_arg(args, uintmax_t);
+	
 	if (tmp == 0 && format->prec == 1 && format->precsize == 0 && format->padsize == 0)
 		return (0);
 	if (tmp == 0 && format->prec == 1 && format->precsize == 0 && format->padsize != 0)
@@ -95,14 +97,14 @@ int		findhex(t_printf *node, va_list args, char cap, t_format *format)
 	else if (cap == 'x')
 	{
 		if (format->lenmod == 1)
-			tmpstr = lengthmodhex(format, (unsigned long long)tmp, 0);
+			tmpstr = lengthmodhex(format, tmp, 0);
 		else
-			tmpstr = ft_itoa_base(( unsigned int)tmp, 16, 0);
+			tmpstr = ft_itoa_base((unsigned int)tmp, 16, 0);
 	}
 	else
 	{
 		if (format->lenmod == 1)
-			tmpstr = lengthmodhex(format, (unsigned long long)tmp, 1);
+			tmpstr = lengthmodhex(format, tmp, 1);
 		else
 			tmpstr = ft_itoa_base((unsigned int)tmp, 16, 1);
 	}

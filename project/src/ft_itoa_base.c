@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 12:24:38 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/13 10:21:11 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/13 13:15:32 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*createinfolower(unsigned long long value, int base, int len, int isneg)
 
 char	*ft_itoa_base(long long value, int base, int cap)
 {
-	long int	i;
+	unsigned long long	i;
 	int			len;
 	int			isneg;
 	char		*ret;

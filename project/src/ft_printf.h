@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/13 10:21:13 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/13 18:26:51 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libft/libft.h"
 # include <stdarg.h>
+# include <inttypes.h>
 
 # define ERROR ft_putendl_fd("Error", 2);
 # define NRM  "\x1B[0m"
@@ -49,6 +50,7 @@ typedef	struct	s_format
 	int			ll;
 	int			j;
 	int			z;
+	int			wild;
 }				t_format;
 
 typedef	struct	s_printf
@@ -86,6 +88,7 @@ char			*precision(t_format *format, char **str);
 char			*lengthmoddig(t_format *format, long long num);
 int				findundigit(t_printf *node, va_list args, t_format *format);
 int				justpercent(t_printf *node, t_format *format);
+void			wildcard(t_printf *node, t_format *format, va_list args);
 
 
 char			*ft_itoa_base(long long value, int base, int cap);

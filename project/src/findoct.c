@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 10:51:38 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/11 17:47:11 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/13 18:46:57 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int		findoct(t_printf *node, va_list args, t_format *format)
 	char	*tmpstr;
 	char	*tmpstr2;
 
+	if (format->wild > 0)
+		wildcard(node, format, args);
 	tmp = va_arg(args, long long);
 	if (tmp == 0 && format->prec == 1 && format->precsize == 0 && format->padsize == 0 && format->hash == 0)
 		return (0);

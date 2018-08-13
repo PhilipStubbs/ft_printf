@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 13:30:43 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/13 13:15:23 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/13 18:47:26 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ char	*hexhash(char **tmpstr, char cap, t_format *format)
 {
 	char	*tmpstr2;
 	char	*check;
-	int		len;
 
-	len = ft_strlen(*tmpstr);
 	check = ft_strdup(*tmpstr);
 	if (cap == 'X')
 	{
@@ -88,8 +86,9 @@ int		findhex(t_printf *node, va_list args, char cap, t_format *format)
 	uintmax_t	tmp;
 	char	*tmpstr;
 
+	if (format->wild > 0)
+		wildcard(node, format, args);
 	tmp = va_arg(args, uintmax_t);
-	
 	if (tmp == 0 && format->prec == 1 && format->precsize == 0 && format->padsize == 0)
 		return (0);
 	if (tmp == 0 && format->prec == 1 && format->precsize == 0 && format->padsize != 0)

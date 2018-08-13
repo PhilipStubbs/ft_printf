@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 13:31:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/11 19:10:42 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/13 18:06:44 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,9 @@ char	*specialpaddingfordigit(t_format *format, int len, char c ,char **str)
 
 char	*stradjust(char **str)
 {
-	int		len;
 	char	*tmp;
 	char	*ret;
 
-	len = ft_strlen(*str);
 	tmp = ft_strdup(" ");
 	ret = ft_strjoin(tmp, *str);
 	free(tmp);

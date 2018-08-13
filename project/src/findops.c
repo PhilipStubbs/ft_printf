@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:48:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/13 13:49:13 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/13 18:46:45 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int		findstring(t_printf *node, va_list args, t_format *format)
 	char	*tmp2;
 	int		len;
 
+	if (format->wild > 0)
+		wildcard(node, format, args);
 	tmp = va_arg(args, char*);
 	if (tmp == NULL)
 		tmp2 = ft_strdup("(null)");
@@ -78,7 +80,9 @@ int		finddigit(t_printf *node, va_list args, t_format *format)
 	long long 	tmp;
 	int		len;
 	char	*ret;
-
+	
+	if (format->wild > 0)
+		wildcard(node, format, args);
 	tmp = va_arg(args, long long );
 	if (tmp == 0 && format->prec == 1 && format->precsize == 0 && format->padsize == 0)
 		return (0);
@@ -121,6 +125,8 @@ int		findchar(t_printf *node, va_list args, t_format *format)
 	int		i;
 
 	i = 0;
+	if (format->wild > 0)
+		wildcard(node, format, args);
 	tmp = va_arg(args, int);
 	if (tmp == 0 )
 	{
@@ -148,6 +154,8 @@ int		findpointer(t_printf *node, va_list args, t_format *format)
 	char			*tmpstr;
 	char			*ret;
 
+	if (format->wild > 0)
+		wildcard(node, format, args);
 	tmp = va_arg(args, unsigned long long);
 	if (tmp == 0)
 		tmpstr = ft_strdup("");

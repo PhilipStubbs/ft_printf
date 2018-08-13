@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:29:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/11 18:48:51 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/13 18:22:37 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	lengthspec(char *str, int i, t_format *format)
 		format->j = 1;
 	if (format != NULL && (str[i] == 'z'))
 		format->z = 1;
+	if (format != NULL && (str[i] == '*'))
+		format->wild++;
 	if (format != NULL && (format->hh == 1 || format->h == 1 || format->ll == 1
 	|| format->l == 1 || format->j == 1 || format->z == 1))
 	{
@@ -75,7 +77,6 @@ void	normalspec(char *str, int i, t_format *format)
 		}
 		else
 		{
-			// printf("[%s]\n", str + i);
 			format->padsize = ft_atoi(str + i);
 		}
 		// printf("dig[%d]\n",format->padsize);
@@ -106,7 +107,7 @@ int		findspecifier(char *str, int i, t_format *format)
 			break ;
 		}
 	}
-	if (isvaildflag(str, i == 0))
+	if (isvaildflag(str, i) == 0)
 	{
 	count--;
 	i--;

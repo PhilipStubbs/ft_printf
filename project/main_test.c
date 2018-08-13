@@ -9,7 +9,7 @@ int main()
 {
 	// ft_printf("%jx", -4294967296);  
 	// ft_printf("%ld", -2147483648);
-	ft_printf("%lld", 9223372036854775807); 
+	ft_printf("%lld", -9223372036854775808);  
 	return (1);
 }
 

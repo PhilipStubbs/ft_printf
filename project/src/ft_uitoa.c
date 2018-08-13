@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/22 08:09:06 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/11 12:09:06 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/13 09:05:49 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ static	char	*ft_returnzero(void)
 	return (p);
 }
 
-char			*ft_uitoa(unsigned int n)
+char			*ft_ulltoa(unsigned long long n)
 {
 	char			*ret;
 	int				len;
-	unsigned int	tmp;
+	unsigned long long	tmp;
 
 	if (n == 0)
 		return (ft_returnzero());

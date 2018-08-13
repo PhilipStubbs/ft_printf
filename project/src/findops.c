@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:48:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/11 18:57:13 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/13 13:49:13 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ int		finddigit(t_printf *node, va_list args, t_format *format)
 	{
 		if (format->lenmod == 1)
 			ret = lengthmoddig(format, tmp);
+		else if (format->c == 'D')
+			ret = ft_lltoa((long long)tmp);
 		else
 			ret = ft_itoa(tmp);
 		if (format->plus == 1 && format->prec == 0 && ret[0] != '-' && format->zeropad == 0)
@@ -147,7 +149,10 @@ int		findpointer(t_printf *node, va_list args, t_format *format)
 	char			*ret;
 
 	tmp = va_arg(args, unsigned long long);
-	tmpstr = ft_itoa_base(tmp, 16, 0);
+	if (tmp == 0)
+		tmpstr = ft_strdup("");
+	else
+		tmpstr = ft_itoa_base(tmp, 16, 0);
 	if (format->prec == 1)
 		tmpstr = precision(format, &tmpstr);
 	ret = ft_strjoin("0x", tmpstr);

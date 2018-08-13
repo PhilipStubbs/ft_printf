@@ -7,12 +7,16 @@
 
 int main()
 {
-	// ft_printf("%jx", -4294967296);  
+	char c;
+	// ft_printf("%s%d%p%%%S%i%o%O%u%U%x%X%c%C\n","bonjour", 42, &c, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
+	// printf("%s%d%p|%S%D%i%o%O%u%U%x%X%c%C\n","bonjour", 42, &c, L"a", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'B');
+	// ft_printf("%.p, %.0p", 0, 0);
+	printf("{%05.%}", 0);
 	// ft_printf("%ld", -2147483648);
 	// ft_printf("%U\n", 4294967296);
 	// ft_printf("%u\n", 4294967296);
-	ft_printf("mine|%jx\n", -4294967297); 
-	printf("thei|%jx\n", -4294967297); 
+	// ft_printf("%");
+	// ft_printf("{%}");
 	// long long num = -4294967297;
 	// printf("%3d\n", 0);
 	// printf("[%lld]\n",(uintmax_t )num);

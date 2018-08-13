@@ -20,11 +20,6 @@ FAILED TESTS:\n
   ft_printf("%jx", -4294967297);
   1. (    9) -->effffffff<--
   2. (   16) -->fffffffeffffffff<--
-
-# 0195 (unsigned long)
-  ft_printf("%hU", 4294967296);
-  1. (    1) -->0<--
-  2. (   10) -->4294967296<--
 \n--------------\n
 SUCCESS TESTS:\n
    1.      ft_printf("");                                -> ""
@@ -221,6 +216,6 @@ SUCCESS TESTS:\n
  192.      ft_printf("%ju", 4999999999);                 -> "4999999999"
  193.      ft_printf("%ju", 4294967296);                 -> "4294967296"
  194.      ft_printf("%U", 4294967295);                  -> "4294967295"
- 195. FAIL ft_printf("%hU", 4294967296);                 -> "4294967296"
+ 195.      ft_printf("%hU", 4294967296);                 -> "4294967296"
  196.      ft_printf("%U", 4294967296);                  -> "4294967296"
  197.      ft_printf("@moulitest: %.5u", 42);            -> "@moulitest: 00042"

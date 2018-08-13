@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/10 08:03:21 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/13 09:23:00 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/13 09:53:12 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*lengthmodunsigned(t_format *format, long long num)
 
 	if (format->hh == 1)
 		ret = ft_ulltoa((unsigned char)num);
-	else if (format->h == 1)
+	else if (format->h == 1 && format->c != 'U')
 		ret = ft_ulltoa((unsigned short int)num);
 	else if (format->l == 1)
 		ret = ft_ulltoa((unsigned long int)num);
@@ -28,7 +28,9 @@ char	*lengthmodunsigned(t_format *format, long long num)
 		ret = ft_ulltoa((uintmax_t)num);
 	else if (format->z == 1)
 		ret = ft_ulltoa((size_t)num);
-	else
+	else if (format->c == 'U')
+		ret = ft_ulltoa((unsigned long int)num);
+	else 
 		ret = ft_ulltoa(num);
 	return (ret);
 }

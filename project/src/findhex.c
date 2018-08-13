@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 13:30:43 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/11 17:25:11 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/13 10:49:28 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,9 @@ char	*lengthmodhex(t_format *format, long long num, int cap)
 	else if (format->ll == 1)
 		ret = ft_itoa_base((unsigned long long int)num, 16, cap);
 	else if (format->j == 1)
-		ret = ft_itoa_base((uintmax_t)num, 16, cap);
+	{
+		ret = ft_itoa_base((unsigned long long int)num, 16, cap);
+	}
 	else if (format->z == 1)
 		ret = ft_itoa_base((size_t)num, 16, cap);
 	else

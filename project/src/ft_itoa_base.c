@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 12:24:38 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/10 09:57:38 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/13 10:21:11 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*createinfolower(unsigned long long value, int base, int len, int isneg)
 	return (ret);
 }
 
-char	*ft_itoa_base(long int value, int base, int cap)
+char	*ft_itoa_base(long long value, int base, int cap)
 {
 	long int	i;
 	int			len;

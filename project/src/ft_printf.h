@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/13 09:05:15 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/13 10:21:13 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int				findundigit(t_printf *node, va_list args, t_format *format);
 int				justpercent(t_printf *node, t_format *format);
 
 
-char			*ft_itoa_base(long int value, int base, int cap);
+char			*ft_itoa_base(long long value, int base, int cap);
 char			*ft_ulltoa(unsigned long long n);
 char			*ft_lltoa(long long n);
 #endif

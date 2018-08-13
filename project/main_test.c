@@ -11,8 +11,9 @@ int main()
 	// ft_printf("%ld", -2147483648);
 	// ft_printf("%U\n", 4294967296);
 	// ft_printf("%u\n", 4294967296);
-	printf("%U\n", 4294967296);
-	printf("%u\n", 4294967296);
+	// ft_printf("%jx", -4294967297); 
+	long long num = -4294967297;
+	printf("[%lld]\n",(unsigned long long )num);
 	return (1);
 }
 

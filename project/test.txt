@@ -1,6 +1,6 @@
 rm -f *.o
 rm -f libftprintf.a
-gcc -c -Wall -Werror -Wextra libft/ft_atoi.c libft/ft_bzero.c libft/ft_isalnum.c libft/ft_isalpha.c libft/ft_isascii.c libft/ft_isdigit.c libft/ft_isprint.c libft/ft_memccpy.c libft/ft_memchr.c libft/ft_memcmp.c libft/ft_memcpy.c libft/ft_memmove.c libft/ft_memset.c libft/ft_strcat.c libft/ft_strchr.c libft/ft_strcmp.c libft/ft_strcpy.c libft/ft_strdup.c libft/ft_strlcat.c libft/ft_strlen.c libft/ft_strncat.c libft/ft_strncpy.c libft/ft_strrchr.c libft/ft_strstr.c libft/ft_tolower.c libft/ft_toupper.c libft/ft_strnstr.c libft/ft_strncmp.c libft/ft_memalloc.c libft/ft_memdel.c libft/ft_strnew.c libft/ft_strdel.c libft/ft_strclr.c libft/ft_putchar.c libft/ft_strpull_ptr.c libft/ft_strpull_idx.c libft/ft_putstr.c libft/ft_putchar_fd.c libft/ft_striter.c libft/ft_striteri.c libft/ft_strmap.c libft/ft_strmapi.c libft/ft_strequ.c libft/ft_strnequ.c libft/ft_strsub.c libft/ft_strjoin.c libft/ft_strtrim.c libft/ft_strsplit.c libft/ft_lstdel.c libft/ft_strchr_idx.c libft/ft_itoa.c libft/ft_putendl.c libft/ft_putnbr.c libft/ft_putstr_fd.c libft/ft_putendl_fd.c libft/ft_strcount.c libft/ft_lstdelone.c libft/ft_putnbr_fd.c libft/ft_strrev.c libft/ft_wordlen.c libft/ft_intlen.c libft/ft_lstadd.c libft/ft_lstnew.c libft/ft_lstiter.c libft/ft_lstmap.c libft/get_next_line.c libft/ft_isspace.c  libft/ft_split.c libft/ft_intcpy.c libft/ft_atol.c libft/ft_deldouble.c libft/ft_doublesize.c libft/ft_printchardouble.c libft/ft_printintarray.c libft/ft_strmerge.c src/basicchecker.c src/createpadding.c src/createstruc.c src/destroy.c src/dynamicstring.c src/findhex.c src/findoct.c src/findops.c src/findunsdigit.c src/ft_itoa_base.c src/ft_printf.c  src/ft_uitoa.c src/handlenonvalid.c src/lengthmod.c src/precision.c src/strprocessing.c  -I.libft/ -I.src/ -c
+gcc -c -Wall -Werror -Wextra libft/ft_atoi.c libft/ft_bzero.c libft/ft_isalnum.c libft/ft_isalpha.c libft/ft_isascii.c libft/ft_isdigit.c libft/ft_isprint.c libft/ft_memccpy.c libft/ft_memchr.c libft/ft_memcmp.c libft/ft_memcpy.c libft/ft_memmove.c libft/ft_memset.c libft/ft_strcat.c libft/ft_strchr.c libft/ft_strcmp.c libft/ft_strcpy.c libft/ft_strdup.c libft/ft_strlcat.c libft/ft_strlen.c libft/ft_strncat.c libft/ft_strncpy.c libft/ft_strrchr.c libft/ft_strstr.c libft/ft_tolower.c libft/ft_toupper.c libft/ft_strnstr.c libft/ft_strncmp.c libft/ft_memalloc.c libft/ft_memdel.c libft/ft_strnew.c libft/ft_strdel.c libft/ft_strclr.c libft/ft_putchar.c libft/ft_strpull_ptr.c libft/ft_strpull_idx.c libft/ft_putstr.c libft/ft_putchar_fd.c libft/ft_striter.c libft/ft_striteri.c libft/ft_strmap.c libft/ft_strmapi.c libft/ft_strequ.c libft/ft_strnequ.c libft/ft_strsub.c libft/ft_strjoin.c libft/ft_strtrim.c libft/ft_strsplit.c libft/ft_lstdel.c libft/ft_strchr_idx.c libft/ft_itoa.c libft/ft_putendl.c libft/ft_putnbr.c libft/ft_putstr_fd.c libft/ft_putendl_fd.c libft/ft_strcount.c libft/ft_lstdelone.c libft/ft_putnbr_fd.c libft/ft_strrev.c libft/ft_wordlen.c libft/ft_intlen.c libft/ft_lstadd.c libft/ft_lstnew.c libft/ft_lstiter.c libft/ft_lstmap.c libft/get_next_line.c libft/ft_isspace.c  libft/ft_split.c libft/ft_intcpy.c libft/ft_atol.c libft/ft_deldouble.c libft/ft_doublesize.c libft/ft_printchardouble.c libft/ft_printintarray.c libft/ft_strmerge.c src/basicchecker.c src/createpadding.c src/createstruc.c src/destroy.c src/dynamicstring.c src/findhex.c src/findoct.c src/findops.c src/findunsdigit.c src/ft_itoa_base.c src/ft_printf.c  src/ft_uitoa.c src/handlenonvalid.c src/lengthmod.c src/precision.c src/strprocessing.c src/ft_lltoa.c  -I.libft/ -I.src/ -c
 ar -rc libftprintf.a *.o
 ranlib libftprintf.a
 rm -f *.o
@@ -21,45 +21,15 @@ FAILED TESTS:\n
   1. (    9) -->effffffff<--
   2. (   16) -->fffffffeffffffff<--
 
-# 0147 (long)
-  ft_printf("%ld", 2147483648);
-  1. (   11) -->-2147483648<--
-  2. (   10) -->2147483648<--
-
-# 0148 (long)
-  ft_printf("%ld", -2147483649);
-  1. (   10) -->2147483647<--
-  2. (   11) -->-2147483649<--
-
-# 0149 (long long)
-  ft_printf("%lld", 9223372036854775807);
-  1. (    2) -->-1<--
-  2. (   19) -->9223372036854775807<--
-
 # 0150 (long long)
   ft_printf("%lld", -9223372036854775808);
-  1. (    1) -->0<--
+  1. (   20) -->-'..--).0-*(+,))+(0(<--
   2. (   20) -->-9223372036854775808<--
-
-# 0151 (intmax_t)
-  ft_printf("%jd", 9223372036854775807);
-  1. (    2) -->-1<--
-  2. (   19) -->9223372036854775807<--
 
 # 0152 (intmax_t)
   ft_printf("%jd", -9223372036854775808);
-  1. (    1) -->0<--
+  1. (   20) -->-'..--).0-*(+,))+(0(<--
   2. (   20) -->-9223372036854775808<--
-
-# 0153 (ssize_t)
-  ft_printf("%zd", 4294967295);
-  1. (    2) -->-1<--
-  2. (   10) -->4294967295<--
-
-# 0154 (ssize_t)
-  ft_printf("%zd", 4294967296);
-  1. (    1) -->0<--
-  2. (   10) -->4294967296<--
 
 # 0189 (unsigned long)
   ft_printf("%lu", 4294967296);
@@ -243,14 +213,14 @@ SUCCESS TESTS:\n
  144.      ft_printf("%hhd", -129);                      -> "127"
  145.      ft_printf("%ld", 2147483647);                 -> "2147483647"
  146.      ft_printf("%ld", -2147483648);                -> "-2147483648"
- 147. FAIL ft_printf("%ld", 2147483648);                 -> "2147483648"
- 148. FAIL ft_printf("%ld", -2147483649);                -> "-2147483649"
- 149. FAIL ft_printf("%lld", 9223372036854775807);       -> "9223372036854775807"
+ 147.      ft_printf("%ld", 2147483648);                 -> "2147483648"
+ 148.      ft_printf("%ld", -2147483649);                -> "-2147483649"
+ 149.      ft_printf("%lld", 9223372036854775807);       -> "9223372036854775807"
  150. FAIL ft_printf("%lld", -9223372036854775808);      -> "-9223372036854775808"
- 151. FAIL ft_printf("%jd", 9223372036854775807);        -> "9223372036854775807"
+ 151.      ft_printf("%jd", 9223372036854775807);        -> "9223372036854775807"
  152. FAIL ft_printf("%jd", -9223372036854775808);       -> "-9223372036854775808"
- 153. FAIL ft_printf("%zd", 4294967295);                 -> "4294967295"
- 154. FAIL ft_printf("%zd", 4294967296);                 -> "4294967296"
+ 153.      ft_printf("%zd", 4294967295);                 -> "4294967295"
+ 154.      ft_printf("%zd", 4294967296);                 -> "4294967296"
  155.      ft_printf("%zd", -0);                         -> "0"
  156.      ft_printf("%zd", -1);                         -> "-1"
  157.      ft_printf("%d", 1);                           -> "1"

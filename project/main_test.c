@@ -7,8 +7,11 @@
 
 int main()
 {
-	ft_printf("m|%hhO, %hhO\n", 0, USHRT_MAX);
-	printf("t|%hhO, %hhO\n", 0, USHRT_MAX);
+	// wchar_t *ws = L"\x0c";
+	// c 
+	ft_printf("{%05.%}", 0);
+	printf("{%05.%}", 0);
+	// printf("t|%hhO, %hhO\n", 0, USHRT_MAX);
 	return (1);
 }
 
@@ -28,13 +31,13 @@ int main()
 // }
 
 
-// 	if (chr <= 0x7F)
-// 		chr_len = 1;
-// 	else if (chr <= 0x7FF)
-// 		chr_len = 2;
-// 	else if (chr <= 0xFFFF)
-// 		chr_len = 3;
-// 	else if (chr <= 0x10FFFF)
-// 		chr_len = 4;
-// 	else
-// 		chr_len = 0;
+	// if (chr <= 0x7F)
+	// 	chr_len = 1;
+	// else if (chr <= 0x7FF)
+	// 	chr_len = 2;
+	// else if (chr <= 0xFFFF)
+	// 	chr_len = 3;
+	// else if (chr <= 0x10FFFF)
+	// 	chr_len = 4;
+	// else
+	// 	chr_len = 0;

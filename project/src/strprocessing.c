@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:29:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/14 09:45:45 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/14 13:52:44 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ int		findspecifier(char *str, int i, t_format *format)
 		format->start = i;
 	while (isnormalflag(str, i) == 1)
 	{
+		// printf("[%c] | [%d]\n",str[i], i);
 		normalspec(str, i, format);
 		lengthspec(str, i, format);
 		i++;
@@ -107,23 +108,24 @@ int		findspecifier(char *str, int i, t_format *format)
 			break ;
 		}
 	}
+	// printf("end [%c] | [%d]\n",str[i], i);
 	// if (isvaildflag(str, i) == 0 || str[i] == '%')
 	// {
 	// count--;
 	// i--;
 	// }
-	while (str[i] == ' ')
-	{
-		count--;
-		i--;
-	}
+	// while (str[i] == ' ')
+	// {
+	// 	count--;
+	// 	i--;
+	// }
 	if (format != NULL)
 	{
 		if (isvaildflag(str, i) == 0)
 		{
 			
-		format->end = i + 1;
-		format->c = str[i + 1];
+		format->end = i;
+		format->c = str[i];
 		format->badflag = 1;
 		}
 		else 
@@ -204,7 +206,7 @@ int		flagchecker(t_printf *node, char *str,  va_list args, int i)
 	i = handlenonvalid(node, format);
 	free(format);
 	// printf("going out[%d]\n",i);
-	return (i + 1);
+	return (i);
 }
 
 int		movei(char *str, int i)
@@ -215,7 +217,7 @@ int		movei(char *str, int i)
 	if (str[i + l] == '%')
 		return (i + l + 1);
 	if (isvaildflag(str,i + l ) == 0)
-		return (i + l + 2);
+		return (i + l + 1);
 
 	return (i + l + 1);
 }

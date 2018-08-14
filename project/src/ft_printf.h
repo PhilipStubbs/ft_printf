@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/13 18:26:51 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/14 18:06:04 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int				findhex(t_printf *node, va_list args, char cap, t_format *fo);
 int				findoct(t_printf *node, va_list args, t_format *format);
 int				findpointer(t_printf *node, va_list args, t_format *format);
 int				findundigit(t_printf *node, va_list args, t_format *format);
+int				findwchar(t_printf *node, va_list args, t_format *format);
 int				handlenonvalid(t_printf *node, t_format *format);
 char			*createpadding(char **str, t_format *format);
 int				isnormalflag(char *str, int i);
@@ -89,7 +90,6 @@ char			*lengthmoddig(t_format *format, long long num);
 int				findundigit(t_printf *node, va_list args, t_format *format);
 int				justpercent(t_printf *node, t_format *format);
 void			wildcard(t_printf *node, t_format *format, va_list args);
-
 
 char			*ft_itoa_base(long long value, int base, int cap);
 char			*ft_ulltoa(unsigned long long n);

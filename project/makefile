@@ -13,7 +13,8 @@ SRC = libft/ft_atoi.c libft/ft_bzero.c libft/ft_isalnum.c libft/ft_isalpha.c lib
 	libft/get_next_line.c libft/ft_isspace.c  libft/ft_split.c libft/ft_intcpy.c libft/ft_atol.c libft/ft_deldouble.c libft/ft_doublesize.c \
 	libft/ft_printchardouble.c libft/ft_printintarray.c libft/ft_strmerge.c \
 	src/basicchecker.c src/createpadding.c src/createstruc.c src/destroy.c src/dynamicstring.c src/findhex.c src/findoct.c src/findops.c src/findunsdigit.c \
-	src/ft_itoa_base.c src/ft_printf.c  src/ft_uitoa.c src/handlenonvalid.c src/lengthmod.c src/precision.c src/strprocessing.c src/ft_lltoa.c src/wildcard.c\
+	src/ft_itoa_base.c src/ft_printf.c  src/ft_uitoa.c src/handlenonvalid.c src/lengthmod.c src/precision.c src/strprocessing.c src/ft_lltoa.c src/wildcard.c \
+	src/findwchar.c \
 	
 
 OBJ = *.o

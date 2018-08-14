@@ -7,47 +7,8 @@
 
 int main()
 {
-	char c;
-	// ft_printf("%s%d%p%%%S%i%o%O%u%U%x%X%c%C\n","bonjour", 42, &c, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
-	// printf("%s%d%p|%S%D%i%o%O%u%U%x%X%c%C\n","bonjour", 42, &c, L"a", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'B');
-	// ft_printf("%.p, %.0p", 0, 0);
-	// ft_printf("s: %s, p: %p, d:%d", "a string", &c, 42);
-	// ft_printf("{%*.*s}", 5, 5, "42");
-	// ft_printf("M|%p\n", 0);
-	// printf("t|%p\n", 0);
-	// ft_printf("% d", -9999);
-	// printf("%");
-
-	// printf("T1|{%05.*d}\n", -15, 42);
-	// ft_printf("M1|{%05.*d}\n", -15, 42);
-
-	// ft_printf("%*.*d", 0, 3, 0);
-
-
-	// ft_printf("M|{%.*s}\n", -5, "42");
-	// printf("T|{%.*s}\n", -5, "42");
-	
-	ft_printf("%O\n", LONG_MIN);
-	printf("%O\n", LONG_MIN);
-	// printf("T3|{%.*d}\n", -5, 42);
-
-	// printf("T|%*d\n", 5, 42);
-	// ft_printf("M|%*d\n", 5, 42);
-	// ft_printf("M|{%*3d}\n", 0, 0);
-	// printf("T|{%*3d}\n", 0, 0);
-
-
-	
-
-
-	// ft_printf("%ld", -2147483648);
-	// ft_printf("%U\n", 4294967296);
-	// ft_printf("%u\n", 4294967296);
-	// ft_printf("%");
-	// ft_printf("{%}");
-	// long long num = -4294967297;
-	// printf("%3d\n", 0);
-	// printf("[%lld]\n",(uintmax_t )num);
+	ft_printf("m|%hhO, %hhO\n", 0, USHRT_MAX);
+	printf("t|%hhO, %hhO\n", 0, USHRT_MAX);
 	return (1);
 }
 

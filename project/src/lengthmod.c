@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 15:09:39 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/13 08:54:42 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/14 12:49:45 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ char	*lengthmoddig(t_format *format, long long num)
 {
 	char	*ret;
 
-	if (format->hh == 1)
+	if (format->ll == 1 || format->c == 'D')
+		ret = ft_lltoa((long long int)num);
+	else if (format->hh == 1)
 		ret = ft_lltoa((signed char)num);
 	else if (format->h == 1)
 		ret = ft_lltoa((short int)num);
 	else if (format->l == 1)
 		ret = ft_lltoa((long int)num);
-	else if (format->ll == 1)
-		ret = ft_lltoa((long long int)num);
 	else if (format->j == 1)
 		ret = ft_lltoa((intmax_t)num);
 	else if (format->z == 1)

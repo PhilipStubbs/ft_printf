@@ -19,14 +19,16 @@ int main()
 	// printf("%");
 
 	// printf("T1|{%05.*d}\n", -15, 42);
-	ft_printf("M1|{%05.*d}\n", -15, 42);
+	// ft_printf("M1|{%05.*d}\n", -15, 42);
 
 	// ft_printf("%*.*d", 0, 3, 0);
-	// printf("{%.*s}", -5, "42");
-	
 
-	// ft_printf("M3|{%*d}\n", -5, 42);
-	// printf("T3|{%*d}\n", -5, 42);
+
+	// ft_printf("M|{%.*s}\n", -5, "42");
+	// printf("T|{%.*s}\n", -5, "42");
+	
+	ft_printf("M3|{%.*d}\n", -5, 42);
+	printf("T3|{%.*d}\n", -5, 42);
 
 	// printf("T|%*d\n", 5, 42);
 	// ft_printf("M|%*d\n", 5, 42);

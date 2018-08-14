@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 18:10:05 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/14 11:30:17 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/14 12:12:05 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,9 @@ void	checkforcorrectminus(t_format *format, char *str, int *hold, int i)
 	nbr = 0;
 	x = i;
 	x = findwild(str, x);
-	if (str[x] == '\0')
-		return ;
+	// if (str[x] == '\0')
+	// 	return ;
+	
 	while (nbr < format->wild)
 	{
 		if (hold[nbr] < 0 && str[x - 1] != '.')
@@ -82,7 +83,6 @@ void	wildcard(t_printf *node, t_format *format, va_list args)
 	checkforcorrectminus(format, node->raw, hold, i);
 	while (nbr < format->wild)
 	{
-		
 		if (node->raw[i - 1] == '.')
 		{
 			format->precsize = hold[nbr];
@@ -102,8 +102,9 @@ void	wildcard(t_printf *node, t_format *format, va_list args)
 		if (node->raw[i] == '\0')
 			break;
 	}
-	// printf("start[%d] end[%d] spacpad[%d] zeropad[%d] padsize[%d] hash[%d] minus[%d] plus[%d] prec[%d] precpad[%d]\n",format->start,format->end, format->spacpad, format->zeropad,format->padsize ,format->hash,format->minus ,format->plus,format->prec, format->precsize);
+	if (format->precsize < 0 && format->c == 's')
+		format->precsize *= -1;
+	if (format->precsize < 0 && format->c != 's')
+		format->precsize = 0;
 	free(hold);
 }
-// ft_printf("M|{%05.*d}\n", -15, 42);
-// printf("T|{%*d}]n", -5, 42);

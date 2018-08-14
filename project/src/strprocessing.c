@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:29:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/14 18:07:25 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/14 18:51:13 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,7 +167,13 @@ int		flagchecker(t_printf *node, char *str,  va_list args, int i)
 		free(format);
 		return (i);
 	}
-	else if(str[i + l] == 'S' || str[i + l] == 'C')
+	else if(str[i + l] == 'S')
+	{
+		i = findwstr(node, args, format);
+		free(format);
+		return (i);
+	}
+	else if(str[i + l] == 'C')
 	{
 		i = findwchar(node, args, format);
 		free(format);

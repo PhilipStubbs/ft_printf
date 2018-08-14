@@ -29,9 +29,10 @@ int main()
 	// printf("T|{%*3d}\n", 0, 0);
 
 	// ft_printf("{%*3d}\n", 5, 0);
-
-	ft_printf("M|{%05.*d}\n", -15, 42);
-	printf("{T|%05.*d}\n", -15, 42);
+	// ft_printf("%*.*d", 0, 3, 0);
+	ft_printf("%*.*d", 0, 3, 0);
+	// ft_printf("M|{%05.*d}\n", -15, 42);
+	// printf("{T|%05.*d}\n", -15, 42);
 
 
 	// ft_printf("%ld", -2147483648);

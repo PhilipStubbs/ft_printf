@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:48:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/14 09:03:33 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/14 10:36:55 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ int		finddigit(t_printf *node, va_list args, t_format *format)
 	if (format->wild > 0)
 		wildcard(node, format, args);
 	tmp = va_arg(args, long long );
-	if (tmp == 0 && format->prec == 1 && format->precsize == 0 && format->padsize == 0)
+	if (tmp == 0 && format->prec == 1 && format->precsize == 0 && format->padsize == 0 && format->wild == 0)
 		return (0);
-	if (tmp == 0 && format->prec == 1 && format->precsize == 0 && format->padsize != 0)
+	if (tmp == 0 && format->prec == 1 && format->precsize == 0 && format->padsize != 0 && format->wild == 0)
 		ret = ft_strdup(" ");
 	else
 	{

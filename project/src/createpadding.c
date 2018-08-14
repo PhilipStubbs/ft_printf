@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 13:31:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/14 10:03:40 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/14 10:40:46 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ char	*createpadding(char **str, t_format *format)
 	if (format->padsize <= len)
 		return (*str);
 	c = ' ';
-	if (format->zeropad == 1 && format->minus == 0)
+	if ((format->zeropad == 1 && format->minus == 0) || (format->prec == 1 && format->wild != 0))
 		c = '0';
 	if (format->prec == 1 && format->c != 's' && format->c != 'c' && format->c != 'C' && format->wild == 0)
 		c = ' ';

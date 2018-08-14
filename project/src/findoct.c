@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 10:51:38 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/13 18:46:57 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/14 08:35:23 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,22 @@ int		findoct(t_printf *node, va_list args, t_format *format)
 	else
 	{
 		if (format->lenmod == 1)
-			lengthmodoct(format, tmp, 0);
+			tmpstr = lengthmodoct(format, tmp, 0);
 		else
 			tmpstr = ft_itoa_base(tmp, 8, 0);
+		
 		if (format->prec == 1)
 			tmpstr = precision(format, &tmpstr);
+		
 	}
 	if ( (tmp > 0 && format->hash == 1) && ((format->spacpad == 0 && format->zeropad == 0) || (tmp > format->precsize)))
-		{
-			tmpstr2 = ft_strjoin("0", tmpstr);
-			free(tmpstr);
-			tmpstr = ft_strdup(tmpstr2);
-			free(tmpstr2);
-		}
+	{
+		tmpstr2 = ft_strjoin("0", tmpstr);
+		free(tmpstr);
+		tmpstr = ft_strdup(tmpstr2);
+		free(tmpstr2);
+	}
+	
 	if (format->spacpad == 1 || format->zeropad == 1)
 		tmpstr = createpadding(&tmpstr, format);
 	node->output = dynamicstring(&(node)->output, tmpstr);

@@ -25,9 +25,9 @@ Legend: (.) Ok / (F) Fail / (S) Segfault / (B) Bus error / (T) Timeout / (A) Abo
 >>>> 03_conv_d.spec.c ------------ [Ok !] .......
 >>>> 04_conv_p.spec.c ------------ [Ok !] .....
 >>>> 05_percent_escape.spec.c ---- [FAIL] ....FFF. [FAIL] test_modulo_without_valid_specifier -> printf("%")
->>>> 06_mix_sdp_percent.spec.c --- [FAIL] F. [FAIL] test_simple_mix -> printf("s: %s, p: %p, d:%d", "a string", &test_simple_mix, 42)
+>>>> 06_mix_sdp_percent.spec.c --- [Ok !] ..
 >>>> 07_conv_S.spec.c ------------ [FAIL] FFFFF [FAIL] test_simple -> printf("%S", L"Á±≥")
->>>> 08_conv_D.spec.c ------------ [FAIL] .FFF [FAIL] test_long_max -> printf("%D", LONG_MAX)
+>>>> 08_conv_D.spec.c ------------ [Ok !] ....
 >>>> 09_conv_i.spec.c ------------ [Ok !] .....
 >>>> 10_conv_o.spec.c ------------ [Ok !] ....
 >>>> 11_conv_O.spec.c ------------ [Ok !] .....
@@ -38,38 +38,12 @@ Legend: (.) Ok / (F) Fail / (S) Segfault / (B) Bus error / (T) Timeout / (A) Abo
 >>>> 16_conv_c.spec.c ------------ [Ok !] ....
 >>>> 17_conv_C.spec.c ------------ [FAIL] ...FFFFF. [FAIL] test_chinese -> printf("%C", L'ÁM-^L´')
 >>>> 18_mix_all_previous.spec.c -- [FAIL] FF [FAIL] test_simple -> printf("%s %C %d %p %x %% %S", "bonjour ", L'Ë©≤', 42, &free, 42, L"ŸM-^Dÿ≠ŸM-^E ÿÆŸM-^Fÿ...
-ft_printf_test(79459,0x7fffa9796380) malloc: *** error for object 0x7ffeeefda350: pointer being freed was not allocated
-*** set a breakpoint in malloc_error_break to debug
-ft_printf_test(79459,0x7fffa9796380) malloc: *** error for object 0x7ffeeefda350: pointer being freed was not allocated
-*** set a breakpoint in malloc_error_break to debug
->>>> 40_length_modif_l.spec.c ---- [FAIL] ...........A..FFA.. [ABRT] test_lo_long_unsigned_max -> (null)
-ft_printf_test(79459,0x7fffa9796380) malloc: *** error for object 0x7ffeeefda350: pointer being freed was not allocated
-*** set a breakpoint in malloc_error_break to debug
-ft_printf_test(79459,0x7fffa9796380) malloc: *** error for object 0x7ffeeefda350: pointer being freed was not allocated
-*** set a breakpoint in malloc_error_break to debug
->>>> 41_length_modif_ll.spec.c --- [FAIL] .......A..A.. [ABRT] test_llo_unsign_long_long_max -> (null)
-ft_printf_test(79459,0x7fffa9796380) malloc: *** error for object 0x7ffeeefda350: pointer being freed was not allocated
-*** set a breakpoint in malloc_error_break to debug
-ft_printf_test(79459,0x7fffa9796380) malloc: *** error for object 0x7ffeeefda350: pointer being freed was not allocated
-*** set a breakpoint in malloc_error_break to debug
->>>> 42_length_modif_h.spec.c ---- [FAIL] .......A..A.F [ABRT] test_ho_max -> (null)
-ft_printf_test(79459,0x7fffa9796380) malloc: *** error for object 0x7ffeeefda350: pointer being freed was not allocated
-*** set a breakpoint in malloc_error_break to debug
-ft_printf_test(79459,0x7fffa9796380) malloc: *** error for object 0x7ffeeefda350: pointer being freed was not allocated
-*** set a breakpoint in malloc_error_break to debug
-ft_printf_test(79459,0x7fffa9796380) malloc: *** error for object 0x7ffeeefda350: pointer being freed was not allocated
-*** set a breakpoint in malloc_error_break to debug
->>>> 43_length_modif_hh.spec.c --- [FAIL] ...........A...A..AFFFF [ABRT] test_hho_max -> (null)
-ft_printf_test(79459,0x7fffa9796380) malloc: *** error for object 0x7ffeeefda350: pointer being freed was not allocated
-*** set a breakpoint in malloc_error_break to debug
-ft_printf_test(79459,0x7fffa9796380) malloc: *** error for object 0x7ffeeefda350: pointer being freed was not allocated
-*** set a breakpoint in malloc_error_break to debug
->>>> 43_length_modif_j.spec.c ---- [FAIL] .......A..A.. [ABRT] test_jo_unsign_long_long_max -> (null)
-ft_printf_test(79459,0x7fffa9796380) malloc: *** error for object 0x7ffeeefda350: pointer being freed was not allocated
-*** set a breakpoint in malloc_error_break to debug
-ft_printf_test(79459,0x7fffa9796380) malloc: *** error for object 0x7ffeeefda350: pointer being freed was not allocated
-*** set a breakpoint in malloc_error_break to debug
->>>> 44_length_modif_z.spec.c ---- [FAIL] .....A..A.. [ABRT] test_zo_unsign_long_long_max -> (null)
+>>>> 40_length_modif_l.spec.c ---- [FAIL] ..............FF... [FAIL] test_lc_wchar -> printf("%lc, %lc", L'ÊM-^ZM-^V', L'ÿ≠')
+>>>> 41_length_modif_ll.spec.c --- [Ok !] .............
+>>>> 42_length_modif_h.spec.c ---- [FAIL] ............F [FAIL] test_err_hd_up_max -> printf("%hD, %hD", 0, USHRT_MAX)
+>>>> 43_length_modif_hh.spec.c --- [FAIL] ..................FFFFF [FAIL] test_err_hho_up_max -> printf("%hhO, %hhO", 0, USHRT_MAX)
+>>>> 43_length_modif_j.spec.c ---- [Ok !] .............
+>>>> 44_length_modif_z.spec.c ---- [Ok !] ...........
 >>>> 45_length_modif_edge_cases.sp [Ok !] .
 >>>> 50_min_width.spec.c --------- [FAIL] .........FFF [FAIL] invalidConvSpec_withMinWith -> printf("{%10R}")
 >>>> 51_min_width_flag_minus.spec. [Ok !] ...
@@ -79,22 +53,20 @@ ft_printf_test(79459,0x7fffa9796380) malloc: *** error for object 0x7ffeeefda350
 >>>> 61_flag_plus.spec.c --------- [Ok !] .............
 >>>> 62_flag_space.spec.c -------- [FAIL] .F.F........FFF [FAIL] test_space_d_simple_minus -> printf("% d", -9999)
 >>>> 69_flag_mix.spec.c ---------- [FAIL] ..F...... [FAIL] mix_plus_zero -> printf("{%+03d}", 0)
->>>> 70_precision_for_diu.spec.c - [FAIL] .............................F [FAIL] test_precision_u_zero_value -> printf("%.u, %.0u", 0, 0)
+>>>> 70_precision_for_diu.spec.c - [Ok !] ..............................
 >>>> 71_precision_for_oOxX.spec.c  [Ok !] ...............................
 >>>> 72_precision_for_sS.spec.c -- [FAIL] .........FFFFF [FAIL] test_precision_S -> printf("%.4S", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B")
 >>>> 73_precision_for_cC.spec.c -- [Ok !] ......
->>>> 74_precision_for_p.spec.c --- [FAIL] F..... [FAIL] pNullPointer_zeroPrecision -> printf("%.0p, %.p", 0, 0)
+>>>> 74_precision_for_p.spec.c --- [Ok !] ......
 >>>> 75_precision_for_percent.spec [Ok !] .
->>>> 79_precision_mixed_with_flags [FAIL] ..F..FF.FF [FAIL] test_precision_p_zero -> printf("%.p, %.0p", 0, 0)
+>>>> 79_precision_mixed_with_flags [FAIL] .....FF.FF [FAIL] percent_precision_minwdith_and_flagZero -> printf("{%05.%}", 0)
 >>>> 90_incomptbl_values_sdpi.spec [Ok !] ....
 >>>> 91_incomptbl_values_uUSDcC.sp [Ok !] ......
-ft_printf_test(79459,0x7fffa9796380) malloc: *** error for object 0x7ffeeefda350: pointer being freed was not allocated
-*** set a breakpoint in malloc_error_break to debug
->>>> 92_incomptbl_values_oOxX.spec [FAIL] AF..... [ABRT] test_octal_neg -> (null)
->>>> bonus_01_wildcard.spec.c ---- [FAIL] FFFFFFFFFFFFF [FAIL] wildcard_for_min_width_positive -> printf("%*d", 5, 42)
->>>> bonus_02_wildcard_multi.spec. [FAIL] F [FAIL] wildcard_for_min_width_positive -> printf("%*.*d", 0, 3, 0)
->>>> bonus_03_wildcard_flag_mix.sp [FAIL] FFFF [FAIL] digit_wildcard_and_min_width_value1 -> printf("{%3*d}", 0, 0)
+>>>> 92_incomptbl_values_oOxX.spec [FAIL] .F..... [FAIL] test_octal_long_max -> printf("%o", LONG_MAX)
+>>>> bonus_01_wildcard.spec.c ---- [FAIL] SSSSS....F.S. [SEGV] wildcard_for_min_width_positive -> (null)
+>>>> bonus_02_wildcard_multi.spec. [FAIL] S [SEGV] wildcard_for_min_width_positive -> (null)
+>>>> bonus_03_wildcard_flag_mix.sp [FAIL] ...F [FAIL] digit_wildcard_negativePrecision -> printf("{%05.*d}", -15, 42)
 >>>> bonus_10_conv_fF.spec.c ----- [FAIL] FFFF [FAIL] simple_small_nbr -> printf("{%f}{%F}", 1.42, 1.42)
 [ ----------END OF UNIT TESTS---------- ]
 
->>>> Result: 22/48 test suites passed. 309/396 tests passed (dots).
+>>>> Result: 29/48 test suites passed. 338/396 tests passed (dots).

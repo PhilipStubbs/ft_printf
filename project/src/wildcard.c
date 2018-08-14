@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 18:10:05 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/14 10:37:23 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/14 11:30:17 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 int		findwild(char *str, int i)
 {
 	i++;
+	if (str[i] == '\0')
+		return (i);
 	while (str[i])
 	{
 		if (str[i] == '*')
@@ -38,6 +40,27 @@ int		istherespace(char *str)
 	return (0);
 }
 
+void	checkforcorrectminus(t_format *format, char *str, int *hold, int i)
+{
+	int nbr;
+	int	x;
+
+	nbr = 0;
+	x = i;
+	x = findwild(str, x);
+	if (str[x] == '\0')
+		return ;
+	while (nbr < format->wild)
+	{
+		if (hold[nbr] < 0 && str[x - 1] != '.')
+		{
+			format->minus = 1;
+			hold[nbr] *= -1;
+		}
+		nbr++;
+	}
+}
+
 void	wildcard(t_printf *node, t_format *format, va_list args)
 {
 	int	*hold;
@@ -50,15 +73,16 @@ void	wildcard(t_printf *node, t_format *format, va_list args)
 	while (nbr < format->wild)
 	{
 		i = va_arg(args, int);
-		if (i >= 0)
-			hold[nbr] = i;
+		hold[nbr] = i;
 		nbr++;
 	}
 	space = istherespace(node->raw);
 	nbr = 0;
 	i = format->start;
+	checkforcorrectminus(format, node->raw, hold, i);
 	while (nbr < format->wild)
 	{
+		
 		if (node->raw[i - 1] == '.')
 		{
 			format->precsize = hold[nbr];
@@ -81,5 +105,5 @@ void	wildcard(t_printf *node, t_format *format, va_list args)
 	// printf("start[%d] end[%d] spacpad[%d] zeropad[%d] padsize[%d] hash[%d] minus[%d] plus[%d] prec[%d] precpad[%d]\n",format->start,format->end, format->spacpad, format->zeropad,format->padsize ,format->hash,format->minus ,format->plus,format->prec, format->precsize);
 	free(hold);
 }
-
-// ft_printf("M|%*d\n", 5, 42);
+// ft_printf("M|{%05.*d}\n", -15, 42);
+// printf("T|{%*d}]n", -5, 42);

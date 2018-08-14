@@ -18,21 +18,23 @@ int main()
 	// ft_printf("% d", -9999);
 	// printf("%");
 
-	// printf("{%05.*d}", -15, 42);
-		// test->debug = 1;
-	// printf("T|{%3*d}\n", 0, 0);
+	// printf("T1|{%05.*d}\n", -15, 42);
+	ft_printf("M1|{%05.*d}\n", -15, 42);
+
+	// ft_printf("%*.*d", 0, 3, 0);
+	// printf("{%.*s}", -5, "42");
 	
+
+	// ft_printf("M3|{%*d}\n", -5, 42);
+	// printf("T3|{%*d}\n", -5, 42);
 
 	// printf("T|%*d\n", 5, 42);
 	// ft_printf("M|%*d\n", 5, 42);
 	// ft_printf("M|{%*3d}\n", 0, 0);
 	// printf("T|{%*3d}\n", 0, 0);
 
-	// ft_printf("{%*3d}\n", 5, 0);
-	// ft_printf("%*.*d", 0, 3, 0);
-	ft_printf("%*.*d", 0, 3, 0);
-	// ft_printf("M|{%05.*d}\n", -15, 42);
-	// printf("{T|%05.*d}\n", -15, 42);
+
+	
 
 
 	// ft_printf("%ld", -2147483648);

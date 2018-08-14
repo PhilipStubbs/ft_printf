@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 10:51:38 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/14 08:35:23 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/14 12:40:17 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*lengthmodoct(t_format *format, long long num, int cap)
 		ret = ft_itoa_base((unsigned char)num, 8, cap);
 	else if (format->h == 1)
 		ret = ft_itoa_base((unsigned short int)num, 8, cap);
-	else if (format->l == 1)
+	else if (format->l == 1 || format->c == 'O')
 		ret = ft_itoa_base((unsigned long int)num, 8, cap);
 	else if (format->ll == 1)
 		ret = ft_itoa_base((unsigned long long int)num, 8, cap);
@@ -48,10 +48,10 @@ int		findoct(t_printf *node, va_list args, t_format *format)
 		tmpstr = ft_strdup(" ");
 	else
 	{
-		if (format->lenmod == 1)
+		if (format->lenmod == 1 || format->c == 'O')
 			tmpstr = lengthmodoct(format, tmp, 0);
 		else
-			tmpstr = ft_itoa_base(tmp, 8, 0);
+			tmpstr = ft_itoa_base((unsigned int)tmp, 8, 0);
 		
 		if (format->prec == 1)
 			tmpstr = precision(format, &tmpstr);

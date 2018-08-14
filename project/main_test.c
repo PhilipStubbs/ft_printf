@@ -27,8 +27,9 @@ int main()
 	// ft_printf("M|{%.*s}\n", -5, "42");
 	// printf("T|{%.*s}\n", -5, "42");
 	
-	ft_printf("M3|{%.*d}\n", -5, 42);
-	printf("T3|{%.*d}\n", -5, 42);
+	ft_printf("%O\n", LONG_MIN);
+	printf("%O\n", LONG_MIN);
+	// printf("T3|{%.*d}\n", -5, 42);
 
 	// printf("T|%*d\n", 5, 42);
 	// ft_printf("M|%*d\n", 5, 42);

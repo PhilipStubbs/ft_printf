@@ -12,7 +12,9 @@ int main()
 	// printf("%s%d%p|%S%D%i%o%O%u%U%x%X%c%C\n","bonjour", 42, &c, L"a", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'B');
 	// ft_printf("%.p, %.0p", 0, 0);
 	// ft_printf("s: %s, p: %p, d:%d", "a string", &c, 42);
-	ft_printf("{%*.*s}", 5, 5, "42");
+	// ft_printf("{%*.*s}", 5, 5, "42");
+	ft_printf("M|%p\n", 0);
+	printf("t|%p\n", 0);
 	// ft_printf("%ld", -2147483648);
 	// ft_printf("%U\n", 4294967296);
 	// ft_printf("%u\n", 4294967296);

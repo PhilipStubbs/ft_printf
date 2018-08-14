@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/10 08:03:21 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/13 18:47:38 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/14 08:11:48 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int		findundigit(t_printf *node, va_list args, t_format *format)
 	if (format->wild > 0)
 		wildcard(node, format, args);
 	tmp = va_arg(args, unsigned long long);
+	if (tmp == 0 && format->prec == 1 && format->precsize == 0 && format->padsize == 0)
+		return (0);
 	if (format->lenmod == 1)
 		ret = lengthmodunsigned(format, (unsigned long long)tmp);
 	else

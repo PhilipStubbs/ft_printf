@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:29:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/13 18:22:37 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/14 08:08:15 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,11 +107,11 @@ int		findspecifier(char *str, int i, t_format *format)
 			break ;
 		}
 	}
-	if (isvaildflag(str, i) == 0)
-	{
-	count--;
-	i--;
-	}
+	// if (isvaildflag(str, i) == 0 || str[i] == '%')
+	// {
+	// count--;
+	// i--;
+	// }
 	while (str[i] == ' ')
 	{
 		count--;

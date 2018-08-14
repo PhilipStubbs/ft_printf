@@ -15,7 +15,8 @@ int main()
 	// ft_printf("{%*.*s}", 5, 5, "42");
 	// ft_printf("M|%p\n", 0);
 	// printf("t|%p\n", 0);
-	ft_printf("%lo, %lo", 0);
+	ft_printf("% d", -9999);
+
 	// ft_printf("%ld", -2147483648);
 	// ft_printf("%U\n", 4294967296);
 	// ft_printf("%u\n", 4294967296);

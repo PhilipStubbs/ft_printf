@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:48:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/14 08:37:34 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/14 09:03:33 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,15 +102,17 @@ int		finddigit(t_printf *node, va_list args, t_format *format)
 			ret = precision(format, &ret);
 		if (format->plus == 1 && format->prec == 1 && ret[0] != '-' && format->zeropad == 0)
 			ret = addplus(format, &ret);
-		if (format->spacpad == 1 && format->zeropad == 0 && format->padsize == 0 && tmp > 0 && format->plus == 0 && format->prec == 0)
+		
+		if (format->spacpad == 1 && format->zeropad == 0 && format->padsize == 0 && (int)tmp >= 0 && format->plus == 0 && format->prec == 0)
 			format->padsize = ft_strlen(ret) + 1;
 	}
 	if (format->spacpad == 1 || format->zeropad == 1)
 		ret = createpadding(&ret, format);
-	if (format->plus == 1 && format->zeropad == 1 && tmp > 0 && ret[0] != '+')
+	if (format->plus == 1 && format->zeropad == 1 && tmp >= 0 && ret[0] != '+')
 	{
 		ret = addplus(format, &ret);
 	}
+	
 	node->output = dynamicstring(&(node)->output, ret);
 	len = ft_strlen(ret);
 	free(ret);

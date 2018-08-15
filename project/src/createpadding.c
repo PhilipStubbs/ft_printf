@@ -6,37 +6,11 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 13:31:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/15 17:43:26 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/15 18:42:27 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-char	*specialpaddingfordigit(t_format *format, int len, char c, char **str)
-{
-	char	*amstr;
-	char	*tmp;
-
-	if ((*str[0] == '-' && format->minus == 0 && format->prec == 0) ||
-	(*str[0] == '-' && format->spacpad == 0 && format->zeropad == 1 &&
-	format->prec == 1))
-	{
-		tmp = ft_strdup("-");
-		*str[0] = '0';
-	}
-	else if ((*str[0] != '-' && format->spacpad == 1 && format->zeropad == 1) ||
-	format->prec == 1)
-		tmp = ft_strdup(" ");
-	else
-		tmp = ft_strdup("0");
-	amstr = ft_strnew(format->padsize - len - 1);
-	ft_memset(amstr, c, format->padsize - len - 1);
-	tmp = dynamicstring(&tmp, amstr);
-	free(amstr);
-	amstr = ft_strdup(tmp);
-	free(tmp);
-	return (amstr);
-}
 
 char	*stradjust(char **str)
 {
@@ -78,6 +52,21 @@ char	*createpaddingbody(t_format *format, int len, char c)
 	return (amstr);
 }
 
+char	*createpaddingbody_two(t_format *format, char **str, char **amstr)
+{
+	char	*tmp;
+
+	if (format->minus == 1)
+		tmp = ft_strjoin(*str, *amstr);
+	else
+		tmp = ft_strjoin(*amstr, *str);
+	free(*str);
+	*str = ft_strdup(tmp);
+	free(*amstr);
+	free(tmp);
+	return (*str);
+}
+
 char	*createpadding(char **str, t_format *format)
 {
 	int		len;
@@ -90,8 +79,10 @@ char	*createpadding(char **str, t_format *format)
 		return (*str);
 	c = createpaddingchar(format);
 	if (creatspecialpaddingswitch(format) == 1)
-	amstr = specialpaddingfordigit(format, len, c, str);
-	else if ((format->c == 'd' || format->c == 'D' || format->c == 'i') && format->minus == 1 && format->spacpad == 1 && format->zeropad == 1 && *str[0] != '-' )
+		amstr = specialpaddingfordigit(format, len, c, str);
+	else if ((format->c == 'd' || format->c == 'D' || format->c == 'i') &&
+	format->minus == 1 && format->spacpad == 1 && format->zeropad == 1 &&
+	*str[0] != '-')
 	{
 		tmp = stradjust(str);
 		len = ft_strlen(tmp);
@@ -102,13 +93,5 @@ char	*createpadding(char **str, t_format *format)
 	}
 	else
 		amstr = createpaddingbody(format, len, c);
-	if (format->minus == 1)
-		tmp = ft_strjoin(*str, amstr);
-	else
-		tmp = ft_strjoin(amstr, *str);
-	free(*str);
-	*str = ft_strdup(tmp);
-	free(amstr);
-	free(tmp);
-	return (*str);
+	return (createpaddingbody_two(format, str, &amstr));
 }

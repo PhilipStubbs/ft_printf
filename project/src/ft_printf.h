@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/15 18:45:00 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/15 19:00:13 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ char			*wcharfinder(t_format *format, wchar_t chr);
 int				creatspecialpaddingswitch(t_format *format);
 char			*specialpaddingfordigit(t_format *f, int l, char c, char **s);
 char			*hexhash(char **tmpstr, char cap, t_format *format);
+int				hexhashswitch(t_format *format);
 
 char			*ft_itoa_base(long long value, int base, int cap);
 char			*ft_ulltoa(unsigned long long n);

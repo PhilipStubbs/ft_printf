@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 12:28:14 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/15 17:34:57 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/15 19:00:03 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,16 @@ int		creatspecialpaddingswitch(t_format *format)
 	(format->zeropad == 1 && format->spacpad == 0)) && (format->c == 'd' ||
 	format->c == 'D' || format->c == 'i')) && format->minus == 0 &&
 	format->wild == 0)
+		return (1);
+	return (0);
+}
+
+int		hexhashswitch(t_format *format)
+{
+	if ((format->hash == 1 && format->zeropad == 0 && format->spacpad == 1) ||
+	(format->prec == 1 && format->hash == 1 && format->zeropad == 0 &&
+	format->spacpad == 0) || (format->prec == 0 && format->hash == 1 &&
+	format->zeropad == 0 && format->spacpad == 0))
 		return (1);
 	return (0);
 }

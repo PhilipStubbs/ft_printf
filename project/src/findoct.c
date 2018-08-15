@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 10:51:38 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/14 12:47:25 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/15 11:15:05 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,21 @@ char	*lengthmodoct(t_format *format, long long num, int cap)
 	return (ret);
 }
 
+void	hashflagoct(char **tmpstr)
+{
+	char	*tmpstr2;
+
+	tmpstr2 = ft_strjoin("0", *tmpstr);
+	free(*tmpstr);
+	*tmpstr = ft_strdup(tmpstr2);
+	free(tmpstr2);
+}
+
 int		findoct(t_printf *node, va_list args, t_format *format)
 {
 	long long	tmp;
 	char	*tmpstr;
-	char	*tmpstr2;
+	// char	*tmpstr2;
 
 	if (format->wild > 0)
 		wildcard(node, format, args);
@@ -52,18 +62,21 @@ int		findoct(t_printf *node, va_list args, t_format *format)
 			tmpstr = lengthmodoct(format, tmp, 0);
 		else
 			tmpstr = ft_itoa_base((unsigned int)tmp, 8, 0);
-		
+		if ( (tmp > 0 && format->hash == 1) && ((format->spacpad == 0 && format->zeropad == 0) || (tmp > format->precsize)))
+			hashflagoct(&tmpstr);
 		if (format->prec == 1)
 			tmpstr = precision(format, &tmpstr);
 		
 	}
-	if ( (tmp > 0 && format->hash == 1) && ((format->spacpad == 0 && format->zeropad == 0) || (tmp > format->precsize)))
-	{
-		tmpstr2 = ft_strjoin("0", tmpstr);
-		free(tmpstr);
-		tmpstr = ft_strdup(tmpstr2);
-		free(tmpstr2);
-	}
+	// if ( (tmp > 0 && format->hash == 1) && ((format->spacpad == 0 && format->zeropad == 0) || (tmp > format->precsize)))
+	// if ( (tmp > 0 && format->hash == 1) && ((format->spacpad == 0 && format->zeropad == 0) && format->prec == 0))
+	// {
+	// 	hashflagoct(&tmpstr);
+		// tmpstr2 = ft_strjoin("0", tmpstr);
+		// free(tmpstr);
+		// tmpstr = ft_strdup(tmpstr2);
+		// free(tmpstr2);
+	// }
 	
 	if (format->spacpad == 1 || format->zeropad == 1)
 		tmpstr = createpadding(&tmpstr, format);

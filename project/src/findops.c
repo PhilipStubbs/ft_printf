@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:48:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/15 08:22:24 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/15 14:11:02 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,9 +169,23 @@ int		findpointer(t_printf *node, va_list args, t_format *format)
 		tmpstr = ft_itoa_base(tmp, 16, 0);
 	if (format->prec == 1)
 		tmpstr = precision(format, &tmpstr);
-	ret = ft_strjoin("0x", tmpstr);
+	if (format->zeropad == 0)
+		ret = ft_strjoin("0x", tmpstr);
 	if (format->spacpad == 1 || format->zeropad == 1)
-		ret = createpadding(&ret, format);
+	{
+		if (format->zeropad == 1)
+		{
+			format->padsize -= 2;
+			ret = ft_strdup(tmpstr);
+			ret = createpadding(&ret, format);
+			free(tmpstr);
+			tmpstr = ft_strdup(ret);
+			free(ret);
+			ret = ft_strjoin("0x", tmpstr);
+		}
+		else
+			ret = createpadding(&ret, format);
+	}
 	node->output = dynamicstring(&(node)->output, ret);
 	tmp = ft_strlen(ret);
 	free(tmpstr);

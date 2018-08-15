@@ -11,7 +11,8 @@ int main()
 	wchar_t *ws = L"Α α";
 	// c 
 	// printf("hello %C", 0);
-	ft_printf("{%.*s}", 0, "42");
+	// ft_printf("{%.*s}", 0, "42");
+	// ft_printf("{% S}", L"");
 	// ft_printf("%C", L'ي');;
 	// ft_printf("%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S NICE! %C YES\n",
 	// L"Α α", L"Β β", L"Γ γ", L"Δ δ", L"Ε ε", L"Ζ ζ", L"Η η", L"Θ θ", L"Ι ι", L"Κ κ", L"Λ λ", L"Μ μ",

@@ -15,6 +15,9 @@ int main()
 	// ft_printf("m|[%#.3o]\n", 2);
 	printf("T|{%05.S}", L"42 c est cool");
 	ft_printf("M|{%05.S}", L"42 c est cool");
+
+	printf("\nt|%4.S\n", L"Α α");
+	ft_printf("\nm|%4.S\n", L"Α α");
 	return (1);
 }
 

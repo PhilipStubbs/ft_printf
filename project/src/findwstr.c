@@ -6,11 +6,25 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 16:47:12 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/15 09:32:54 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/15 11:34:31 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int		istherezero(char *str)
+{
+	int		i;
+	
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '0')
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
 int		findwstr(t_printf *node, va_list args, t_format *format)
 {
@@ -62,6 +76,9 @@ int		findwstr(t_printf *node, va_list args, t_format *format)
 	{
 		ret = precision(format, &ret);
 	}
+
+	if (istherezero(node->raw) == 0)
+		format->prec = 0;
 	if ((format->spacpad == 1 || format->zeropad == 1))
 		ret = createpadding(&ret, format);
 		// printf("\n HERE start[%d] end[%d] spacpad[%d] zeropad[%d] padsize[%d] hash[%d] minus[%d] plus[%d] prec[%d] precpad[%d]\n",format->start,format->end, format->spacpad, format->zeropad,format->padsize ,format->hash,format->minus ,format->plus,format->prec, format->precsize);

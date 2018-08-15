@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 09:27:25 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/15 16:48:07 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/15 16:51:55 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int		checkcolour(char *s, int i, int *colourflag)
 		ret = returnputstr(CYN);
 	else if (ft_strncmp(s + i, "{WHT}", 5) == 0)
 		ret = returnputstr(WHT);
+	else if (ft_strncmp(s + i, "{NRM}", 5) == 0)
+		ret = returnputstr(NRM);
 	if (ret == 5)
 		*colourflag = 1;
 	return (ret);

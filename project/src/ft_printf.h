@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/15 15:01:54 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/15 16:48:49 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdarg.h>
 # include <inttypes.h>
 
-# define ERROR ft_putendl_fd("Error", 2);
 # define NRM  "\x1B[0m"
 # define RED  "\x1B[31m"
 # define GRN  "\x1B[32m"
@@ -26,8 +25,6 @@
 # define MAG  "\x1B[35m"
 # define CYN  "\x1B[36m"
 # define WHT  "\x1B[37m"
-
-#include <stdio.h>
 
 typedef	struct	s_format
 {

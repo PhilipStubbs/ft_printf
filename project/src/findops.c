@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:48:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/14 12:50:11 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/15 08:22:24 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ int		findstring(t_printf *node, va_list args, t_format *format)
 	char	*tmp2;
 	int		len;
 
+	if (format->l == 1)
+	{
+		return(findwstr(node, args, format));
+	}
 	if (format->wild > 0)
 		wildcard(node, format, args);
 	tmp = va_arg(args, char*);

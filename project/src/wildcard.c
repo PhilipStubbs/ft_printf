@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 18:10:05 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/14 12:12:05 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/15 08:23:06 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ void	wildcard(t_printf *node, t_format *format, va_list args)
 			format->precsize = hold[nbr];
 			nbr++;
 		}
+		if (nbr == format->wild)
+			break ;
 		if (ft_isdigit(node->raw[i - 1]) == 1 || node->raw[i - 1] == ' ' || ft_isdigit(node->raw[i + 1]) == 1 || ft_isalpha(node->raw[i + 1]) == 1)
 		{
 			if (space == 0 && hold[nbr] == 0)

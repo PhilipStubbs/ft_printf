@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 16:47:12 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/14 18:59:38 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/15 08:03:57 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,23 +25,26 @@ int		findwstr(t_printf *node, va_list args, t_format *format)
 		wildcard(node, format, args);
 	tmp = va_arg(args, wchar_t *);
 	tmpstr = wcharfinder(tmp[i]);
-	if (tmpstr == NULL)
+	if (tmpstr == NULL || tmp == 0)
 	{
 		free(tmpstr);
-		return (0);
+		tmpstr = ft_strdup("\\0");
+		node->output = dynamicstring(&node->output, tmpstr);
+		node->lenmod++;
+		free(tmpstr);
+		return (2);
 	}
 	else
 		len = ft_strlen((char*)tmp);
-	free(tmpstr);
 	ret = NULL;
 	while (i <= len && tmp != NULL)
 	{
+		free(tmpstr);
 		tmpstr = wcharfinder(tmp[i]);
 		if (ret == NULL)
 			ret = ft_strdup(tmpstr);
 		else
 			ret = dynamicstring(&ret, tmpstr);
-		free(tmpstr);
 		i++;
 	}
 	if (format->prec == 1)
@@ -51,5 +54,6 @@ int		findwstr(t_printf *node, va_list args, t_format *format)
 	len = ft_strlen(ret);
 	node->output = dynamicstring(&node->output, ret);
 	free(ret);
+	free(tmpstr);
 	return (len);
 }

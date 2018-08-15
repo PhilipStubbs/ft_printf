@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 16:47:12 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/14 18:59:55 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/15 08:03:59 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,14 @@ int		findwchar(t_printf *node, va_list args, t_format *format)
 		wildcard(node, format, args);
 	tmp = va_arg(args, wchar_t );
 	tmpstr = wcharfinder(tmp);
-	if (tmpstr == NULL)
+	if (tmpstr == NULL || tmp == 0)
 	{
 		free(tmpstr);
-		return (0);
+		tmpstr = ft_strdup("\\0");
+		node->output = dynamicstring(&node->output, tmpstr);
+		free(tmpstr);
+		node->lenmod++;
+		return (2);
 	}
 	free(tmpstr);
 

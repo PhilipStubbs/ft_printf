@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/15 16:48:49 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/15 17:33:42 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int				findundigit(t_printf *node, va_list args, t_format *format);
 int				justpercent(t_printf *node, t_format *format);
 void			wildcard(t_printf *node, t_format *format, va_list args);
 char			*wcharfinder(t_format *format, wchar_t chr);
+int				creatspecialpaddingswitch(t_format *format);
 
 char			*ft_itoa_base(long long value, int base, int cap);
 char			*ft_ulltoa(unsigned long long n);

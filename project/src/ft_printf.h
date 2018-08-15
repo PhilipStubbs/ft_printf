@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/14 18:57:26 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/15 12:04:10 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef	struct	s_format
 	int			j;
 	int			z;
 	int			wild;
+	int			wchar;
 }				t_format;
 
 typedef	struct	s_printf
@@ -91,7 +92,7 @@ char			*lengthmoddig(t_format *format, long long num);
 int				findundigit(t_printf *node, va_list args, t_format *format);
 int				justpercent(t_printf *node, t_format *format);
 void			wildcard(t_printf *node, t_format *format, va_list args);
-char			*wcharfinder(wchar_t chr);
+char			*wcharfinder(t_format *format, wchar_t chr);
 
 char			*ft_itoa_base(long long value, int base, int cap);
 char			*ft_ulltoa(unsigned long long n);

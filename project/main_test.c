@@ -13,11 +13,9 @@ int main()
 	// printf("hello %C", 0);
 	// printf("t|[%#.3o]\n", 2);
 	// ft_printf("m|[%#.3o]\n", 2);
-	printf("T|{%05.S}", L"42 c est cool");
-	ft_printf("M|{%05.S}", L"42 c est cool");
-
-	printf("\nt|%4.S\n", L"Α α");
-	ft_printf("\nm|%4.S\n", L"Α α");
+	ft_printf("m|%15.4S]\n", L"Α α");
+	ft_putstr("t|            ŒM-^Q ]\n");
+	// ft_printf("m|%S", L"Α α");
 	return (1);
 }
 

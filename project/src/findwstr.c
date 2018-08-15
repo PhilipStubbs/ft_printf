@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 16:47:12 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/15 11:34:31 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/15 12:23:33 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ int		findwstr(t_printf *node, va_list args, t_format *format)
 		free(tmpstr);
 		return (6);
 	}
-	if (ft_strcmp((char*)tmp , "") == 0)
+	if (ft_strcmp((char*)tmp, "") == 0)
 		return (0);
-	tmpstr = wcharfinder(tmp[i]);
+	tmpstr = wcharfinder(format, tmp[i]);
 
 	if (tmp == 0)
 	{
@@ -65,24 +65,25 @@ int		findwstr(t_printf *node, va_list args, t_format *format)
 	while (tmp[i] && i <= len && tmp != NULL)
 	{
 		free(tmpstr);
-		tmpstr = wcharfinder(tmp[i]);
+		tmpstr = wcharfinder(format ,tmp[i]);
 		if (ret == NULL)
 			ret = ft_strdup(tmpstr);
 		else
 			ret = dynamicstring(&ret, tmpstr);
+		if (format->prec == 1 && format->wchar > format->precsize)
+			break;
 		i++;
 	}
 	if (format->prec == 1)
 	{
 		ret = precision(format, &ret);
 	}
-
 	if (istherezero(node->raw) == 0)
 		format->prec = 0;
 	if ((format->spacpad == 1 || format->zeropad == 1))
 		ret = createpadding(&ret, format);
 		// printf("\n HERE start[%d] end[%d] spacpad[%d] zeropad[%d] padsize[%d] hash[%d] minus[%d] plus[%d] prec[%d] precpad[%d]\n",format->start,format->end, format->spacpad, format->zeropad,format->padsize ,format->hash,format->minus ,format->plus,format->prec, format->precsize);
-
+	
 	len = ft_strlen(ret);
 	node->output = dynamicstring(&node->output, ret);
 	free(ret);

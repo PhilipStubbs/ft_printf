@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 09:53:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/13 18:09:40 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/15 12:05:05 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ t_format	*cleanformat(void)
 	ret->j = 0;
 	ret->z = 0;
 	ret->wild = 0;
+	ret->wchar = 0;
 	return (ret);
 }

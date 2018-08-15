@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 16:47:12 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/15 09:12:17 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/15 12:06:38 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		findwchar(t_printf *node, va_list args, t_format *format)
 	if (format->wild > 0)
 		wildcard(node, format, args);
 	tmp = va_arg(args, wchar_t );
-	tmpstr = wcharfinder(tmp);
+	tmpstr = wcharfinder(format, tmp);
 	if (tmpstr == NULL || tmp == 0)
 	{
 		free(tmpstr);
@@ -34,7 +34,7 @@ int		findwchar(t_printf *node, va_list args, t_format *format)
 	}
 	free(tmpstr);
 
-	ret = wcharfinder(tmp);
+	ret = wcharfinder(format, tmp);
 	if ((format->spacpad == 1 || format->zeropad == 1))
 		tmpstr = createpadding(&tmpstr, format);
 	len = ft_strlen(ret);

@@ -6,26 +6,27 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 18:53:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/14 18:53:28 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/15 12:04:54 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+
 void	wcharrip(wchar_t chr, char *ret ,int wchar_len)
 {
-	if (wchar_len <= 2)
+	if (wchar_len == 2)
 	{
 		ret[0] = (((chr & 0x07c0) >> 6) + 0xc0);
 		ret[1] = (((chr & 0x003F)) + 0x80);
 	}
-	else if (wchar_len <= 3)
+	else if (wchar_len == 3)
 	{
 		ret[0] = (((chr & 0xF000) >> 12) + 0xc0);
 		ret[1] = (((chr & 0x0Fc0) >> 6) + 0xc0);
 		ret[2] = (((chr & 0x003F)) + 0x80);
 	}
-	else if (wchar_len <= 4)
+	else if (wchar_len == 4)
 	{
 		ret[0] = (((chr & 0x1c0000) >> 18) + 0xF0);
 		ret[1] = (((chr & 0x03F000) >> 12) + 0x80);
@@ -34,7 +35,7 @@ void	wcharrip(wchar_t chr, char *ret ,int wchar_len)
 	}
 }
 
-char	*wcharfinder(wchar_t chr)
+char	*wcharfinder(t_format *format, wchar_t chr)
 {
 	int		wchar_len;
 	char	*ret;
@@ -49,6 +50,7 @@ char	*wcharfinder(wchar_t chr)
 		wchar_len = 3;
 	else if (chr <= 0x10FFFF)
 		wchar_len = 4;
+	format->wchar += wchar_len;
 	if (wchar_len == 1)
 	{
 		ret = ft_strnew(wchar_len);

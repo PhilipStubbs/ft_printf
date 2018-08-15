@@ -16,8 +16,7 @@ int main()
 	// printf("t|[%#.3o]\n", 2);
 	// ft_printf("m|[%#.3o]\n", 2);
 	setlocale(LC_ALL, "");
-	 ft_printf("%lc, %lc\n", L'暖', L'ح');
-	printf("%lc, %lc\n", L'暖', L'ح');
+	 printf("%");
 
 	// printf("{%3*p}", 10, 0);
 	// ft_printf("jk{%3*p}", 10, 0);

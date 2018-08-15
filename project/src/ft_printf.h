@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/15 12:04:10 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/15 15:01:54 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char			*dynamicstring(char **ori, char *add);
 char			*dynamicchar(char **ori, char add);
 t_printf		*createstruc(void);
 t_format		*cleanformat(void);
-void			destroy(t_printf **node, int error);
+void			destroy(t_printf **node);
 int				strprocessing(t_printf *node, char *str, va_list args);
 
 int				findstring(t_printf *node, va_list args, t_format *format);

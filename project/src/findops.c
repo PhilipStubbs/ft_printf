@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:48:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/15 17:16:48 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/15 17:21:34 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,17 @@ int		findstring(t_printf *node, va_list args, t_format *format)
 	return (len);
 }
 
+char	*findcharbody(t_format *format, t_printf *node)
+{
+	char	*ret;
+
+	ret = ft_strdup("{\\0}");
+	node->lenmod += 3;
+	if (format->padsize > 0)
+		format->padsize += 3;
+	return (ret);
+}
+
 int		findchar(t_printf *node, va_list args, t_format *format)
 {
 	char	tmp;
@@ -61,17 +72,12 @@ int		findchar(t_printf *node, va_list args, t_format *format)
 
 	i = 0;
 	if (format->l == 1)
-		return(findwchar(node, args, format));
+		return (findwchar(node, args, format));
 	if (format->wild > 0)
 		wildcard(node, format, args);
 	tmp = va_arg(args, int);
-	if (tmp == 0 )
-	{
-		tmpstr = ft_strdup("{\\0}");
-		node->lenmod += 3;
-		if (format->padsize > 0)
-			format->padsize += 3;
-	}
+	if (tmp == 0)
+		tmpstr = findcharbody(format, node);
 	else
 	{
 		tmpstr = ft_strnew(1);

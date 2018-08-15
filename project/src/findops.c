@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:48:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/15 14:11:02 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/15 14:56:14 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,8 @@ int		findchar(t_printf *node, va_list args, t_format *format)
 	int		i;
 
 	i = 0;
+	if (format->l == 1)
+		return(findwchar(node, args, format));
 	if (format->wild > 0)
 		wildcard(node, format, args);
 	tmp = va_arg(args, int);

@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 18:53:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/15 13:29:15 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/15 14:47:41 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,22 @@ void	wcharrip(wchar_t chr, char *ret ,int wchar_len)
 	{
 		// ret[0] = (0xC0 | (chr >> 6));
 		// ret[1] = (0x80 | (chr & 0x3F));
-		ret[0] = (((chr & 0x07c0) >> 6) + 0xc0);
-		ret[1] = (((chr & 0x003F)) + 0x80);
+		ret[0] = ((chr >> 6) | 0xC0);
+		ret[1] = ((chr & 0x3F) | 0x80);
+		// ret[0] = (((chr & 0x07c0) >> 6) + 0xc0);
+		// ret[1] = (((chr & 0x003F)) + 0x80);
 	}
 	else if (wchar_len == 3)
 	{
 		// ret[0] = (0xE0 | (chr >> 12));
 		// ret[1] = (0x80 | ((chr >> 6) & 0x3F));
 		// ret[3] = (0x80 | (chr & 0x3F));
-		ret[0] = (((chr & 0xF000) >> 12) + 0xc0);
-		ret[1] = (((chr & 0x0Fc0) >> 6) + 0xc0);
-		ret[2] = (((chr & 0x003F)) + 0x80);
+		ret[0] = (((chr >> 12)) | 0xE0);
+		ret[1] = (((chr >> 6) & 0x3F) | 0x80);
+		ret[2] = ((chr & 0x3F) | 0x80);
+		// ret[0] = (((chr & 0xF000) >> 12) + 0xc0);
+		// ret[1] = (((chr & 0x0Fc0) >> 6) + 0xc0);
+		// ret[2] = (((chr & 0x003F)) + 0x80);
 	}
 	else if (wchar_len == 4)
 	{
@@ -37,12 +42,17 @@ void	wcharrip(wchar_t chr, char *ret ,int wchar_len)
 		// ret[1] = (0x80 | ((chr >> 12) & 0x3F));
 		// ret[2] = (0x80 | ((chr >> 6) & 0x3F));
 		// ret[3] = (0x80 | (chr & 0x3F));
-		ret[0] = (((chr & 0x1c0000) >> 18) + 0xF0);
-		ret[1] = (((chr & 0x03F000) >> 12) + 0x80);
-		ret[2] = (((chr & 0x0Fc0) >> 6) + 0x80);
-		ret[3] = ((chr & 0x003F) + 0x80);
+		ret[0] = (((chr >> 18)) | 0xF0);
+		ret[1] = (((chr >> 12) & 0x3F) | 0x80);
+		ret[2] = (((chr >> 6) & 0x3F) | 0x80);
+		ret[3] = ((chr & 0x3F) | 0x80);
+		// ret[0] = (((chr & 0x1c0000) >> 18) + 0xF0);
+		// ret[1] = (((chr & 0x03F000) >> 12) + 0x80);
+		// ret[2] = (((chr & 0x0Fc0) >> 6) + 0x80);
+		// ret[3] = ((chr & 0x003F) + 0x80);
 	}
 }
+
 
 char	*wcharfinder(t_format *format, wchar_t chr)
 {

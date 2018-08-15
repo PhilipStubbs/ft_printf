@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 13:31:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/14 10:40:46 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/15 11:00:32 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ char	*createpadding(char **str, t_format *format)
 		c = '0';
 	if (format->prec == 1 && format->c != 's' && format->c != 'c' && format->c != 'C' && format->wild == 0)
 		c = ' ';
+	if (format->badflag == 1 && format->prec == 1)
+		c = '0';
 	if ((((format->spacpad == 1 && format->zeropad == 1) || (format->zeropad == 1 && format->spacpad == 0)) && (format->c == 'd' || format->c == 'D' || format->c == 'i')) && format->minus == 0 && format->wild == 0)
 		amstr = specialpaddingfordigit(format, len, c, str);
 	else if ((format->c == 'd' || format->c == 'D' || format->c == 'i') && format->minus == 1 && format->spacpad == 1 && format->zeropad == 1 && *str[0] != '-' )

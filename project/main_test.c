@@ -11,6 +11,10 @@ int main()
 	wchar_t *ws = L"Α α";
 	// c 
 	// printf("hello %C", 0);
+	printf("t|{%05.%}]\n", 0);
+	ft_printf("m|{%05.%}\n", 0);
+	// printf("t|%5%\n");
+	// ft_printf("m|%5%\n");
 	// ft_printf("{%.*s}", 0, "42");
 	// ft_printf("{% S}", L"");
 	// ft_printf("%C", L'ي');;

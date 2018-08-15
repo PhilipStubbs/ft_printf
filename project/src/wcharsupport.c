@@ -6,14 +6,13 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 18:53:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/15 14:49:57 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/15 15:45:10 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
-void	wcharrip(wchar_t chr, char *ret ,int wchar_len)
+void	wcharrip(wchar_t chr, char *ret, int wchar_len)
 {
 	if (wchar_len == 2)
 	{
@@ -34,7 +33,6 @@ void	wcharrip(wchar_t chr, char *ret ,int wchar_len)
 		ret[3] = ((chr & 0x3F) | 0x80);
 	}
 }
-
 
 char	*wcharfinder(t_format *format, wchar_t chr)
 {

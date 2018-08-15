@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:48:41 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/15 14:56:14 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/15 15:53:43 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,10 +138,10 @@ int		findchar(t_printf *node, va_list args, t_format *format)
 	tmp = va_arg(args, int);
 	if (tmp == 0 )
 	{
-		tmpstr = ft_strdup("\\0");
-		node->lenmod++;
+		tmpstr = ft_strdup("{\\0}");
+		node->lenmod += 3;
 		if (format->padsize > 0)
-			format->padsize++;
+			format->padsize += 3;
 	}
 	else
 	{

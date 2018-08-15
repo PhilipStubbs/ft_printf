@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 09:52:29 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/06 10:29:34 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/15 18:43:22 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ char	*dynamicchar(char **ori, char add)
 
 	tmp = ft_strdup(*ori);
 	free(*ori);
-	// ret = ft_strdup(stradd);
 	ret = ft_strjoin(tmp, stradd);
 	free(tmp);
 	free(stradd);

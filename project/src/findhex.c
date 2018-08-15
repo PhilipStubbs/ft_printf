@@ -6,56 +6,11 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 13:30:43 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/13 18:47:26 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/15 18:49:29 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-char	*hexhash(char **tmpstr, char cap, t_format *format)
-{
-	char	*tmpstr2;
-	char	*check;
-
-	check = ft_strdup(*tmpstr);
-	if (cap == 'X')
-	{
-		if (format->zeropad == 1 && check[0] == '0' && check[1] == '0' && format->prec == 0)
-		{
-			tmpstr2 = ft_strdup(*tmpstr);
-			tmpstr2[0] = '0';
-			tmpstr2[1] = 'X';
-		}
-		else if (format->zeropad == 1 && check[0] == '0' && check[1] != '0' && format->prec == 0)
-		{
-			check[0] = 'X';
-			tmpstr2 = ft_strjoin("0", check);
-		}
-		else
-			tmpstr2 = ft_strjoin("0X", *tmpstr);
-	}
-	else
-	{
-		if(format->zeropad == 1 && check[0] == '0' && check[1] == '0' && format->prec == 0)
-		{
-			tmpstr2 = ft_strdup(*tmpstr);
-			tmpstr2[0] = '0';
-			tmpstr2[1] = 'x';
-		}
-		else if (format->zeropad == 1 && check[0] == '0' && check[1] != '0' && format->prec == 0)
-		{
-			check[0] = 'x';
-			tmpstr2 = ft_strjoin("0", check);
-		}
-		else
-			tmpstr2 = ft_strjoin("0x", *tmpstr);
-	}
-	free(*tmpstr);
-	*tmpstr = ft_strdup(tmpstr2);
-	free(tmpstr2);
-	free(check);
-	return(*tmpstr);
-}
 
 char	*lengthmodhex(t_format *format, uintmax_t num, int cap)
 {
@@ -70,10 +25,7 @@ char	*lengthmodhex(t_format *format, uintmax_t num, int cap)
 	else if (format->ll == 1)
 		ret = ft_itoa_base((unsigned long long int)num, 16, cap);
 	else if (format->j == 1)
-	{
-
 		ret = ft_itoa_base((uintmax_t)num, 16, cap);
-	}
 	else if (format->z == 1)
 		ret = ft_itoa_base((size_t)num, 16, cap);
 	else

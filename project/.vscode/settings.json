@@ -1,5 +1,7 @@
 {
 	"files.associations": {
-		"strings.h": "c"
+		"strings.h": "c",
+		"locale.h": "c",
+		"ft_printf.h": "c"
 	}
 }

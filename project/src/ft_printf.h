@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/16 10:30:58 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/16 11:57:09 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,9 @@ typedef	struct	s_printf
 	int			size;
 	int			padding;
 	int			lenmod;
-	int			*nulls;
+	int			tmp;
 	int			l;
+	int			isspaceswitch;
 }				t_printf;
 
 int				ft_printf(char *str, ...);
@@ -88,6 +89,9 @@ int				hexhashswitch(t_format *format);
 int				istherezero(char *str);
 int				wstrsize(wchar_t *tmp);
 int				findspecifier(char *str, int i, t_format *format);
+int				istherespace(char *str);
+int				findwild(char *str, int i);
+int				*populatehold(va_list args, t_format *format);
 
 int				findstring(t_printf *node, va_list args, t_format *format);
 int				finddigit(t_printf *node, va_list args, t_format *format);

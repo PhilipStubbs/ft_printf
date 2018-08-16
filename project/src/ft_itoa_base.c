@@ -6,65 +6,75 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 12:24:38 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/13 13:15:32 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/16 12:07:37 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*createinfoupper(unsigned long long value, int base, int len, int isneg)
+char				*createinfoupper(unsigned long long v, int b, int l, int n)
 {
 	char	*ret;
 	char	*tab;
 
 	tab = ft_strdup("0123456789ABCDEF");
-	len = len + isneg;
-	ret = (char*)malloc(sizeof(char) * len + 1);
-	ret[len] = '\0';
-	if (isneg == 1)
+	l = l + n;
+	ret = (char*)malloc(sizeof(char) * l + 1);
+	ret[l] = '\0';
+	if (n == 1)
 		ret[0] = '-';
-	while (value > 0)
+	while (v > 0)
 	{
-		ret[--len] = tab[value % base];
-		value = value / base;
+		ret[--l] = tab[v % b];
+		v = v / b;
 	}
 	free(tab);
 	return (ret);
 }
 
-char	*createinfolower(unsigned long long value, int base, int len, int isneg)
+char				*createinfolower(unsigned long long v, int b, int l, int n)
 {
 	char	*ret;
 	char	*tab;
 
 	tab = ft_strdup("0123456789abcdef");
-	len = len + isneg;
-	ret = (char*)malloc(sizeof(char) * len + 1);
-	ret[len] = '\0';
-	if (isneg == 1)
+	l = l + n;
+	ret = (char*)malloc(sizeof(char) * l + 1);
+	ret[l] = '\0';
+	if (n == 1)
 		ret[0] = '-';
-	while (value > 0)
+	while (v > 0)
 	{
-		ret[--len] = tab[value % base];
-		value = value / base;
+		ret[--l] = tab[v % b];
+		v = v / b;
 	}
 	free(tab);
 	return (ret);
 }
 
-char	*ft_itoa_base(long long value, int base, int cap)
+unsigned long long	itoa_base_size(long long value, int base)
 {
 	unsigned long long	i;
-	int			len;
-	int			isneg;
-	char		*ret;
+	int					len;
+
+	len = 1;
+	i = value;
+	while (i /= base)
+		len++;
+	return (len);
+}
+
+char				*ft_itoa_base(long long value, int base, int cap)
+{
+	int					len;
+	int					isneg;
+	char				*ret;
 
 	isneg = 0;
-	len = 1;
 	if (value == 0)
 	{
 		ret = ft_strdup("0");
-		return(ret);
+		return (ret);
 	}
 	if (base < 2 || base > 16)
 		return (0);
@@ -73,13 +83,9 @@ char	*ft_itoa_base(long long value, int base, int cap)
 		isneg = 1;
 		value *= -1;
 	}
-	i = value;
-	while (i /= base)
-		len++;
+	len = itoa_base_size(value, base);
 	if (cap == 1)
-	{
 		ret = createinfoupper(value, base, len, isneg);
-	}
 	else
 		ret = createinfolower(value, base, len, isneg);
 	return (ret);

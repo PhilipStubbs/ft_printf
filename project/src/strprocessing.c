@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 10:29:15 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/16 10:31:51 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/16 11:57:38 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ int		movei(char *str, int i)
 		return (i + l + 1);
 	if (isvaildflag(str, i + l) == 0)
 		return (i + l + 1);
-
 	return (i + l + 1);
 }
 

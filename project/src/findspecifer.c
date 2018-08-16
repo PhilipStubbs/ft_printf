@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 09:32:55 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/16 09:34:04 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/16 11:58:32 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	normalspecbody_two(char *str, int i, t_format *format)
 
 void	normalspec(char *str, int i, t_format *format)
 {
-
 	if (str[i] == '#' && format != NULL)
 		format->hash = 1;
 	if (format != NULL && (str[i] == ' ' && format->spacpad == 0))

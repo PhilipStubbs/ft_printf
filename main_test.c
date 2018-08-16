@@ -15,7 +15,7 @@ int main()
 
 	// while (i < 10000)
 		// printf("%C",i++);
-	ft_printf("Hello %h %%", "FRIENDS!");
+	ft_printf("Hello %0*.*s", 5,2, "FRIENDS!");
 	// ft_printf("{BLU}%S", L"我是一只猫。");
 	return (1);
 }

@@ -16,7 +16,6 @@ SRC = libft/ft_atoi.c libft/ft_bzero.c libft/ft_isalnum.c libft/ft_isalpha.c lib
 	src/ft_itoa_base.c src/ft_printf.c  src/ft_uitoa.c src/handlenonvalid.c src/lengthmod.c src/precision.c src/strprocessing.c src/ft_lltoa.c src/wildcard.c \
 	src/findwchar.c src/findwstr.c src/wcharsupport.c src/finddigit.c src/findpointer.c src/paddingsupportfunc.c src/hexhash.c src/overflowfunc.c \
 	src/findspecifer.c src/findactions_one.c src/findactions_two.c\
-	
 
 OBJ = *.o
 
@@ -26,7 +25,6 @@ $(NAME):
 	gcc -c -Wall -Werror -Wextra $(SRC) -I.libft/ -I.src/ -c
 	ar -rc $(NAME) $(OBJ)
 	ranlib $(NAME)
-	rm -f $(OBJ)
 
 clean:
 	rm -f $(OBJ)

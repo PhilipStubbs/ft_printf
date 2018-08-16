@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 16:59:51 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/15 09:13:37 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/16 09:46:56 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,18 @@ char	*specialprecision(t_format *format, char **str)
 		tmp = ft_strdup(*str);
 	if (isneg == 1)
 		tmp[0] = '-';
-	return(tmp);
+	return (tmp);
 }
 
 char	*precision(t_format *format, char **str)
 {
 	char	*tmp;
 
-	// if (format->c == 'd' || format->c == 'D' || format->c == 'i')
-	if (format->c != 'c' && format->c != 'C' && format->c != 's' && format->c != 'S')
+	if (format->c != 'c' && format->c != 'C' && format->c != 's' &&
+	format->c != 'S')
 		tmp = specialprecision(format, str);
 	else
 		tmp = ft_strsub(*str, 0, format->precsize);
 	free(*str);
-	return(tmp);
+	return (tmp);
 }

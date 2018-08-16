@@ -9,15 +9,14 @@
 
 int main()
 {
-	char c;
+	setlocale(LC_ALL, "");
+	int	i;
+	i = 0;
 
-	c = 'a';
-	ft_printf("%p\n", c); 
- 	ft_printf("%065p\n", c);
-	 ft_printf("%06.5p\n", c); 
-	 ft_printf("%06.*p\n",4 ,c); 
-	 ft_printf("% 65p\n", c); 
-	// ft_printf("");
+	// while (i < 10000)
+		// printf("%C",i++);
+	ft_printf("Hello %h %%", "FRIENDS!");
+	// ft_printf("{BLU}%S", L"我是一只猫。");
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: pstubbs <pstubbs@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 08:08:35 by pstubbs           #+#    #+#             */
-/*   Updated: 2018/08/15 19:00:13 by pstubbs          ###   ########.fr       */
+/*   Updated: 2018/08/16 10:30:58 by pstubbs          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,6 @@ t_format		*cleanformat(void);
 void			destroy(t_printf **node);
 int				strprocessing(t_printf *node, char *str, va_list args);
 
-int				findstring(t_printf *node, va_list args, t_format *format);
-int				finddigit(t_printf *node, va_list args, t_format *format);
-int				findchar(t_printf *node, va_list args, t_format *format);
-int				findhex(t_printf *node, va_list args, char cap, t_format *fo);
-int				findoct(t_printf *node, va_list args, t_format *format);
-int				findpointer(t_printf *node, va_list args, t_format *format);
-int				findundigit(t_printf *node, va_list args, t_format *format);
-int				findwstr(t_printf *node, va_list args, t_format *format);
-int				findwchar(t_printf *node, va_list args, t_format *format);
 int				handlenonvalid(t_printf *node, t_format *format);
 char			*createpadding(char **str, t_format *format);
 int				isnormalflag(char *str, int i);
@@ -94,6 +85,29 @@ int				creatspecialpaddingswitch(t_format *format);
 char			*specialpaddingfordigit(t_format *f, int l, char c, char **s);
 char			*hexhash(char **tmpstr, char cap, t_format *format);
 int				hexhashswitch(t_format *format);
+int				istherezero(char *str);
+int				wstrsize(wchar_t *tmp);
+int				findspecifier(char *str, int i, t_format *format);
+
+int				findstring(t_printf *node, va_list args, t_format *format);
+int				finddigit(t_printf *node, va_list args, t_format *format);
+int				findchar(t_printf *node, va_list args, t_format *format);
+int				findhex(t_printf *node, va_list args, char cap, t_format *fo);
+int				findoct(t_printf *node, va_list args, t_format *format);
+int				findpointer(t_printf *node, va_list args, t_format *format);
+int				findundigit(t_printf *node, va_list args, t_format *format);
+int				findwstr(t_printf *node, va_list args, t_format *format);
+int				findwchar(t_printf *node, va_list args, t_format *format);
+
+int				findstringaction(t_printf *node, va_list args, t_format *form);
+int				findwstraction(t_printf *node, va_list args, t_format *format);
+int				findwcharaction(t_printf *node, va_list args, t_format *format);
+int				finddigitaction(t_printf *node, va_list args, t_format *format);
+int				findcharaction(t_printf *node, va_list args, t_format *format);
+int				findhexaction(t_printf *no, va_list args, t_format *fo, char c);
+int				findoctaction(t_printf *node, va_list args, t_format *format);
+int				findpointeraction(t_printf *node, va_list args, t_format *fo);
+int				findunsdigitaction(t_printf *node, va_list args, t_format *fo);
 
 char			*ft_itoa_base(long long value, int base, int cap);
 char			*ft_ulltoa(unsigned long long n);

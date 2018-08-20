@@ -1,5 +1,5 @@
 
-NAME = libft.a
+NAME = libftprintf.a
 
 SRC = libft_src/ft_atoi.c libft_src/ft_bzero.c libft_src/ft_isalnum.c libft_src/ft_isalpha.c libft_src/ft_isascii.c libft_src/ft_isdigit.c libft_src/ft_isprint.c \
 	libft_src/ft_memccpy.c libft_src/ft_memchr.c libft_src/ft_memcmp.c libft_src/ft_memcpy.c libft_src/ft_memmove.c libft_src/ft_memset.c libft_src/ft_strcat.c \
